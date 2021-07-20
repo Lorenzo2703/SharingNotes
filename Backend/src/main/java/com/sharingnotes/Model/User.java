@@ -1,21 +1,25 @@
 package com.sharingnotes.Model;
 
-import java.util.UUID;
-
 public class User {
-    private UUID id;
+    private int id;
     private String name;
+    private String email;
+    private String password;
+    private int rating;
 
-    public User(UUID id, String name) {
+    public User(int id, String name, String email, String password) {
         this.id = id;
         this.name = name;
+        this.email = email;
+        this.password = password;
+        this.rating = 0;
     }
 
-    public UUID getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -25,5 +29,29 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 }

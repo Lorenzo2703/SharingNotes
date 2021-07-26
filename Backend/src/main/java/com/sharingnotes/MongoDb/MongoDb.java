@@ -17,7 +17,7 @@ public class MongoDb {
     MongoDatabase database;
 
     public MongoDb() {
-        connectionString = new ConnectionString("mongodb+srv://admin:admin@cluster0.c1nrg.mongodb.net/test?retryWrites=true&w=majority");
+        connectionString = new ConnectionString("mongodb+srv://admin:admin@cluster0.xxygs.mongodb.net/test?retryWrites=true&w=majority");
         settings = MongoClientSettings.builder().applyConnectionString(connectionString).build();
         mongoClient = MongoClients.create(settings);
         database = mongoClient.getDatabase("test");

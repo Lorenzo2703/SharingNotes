@@ -7,14 +7,16 @@ public class Notes {
     private String thumbnail;
     private int rating;
     private String fileUrl;
+    private String id_User;
 
-    public Notes(int id, String title, String description, String thumbnail, String fileUrl) {
+    public Notes(int id, String title, String description, String thumbnail, String fileUrl, String id_User) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.thumbnail = thumbnail;
         this.rating = 0;
         this.fileUrl = fileUrl;
+        this.id_User = id_User;
     }
 
     public int getId() {
@@ -63,5 +65,13 @@ public class Notes {
 
     public void setFileUrl(String fileUrl) {
         this.fileUrl = fileUrl;
+    }
+
+    public String getId_User() {
+        return id_User;
+    }
+
+    public void setId_User(String id_User) {
+        this.id_User = id_User;
     }
 }

@@ -7,7 +7,7 @@ import json
 
 
 mega = Mega()
-with open("C:\\Users\\gialo\\Desktop\\app\\python\\credentials.json") as f:
+with open("C:\\Users\\Marco\\Desktop\\Elis Roma\\ProgettoIngSoftware\\SharingNotes\\python\\credentials.json") as f:
     data = json.load(f)
 
 m = mega.login(data["username"], data["password"])

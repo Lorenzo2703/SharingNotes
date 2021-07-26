@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.swing.text.Document;
 import java.io.File;
 
 
@@ -48,7 +49,11 @@ public class MainTest {
 
         /* test insert di un documento nella collection degli utenti con nome test e id 1
            insertUser(mongo, new User(1,"test","test@gmail.com","12345"));
-         */
+        */
+
+        /* test recupero user nella collection
+           getUser(mongo,"test@gmail.com","12345");
+        */
     }
 
     public static void insertUser(MongoDb mongo, User user){
@@ -57,6 +62,10 @@ public class MainTest {
 
     public static void insertNote(MongoDb mongo, Notes notes){
         mongo.insertNotes(notes,"notes");
+    }
+
+    public static void getUser(MongoDb mongo, String email, String password){
+        mongo.getUser(email,password, "utenti" );
     }
 
     public static File convertFile(MultipartFile multipartFile){

@@ -47,6 +47,7 @@ public class MongoDb {
                 .append("fileUrl",notes.getFileUrl());
 
         database.getCollection(collection).insertOne(insertNotes);
+        System.out.println("hello");
     }
 
 }

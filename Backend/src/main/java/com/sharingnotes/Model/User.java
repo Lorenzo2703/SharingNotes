@@ -1,26 +1,28 @@
 package com.sharingnotes.Model;
 
 public class User {
-    private int id;
+    private int _id;
     private String name;
     private String email;
     private String password;
     private int rating;
+    private int nVoti;
 
-    public User(int id, String name, String email, String password) {
-        this.id = id;
+    public User(int _id, String name, String email, String password) {
+        this._id = _id;
         this.name = name;
         this.email = email;
         this.password = password;
         this.rating = 0;
+        this.nVoti = 0;
     }
 
     public int getId() {
-        return id;
+        return _id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this._id = _id;
     }
 
     public String getName() {
@@ -53,5 +55,20 @@ public class User {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public int getnVoti() {
+        return nVoti;
+    }
+
+    public void setnVoti(int nVoti) {
+        this.nVoti = nVoti;
+    }
+
+    private void updateRating (int newVoto){
+        int sumVoti = this.rating*this.nVoti;
+        sumVoti += newVoto;
+        this.nVoti++;
+        this.rating= (sumVoti/nVoti);
     }
 }

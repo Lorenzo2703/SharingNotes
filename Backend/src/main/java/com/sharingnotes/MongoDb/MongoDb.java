@@ -34,7 +34,7 @@ public class MongoDb {
 
     public void insertUser(User user,String collection){
         Document insertUser = new Document();
-        insertUser.append("id",user.getId())
+        insertUser.append("_id",user.getId())
                 .append("name",user.getName())
                 .append("email",user.getEmail())
                 .append("password",user.getPassword())
@@ -44,7 +44,7 @@ public class MongoDb {
 
     public void insertNotes(Notes notes, String collection){
         Document insertNotes = new Document();
-        insertNotes.append("id",notes.getId())
+        insertNotes.append("_id",notes.getId())
                 .append("title",notes.getTitle())
                 .append("description",notes.getDescription())
                 .append("thumbnail",notes.getThumbnail())

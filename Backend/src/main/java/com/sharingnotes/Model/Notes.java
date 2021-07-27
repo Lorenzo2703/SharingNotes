@@ -1,30 +1,32 @@
 package com.sharingnotes.Model;
 
 public class Notes {
-    private int id;
+    private int _id;
     private String title;
     private String description;
     private String thumbnail;
     private int rating;
     private String fileUrl;
     private String id_User;
+    private int nVoti;
 
-    public Notes(int id, String title, String description, String thumbnail, String fileUrl, String id_User) {
-        this.id = id;
+    public Notes(int _id, String title, String description, String thumbnail, String fileUrl, String id_User) {
+        this._id = _id;
         this.title = title;
         this.description = description;
         this.thumbnail = thumbnail;
         this.rating = 0;
         this.fileUrl = fileUrl;
         this.id_User = id_User;
+        this.nVoti = 0 ;
     }
 
     public int getId() {
-        return id;
+        return _id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this._id = _id;
     }
 
     public String getTitle() {
@@ -73,5 +75,20 @@ public class Notes {
 
     public void setId_User(String id_User) {
         this.id_User = id_User;
+    }
+
+    public int getnVoti() {
+        return nVoti;
+    }
+
+    public void setnVoti(int nVoti) {
+        this.nVoti = nVoti;
+    }
+
+    private void updateRating (int newVoto){
+        int sumVoti = this.rating*this.nVoti;
+        sumVoti += newVoto;
+        this.nVoti++;
+        this.rating= (sumVoti/nVoti);
     }
 }

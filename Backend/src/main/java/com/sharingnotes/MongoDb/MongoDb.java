@@ -10,8 +10,6 @@ import com.sharingnotes.Model.Notes;
 import com.sharingnotes.Model.User;
 import org.bson.Document;
 
-import javax.sound.midi.Soundbank;
-
 import static com.mongodb.client.model.Filters.*;
 
 public class MongoDb {

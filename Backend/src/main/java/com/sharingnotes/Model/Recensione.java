@@ -1,8 +1,10 @@
 package com.sharingnotes.Model;
 
+import java.util.UUID;
+
 public class Recensione {
 
-    private int _id;
+    private UUID _id;
     private int score;
     private String idRecensore;
     private String idUserRecensito;
@@ -10,7 +12,7 @@ public class Recensione {
     private String title;
     private String testo;
 
-    public Recensione(int _id, int score, String idRecensore, String idUserRecensito, String idNotaRecensita, String title, String testo) {
+    public Recensione(UUID _id, int score, String idRecensore, String idUserRecensito, String idNotaRecensita, String title, String testo) {
         this._id = _id;
         this.score = score;
         this.idRecensore = idRecensore;
@@ -20,11 +22,11 @@ public class Recensione {
         this.testo = testo;
     }
 
-    public int getId() {
+    public UUID getId() {
         return _id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this._id = id;
     }
 

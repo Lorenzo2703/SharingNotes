@@ -1,14 +1,16 @@
 package com.sharingnotes.Model;
 
+import java.util.UUID;
+
 public class User {
-    private int _id;
+    private UUID _id;
     private String name;
     private String email;
     private String password;
     private int rating;
     private int nVoti;
 
-    public User(int _id, String name, String email, String password) {
+    public User(UUID _id, String name, String email, String password) {
         this._id = _id;
         this.name = name;
         this.email = email;
@@ -17,11 +19,16 @@ public class User {
         this.nVoti = 0;
     }
 
-    public int getId() {
+    @Override
+    public String toString() {
+        return ("id:"+ _id+"\n"+"name:"+ name+"\n"+"email:"+ email+"\n"+"password:"+ password+"\n"+"rating:"+ rating+"\n"+"nvoti:"+ nVoti+"\n");
+    }
+
+    public UUID getId() {
         return _id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this._id = _id;
     }
 

@@ -1,7 +1,9 @@
 package com.sharingnotes.Model;
 
+import java.util.UUID;
+
 public class Notes {
-    private int _id;
+    private UUID _id;
     private String title;
     private String description;
     private String thumbnail;
@@ -10,7 +12,7 @@ public class Notes {
     private String id_User;
     private int nVoti;
 
-    public Notes(int _id, String title, String description, String thumbnail, String fileUrl, String id_User) {
+    public Notes(UUID _id, String title, String description, String thumbnail, String fileUrl, String id_User) {
         this._id = _id;
         this.title = title;
         this.description = description;
@@ -21,11 +23,11 @@ public class Notes {
         this.nVoti = 0 ;
     }
 
-    public int getId() {
+    public UUID getId() {
         return _id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this._id = _id;
     }
 

@@ -7,11 +7,13 @@ import com.sharingnotes.MongoDb.MongoDb;
 import kong.unirest.json.JSONObject;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.view.RedirectView;
 
-import javax.swing.text.Document;
 import java.io.File;
+import java.util.UUID;
 
 
 @RestController
@@ -23,7 +25,6 @@ public class MainTest {
         //CloudApi.uploadFile(new File("C:\\Users\\gialo\\Desktop\\SharingNotes\\Backend\\certificato.pdf"));
         JSONObject json = new JSONObject(CloudApi.getAll()); // Convert text to object
         System.out.println(json.toString(5));
-
     }
 
     @GetMapping("/getAllFile")
@@ -34,9 +35,28 @@ public class MainTest {
 
     @RequestMapping(value = "/fileUpload", method = RequestMethod.POST)
     public String uploadFile(@RequestParam("file") MultipartFile multipartFile) {
-
         CloudApi.uploadFile(convertFile(multipartFile));
         return "success";
+    }
+
+    @PostMapping("/register")
+    public void register(@RequestParam("name") String name,
+                         @RequestParam("email") String email,
+                         @RequestParam("password") String password){
+
+        User user=new User(UUID.randomUUID(),name,email,password);
+        System.out.println(user);
+        //insertUser(mongo, user);
+
+        // una volta registrato sul db una funzione autenticherà l'user
+        // login(user);
+
+
+    }
+
+    @RequestMapping("/login")
+    public String login(){
+        return "login";
     }
 
 

@@ -34,7 +34,7 @@ public class MongoDb {
         Document insertUser = new Document();
         insertUser.append("_id",user.getId())
                 .append("name",user.getName())
-                .append("email",user.getEmail())
+                .append("email",user.getEmail().toLowerCase())
                 .append("password",user.getPassword())
                 .append("rating",user.getRating());
         database.getCollection(collection).insertOne(insertUser);
@@ -55,7 +55,7 @@ public class MongoDb {
 
     public Document getUser(String email, String password, String collections){
         MongoCollection<Document> collection = database.getCollection(collections);
-        Document user = collection.find(and(eq("email", email),eq("password", password))).first();
+        Document user = collection.find(and(eq("email", email.toLowerCase()),eq("password", password))).first();
         return user;
     }
 

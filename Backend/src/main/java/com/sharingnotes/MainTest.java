@@ -7,11 +7,9 @@ import com.sharingnotes.MongoDb.MongoDb;
 import kong.unirest.json.JSONObject;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.ui.Model;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.view.RedirectView;
-
 import java.io.File;
 import java.util.UUID;
 
@@ -21,8 +19,6 @@ import java.util.UUID;
 public class MainTest {
     public static void main(String[] args) {
         SpringApplication.run(MainTest.class, args);
-        init();
-        //CloudApi.uploadFile(new File("C:\\Users\\gialo\\Desktop\\SharingNotes\\Backend\\certificato.pdf"));
         JSONObject json = new JSONObject(CloudApi.getAll()); // Convert text to object
         System.out.println(json.toString(5));
     }
@@ -32,66 +28,16 @@ public class MainTest {
         return (CloudApi.getAll().toString());
     }
 
-
     @RequestMapping(value = "/fileUpload", method = RequestMethod.POST)
-    public String uploadFile(@RequestParam("file") MultipartFile multipartFile) {
+    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile multipartFile) {
         CloudApi.uploadFile(convertFile(multipartFile));
-        return "success";
+        return ResponseEntity.ok("Success");
     }
 
-    @PostMapping("/register")
-    public void register(@RequestParam("name") String name,
-                         @RequestParam("email") String email,
-                         @RequestParam("password") String password){
-
-        User user=new User(UUID.randomUUID(),name,email,password);
-        System.out.println(user);
-        //insertUser(mongo, user);
-
-        // una volta registrato sul db una funzione autenticherà l'user
-        // login(user);
-
-
-    }
-
-    @RequestMapping("/login")
-    public String login(){
-        return "login";
-    }
-
-
-    public static void init(){
-        //MongoDb mongo=new MongoDb();
-
-        /* Creazione della collection notes e inserimento di un appunto test
-           mongo.createCollection("notes");
-           insertNote(mongo,new Notes(1,"test","description test","url:...","url:..."));*/
-
-        /* test insert di un documento nella collection degli utenti con nome test e id 1
-           insertUser(mongo, new User(1,"test","test@gmail.com","12345"));
-        */
-
-        /* test recupero user nella collection
-           getUser(mongo,"test@gmail.com","12345");
-        */
-    }
-
-    public static void insertUser(MongoDb mongo, User user){
-        mongo.insertUser(user,"utenti");
-    }
-
-    public static void insertNote(MongoDb mongo, Notes notes){
-        mongo.insertNotes(notes,"notes");
-    }
-
-    public static void getUser(MongoDb mongo, String email, String password){
-        mongo.getUser(email,password, "utenti" );
-    }
-
-    public static File convertFile(MultipartFile multipartFile){
+    public File convertFile(MultipartFile multipartFile){
         String fileName = multipartFile.getOriginalFilename();
-        String prefix = fileName.substring(fileName.lastIndexOf("."));
-        File file = null;
+        String prefix = fileName != null ? fileName.substring(fileName.lastIndexOf(".")) : null;
+        File file;
         try {
             file = File.createTempFile(fileName.substring(0,fileName.lastIndexOf("."))
                     .replaceAll("[^a-zA-Z0-9-_\\.]", "_"), prefix);
@@ -102,5 +48,6 @@ public class MainTest {
         }
         return null;
     }
+
 }
 

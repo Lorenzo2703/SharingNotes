@@ -6,17 +6,15 @@ public class Notes {
     private UUID _id;
     private String title;
     private String description;
-    private String thumbnail;
     private int rating;
     private String fileUrl;
     private String id_User;
     private int nVoti;
 
-    public Notes(UUID _id, String title, String description, String thumbnail, String fileUrl, String id_User) {
+    public Notes(UUID _id, String title, String description, String fileUrl, String id_User) {
         this._id = _id;
         this.title = title;
         this.description = description;
-        this.thumbnail = thumbnail;
         this.rating = 0;
         this.fileUrl = fileUrl;
         this.id_User = id_User;
@@ -45,14 +43,6 @@ public class Notes {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getThumbnail() {
-        return thumbnail;
-    }
-
-    public void setThumbnail(String thumbnail) {
-        this.thumbnail = thumbnail;
     }
 
     public int getRating() {

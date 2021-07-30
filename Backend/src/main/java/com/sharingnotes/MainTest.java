@@ -7,6 +7,7 @@ import com.sharingnotes.MongoDb.MongoDb;
 import kong.unirest.json.JSONObject;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,10 +30,21 @@ public class MainTest {
     }
 
     @RequestMapping(value = "/fileUpload", method = RequestMethod.POST)
-    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile multipartFile) {
-        CloudApi.uploadFile(convertFile(multipartFile));
+    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile multipartFile,@RequestParam("title") String title,@RequestParam("description") String description,@RequestParam("userId") String id) {
+        CloudApi.uploadFile(convertFile(multipartFile),title,description,id);
         return ResponseEntity.ok("Success");
     }
+
+    @RequestMapping(value = "/getUrlFiles",method = RequestMethod.GET)
+    public ResponseEntity<String> getUrlfiles(){
+        return new ResponseEntity((new MongoDb().getUrlFiles()), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/getFiles",method = RequestMethod.GET)
+    public ResponseEntity<?> getFiles(@RequestParam("collection")String collection){
+        return new ResponseEntity((new MongoDb().getAllFilesInCollection(collection)), HttpStatus.OK);
+    }
+
 
     public File convertFile(MultipartFile multipartFile){
         String fileName = multipartFile.getOriginalFilename();

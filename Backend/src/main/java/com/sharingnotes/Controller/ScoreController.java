@@ -1,7 +1,6 @@
 package com.sharingnotes.Controller;
 
 import com.sharingnotes.MongoDb.MongoDb;
-import org.bson.BsonDocument;
 import org.bson.Document;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

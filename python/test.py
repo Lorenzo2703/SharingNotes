@@ -7,7 +7,7 @@ import json
 
 
 mega = Mega()
-with open("C:\\Users\\Marco\\Desktop\\Elis Roma\\ProgettoIngSoftware\\SharingNotes\\python\\credentials.json") as f:
+with open("../python/credentials.json") as f:
     data = json.load(f)
 
 m = mega.login(data["username"], data["password"])
@@ -16,6 +16,8 @@ m = mega.login(data["username"], data["password"])
 def fmega(file):
     folder = m.find('uploads')
     m.upload(file.filename, folder[0])
+    return m.get_upload_link(m.upload(file.filename, folder[0]))
+
 
 UPLOAD_FOLDER = '.'
 ALLOWED_EXTENSIONS = {'pdf'}
@@ -31,21 +33,22 @@ def allowed_file(filename):
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
+    url = ""
     if 'file' not in request.files:
         print('No file part')
 
     file = request.files['file']
     if file.filename == '':
         print('No selected file')
-        
+
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        fmega(file)
+        url = fmega(file)
         time.sleep(3)
         os.remove(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-    return "ok"
+    return url
 
 
 @app.route('/getAll', methods=['GET'])

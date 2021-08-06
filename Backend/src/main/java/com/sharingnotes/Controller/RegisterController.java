@@ -17,8 +17,8 @@ public class RegisterController {
     public ResponseEntity<String> register(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("password") String password){
         try{
             MongoDb mongoDb = new MongoDb();
-            User user=new User(UUID.randomUUID(),name,email.toLowerCase(),password);
-            mongoDb.insertUser(user,"utenti");
+            User user=new User((UUID.randomUUID()),name,email.toLowerCase(),password);
+            mongoDb.insertUser(user);
             Login login =new Login();
             if (login.authentication(email.toLowerCase(), password)){
                 return ResponseEntity.ok("Registration Succesfull");

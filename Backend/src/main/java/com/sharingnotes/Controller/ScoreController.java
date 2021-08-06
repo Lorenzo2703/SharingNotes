@@ -1,5 +1,6 @@
 package com.sharingnotes.Controller;
 
+import com.sharingnotes.Model.Notes;
 import com.sharingnotes.MongoDb.MongoDb;
 import org.bson.Document;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ public class ScoreController {
             Document document1= Document.parse(document);
             mongoDb.updateScore(document1,collection,score);
             System.out.println("MEDIA VOTI: "+avgScore(document1));
+
             return ResponseEntity.ok("Score aggiornato!");
         }catch (Exception e){
             return new ResponseEntity<>("Score non aggiornato", HttpStatus.BAD_REQUEST);

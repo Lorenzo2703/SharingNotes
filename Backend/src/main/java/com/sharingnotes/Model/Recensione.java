@@ -5,23 +5,23 @@ import java.util.UUID;
 public class Recensione {
 
     private UUID _id;
-    private int score;
+    private int score=0;
     private String idRecensore;
     private String idUserRecensito;
     private String idNotaRecensita;
     private String title;
     private String testo;
 
-    public Recensione(UUID _id, int score, String idRecensore, String idUserRecensito, String idNotaRecensita, String title, String testo) {
+    public Recensione(UUID _id, String idRecensore, String idUserRecensito, String idNotaRecensita, String title, String testo) {
         this._id = _id;
-        this.score = score;
+        this.score=0;
         this.idRecensore = idRecensore;
         this.idUserRecensito = idUserRecensito;
         this.idNotaRecensita = idNotaRecensita;
         this.title = title;
         this.testo = testo;
     }
-
+    
     public UUID getId() {
         return _id;
     }

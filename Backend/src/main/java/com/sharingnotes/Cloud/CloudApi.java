@@ -15,7 +15,7 @@ public class CloudApi {
         HttpResponse response=Unirest.post("http://127.0.0.1:5000/upload")
                 .field("file",file)
                 .asString();
-        mongoDb.insertNotes(new Notes((UUID.randomUUID()),title, description,response.getBody().toString(),id_User),"notes");
+        mongoDb.insertNotes(new Notes((UUID.randomUUID()),title, description,response.getBody().toString(),id_User));
     }
 
     public static JsonNode getAll(){

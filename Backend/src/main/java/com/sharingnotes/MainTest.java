@@ -1,8 +1,7 @@
 package com.sharingnotes;
 
 import com.sharingnotes.Cloud.CloudApi;
-import com.sharingnotes.Model.Notes;
-import com.sharingnotes.Model.User;
+import com.sharingnotes.Model.*;
 import com.sharingnotes.MongoDb.MongoDb;
 import kong.unirest.json.JSONObject;
 import org.springframework.boot.SpringApplication;
@@ -12,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
+import java.util.HashMap;
 import java.util.UUID;
 
 
@@ -35,6 +35,41 @@ public class MainTest {
         return ResponseEntity.ok("Success");
     }
 
+    @RequestMapping(value = "/insertRecensione",method = RequestMethod.POST)
+    public ResponseEntity<String> insertRecensione(){
+        new MongoDb().insertRecensione(new Recensione(UUID.randomUUID(),"1234","4321","1423","title","testo"));
+        return ResponseEntity.ok("success");
+    }
+
+    @RequestMapping(value = "/insertRichiesta",method = RequestMethod.POST)
+    public ResponseEntity<String> insertRichiesta(){
+        new MongoDb().insertRichiesta(new Richiesta(UUID.randomUUID(),"1234","title","testo"));
+        return ResponseEntity.ok("success");
+    }
+
+    @RequestMapping(value = "/insertUser",method = RequestMethod.POST)
+    public ResponseEntity<String> insertUser(){
+        new MongoDb().insertUser(new User(UUID.randomUUID(),"name","email","password"));
+        return ResponseEntity.ok("success");
+    }
+
+    @RequestMapping(value = "/createChat",method = RequestMethod.POST)
+    public ResponseEntity<String> createChat(){
+        HashMap<String,String> map=new HashMap<>();
+        map.put("1234","messaggio");
+        new MongoDb().createChat(new Chat(UUID.randomUUID(),"1234","4321"),map);
+        return ResponseEntity.ok("success");
+    }
+
+    @RequestMapping(value = "/sendMessage",method = RequestMethod.POST)
+    public ResponseEntity<String> sendMessage(){
+        HashMap<String,String> map=new HashMap<>();
+        map.put("1234","messaggio");
+        Chat chat=new MongoDb().getChat("1234", "4321");
+        new MongoDb().sendMessage(chat,map);
+        return ResponseEntity.ok("success");
+    }
+
     @RequestMapping(value = "/getUrlFiles",method = RequestMethod.GET)
     public ResponseEntity<String> getUrlfiles(){
         return new ResponseEntity((new MongoDb().getUrlFiles()), HttpStatus.OK);
@@ -44,7 +79,6 @@ public class MainTest {
     public ResponseEntity<?> getFiles(@RequestParam("collection")String collection){
         return new ResponseEntity((new MongoDb().getAllFilesInCollection(collection)), HttpStatus.OK);
     }
-
 
     public File convertFile(MultipartFile multipartFile){
         String fileName = multipartFile.getOriginalFilename();

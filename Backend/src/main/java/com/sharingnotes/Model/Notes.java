@@ -77,10 +77,4 @@ public class Notes {
         this.nVoti = nVoti;
     }
 
-    private void updateRating (int newVoto){
-        int sumVoti = this.rating*this.nVoti;
-        sumVoti += newVoto;
-        this.nVoti++;
-        this.rating= (sumVoti/nVoti);
-    }
 }

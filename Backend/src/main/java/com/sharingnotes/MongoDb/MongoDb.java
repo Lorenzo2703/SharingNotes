@@ -104,7 +104,7 @@ public class MongoDb {
         for (String i:id) {
             createGroupChat.append(("id_"+index++),i);
         }
-        createGroupChat.append("messaggi","");
+        createGroupChat.append("messaggi",new ArrayList<String>());
         database.getCollection("group-chat").insertOne(createGroupChat);
     }
 

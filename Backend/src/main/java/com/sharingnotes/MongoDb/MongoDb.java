@@ -75,12 +75,12 @@ public class MongoDb {
         database.getCollection("recensioni").insertOne(insertRecensione);
     }
 
-    public void createChat(Chat chat, HashMap<String,String> messaggio){
+    public void createChat(Chat chat){
         Document createChat = new Document();
         createChat.append("_id",chat.get_id())
                 .append("id_User1",chat.getId_user1())
                 .append("id_User2",chat.getId_user2())
-                .append("messaggio",chat.insertMessage(messaggio));
+                .append("messaggio",new ArrayList<String>());
 
         database.getCollection("chat").insertOne(createChat);
     }
@@ -95,6 +95,37 @@ public class MongoDb {
         Chat chat= new Chat(UUID.fromString(document.get("_id").toString()),document.get("id_User1").toString(),document.get("id_User2").toString(),(ArrayList)(document.get("messaggio")));
         return chat;
     }
+
+    public void createGroupChat(String ...id){
+        Document createGroupChat = new Document();
+        int index=1;
+        createGroupChat.append("_id",UUID.randomUUID());
+
+        for (String i:id) {
+            createGroupChat.append(("id_"+index++),i);
+        }
+        createGroupChat.append("messaggi","");
+        database.getCollection("group-chat").insertOne(createGroupChat);
+    }
+
+    //get delle chat di gruppo dove l'id dell'user è presente
+    public ArrayList getGroupChat(String id){
+        ArrayList arrayList=new ArrayList();
+        MongoCursor<Document> cursor = database.getCollection("group-chat").find().iterator();
+        int index=0;
+
+        //verifico gli id per ogni key nella collection
+        while(cursor.hasNext()) {
+            index+=cursor.next().size();
+        }
+
+        for (int i=0;i<index;i++){
+            if (database.getCollection("group-chat").find(eq(("id_"+i),id)).first()!=null)
+                database.getCollection("group-chat").find(eq(("id_"+i),id)).forEach(arrayList::add);;
+        }
+        return arrayList;
+    }
+
 
     public void insertRichiesta(Richiesta richiesta){
         Document insertRichiesta = new Document();
@@ -137,9 +168,6 @@ public class MongoDb {
         }
         return arrayList;
     }
-
-
-
 
 
 }

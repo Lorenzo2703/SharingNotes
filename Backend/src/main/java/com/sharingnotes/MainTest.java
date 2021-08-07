@@ -53,22 +53,8 @@ public class MainTest {
         return ResponseEntity.ok("success");
     }
 
-    @RequestMapping(value = "/createChat",method = RequestMethod.POST)
-    public ResponseEntity<String> createChat(){
-        HashMap<String,String> map=new HashMap<>();
-        map.put("1234","messaggio");
-        new MongoDb().createChat(new Chat(UUID.randomUUID(),"1234","4321"),map);
-        return ResponseEntity.ok("success");
-    }
 
-    @RequestMapping(value = "/sendMessage",method = RequestMethod.POST)
-    public ResponseEntity<String> sendMessage(){
-        HashMap<String,String> map=new HashMap<>();
-        map.put("1234","messaggio");
-        Chat chat=new MongoDb().getChat("1234", "4321");
-        new MongoDb().sendMessage(chat,map);
-        return ResponseEntity.ok("success");
-    }
+
 
     @RequestMapping(value = "/getUrlFiles",method = RequestMethod.GET)
     public ResponseEntity<String> getUrlfiles(){

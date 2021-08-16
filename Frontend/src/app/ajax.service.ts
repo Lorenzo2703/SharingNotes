@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +10,20 @@ export class AjaxService {
 
   baseUrl = "http://localhost:8080/";
   loginUrl = this.baseUrl + "login";
+  registerUrl = this.baseUrl + "register";
 
   login(email: string, password: string) {
-
     const data = { "email": email, "password": password };
 
     return this.httpClient.post(this.loginUrl, {}, { params: data });
+
+  }
+
+  register(name: string, email: string, password: string) {
+
+    let params = new HttpParams().set('name', name).set('email', email).set("password", password);
+
+    return this.httpClient.post(this.registerUrl, {}, { params: params });
 
   }
 }

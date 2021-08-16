@@ -56,8 +56,8 @@ public class MongoDb {
         database.getCollection("utenti").insertOne(insertUser);
     }
 
-    public Document getUser(String email, String password, String collections){
-        MongoCollection<Document> collection = database.getCollection(collections);
+    public Document getUser(String email, String password){
+        MongoCollection<Document> collection = database.getCollection("utenti");
         Document user = collection.find(and(eq("email", email.toLowerCase()),eq("password", password))).first();
         return user;
     }

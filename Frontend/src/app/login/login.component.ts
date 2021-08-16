@@ -22,10 +22,15 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+
     this.ajax.login(this.form.get("email").value, this.form.get("password").value).subscribe((res) => {
       console.log(res);
-
+      this.router.navigateByUrl("/home");
     });
+  }
+
+  register() {
+    this.router.navigateByUrl("/register");
   }
 
   ngOnInit(): void {

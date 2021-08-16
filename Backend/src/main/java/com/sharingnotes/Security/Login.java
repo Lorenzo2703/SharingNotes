@@ -7,8 +7,7 @@ public class Login {
 
     public boolean authentication(String email,String password){
         try {
-            Document user = new MongoDb().getUser(email.toLowerCase(), password, "utenti");
-            System.out.println(user.get("name"));
+            Document user = new MongoDb().getUser(email.toLowerCase(), password);
             return user != null;
         }catch (Exception e){
             return false;

@@ -1,0 +1,30 @@
+<div class="row m-0 justify-content-center align-items-center h-100 bg-dark">
+
+    <div class="col-2 card-custom">
+        <div class="p-2 text-center m-3">
+            <h1 id="title" class="text-dark">Register</h1>
+            <form [formGroup]="form" class="text-dark" (ngSubmit)="register()">
+                <mat-form-field class="w-100">
+                    <mat-label class="text-dark">Name</mat-label>
+                    <input class="text-dark" formControlName="name" matInput placeholder="Name" />
+                </mat-form-field>
+
+                <mat-form-field class="w-100">
+                    <mat-label class="text-dark">Email</mat-label>
+                    <input class="text-dark" formControlName="email" matInput placeholder="Email" />
+                </mat-form-field>
+
+                <mat-form-field class="w-100">
+                    <mat-label class="text-dark">Password</mat-label>
+                    <input class="text-dark" type="password" formControlName="password" matInput
+                        placeholder="password" />
+                </mat-form-field>
+
+                <button type="submit" [disabled]="!form.valid" class="mt-4 " color="primary" mat-raised-button>
+                    Register
+                </button>
+            </form>
+            <h5 id="register" class="text-secondary mt-4" (click)="login()">Already a member? Log in now!</h5>
+        </div>
+    </div>
+</div>

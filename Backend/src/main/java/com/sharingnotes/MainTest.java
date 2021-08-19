@@ -14,7 +14,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.UUID;
 
-
+@CrossOrigin()
 @RestController
 @SpringBootApplication
 public class MainTest {
@@ -54,15 +54,13 @@ public class MainTest {
     }
 
 
-
-
     @RequestMapping(value = "/getUrlFiles",method = RequestMethod.GET)
     public ResponseEntity<String> getUrlfiles(){
         return new ResponseEntity((new MongoDb().getUrlFiles()), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/getFiles",method = RequestMethod.GET)
-    public ResponseEntity<?> getFiles(@RequestParam("collection")String collection){
+    public ResponseEntity getFiles(@RequestParam("collection")String collection){
         return new ResponseEntity((new MongoDb().getAllFilesInCollection(collection)), HttpStatus.OK);
     }
 

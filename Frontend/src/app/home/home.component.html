@@ -1,1 +1,111 @@
-<p>home works!</p>
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" [routerLink]="['/home']">
+            <div class="sidebar-brand-text mx-3"><strong> Sharing~Notes</strong></div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active my-1">
+            <a class="nav-link ms-2" [routerLink]="['/home']">
+                <i class="fas fa-fw fa-home"></i>
+                <span class="ms-1">Dashboard</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading ms-1">
+            Profile
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link ms-2" [routerLink]="['/home/profile']">
+                <i class="fas fa-fw fa-book"></i>
+                <span class="ms-1">My Notes</span>
+            </a>
+        </li>
+
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link ms-2" [routerLink]="['/home/profile/reviews']">
+                <i class="fas fa-fw fa-edit"></i>
+                <span class="ms-1">My Reviews</span>
+            </a>
+
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading ms-1">
+            Notifications
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed ms-2" [routerLink]="['/home/messages']">
+                <i class="fas fa-envelope fa-fw"></i>
+                <span class="ms-1">New Messages</span>
+            </a>
+        </li>
+
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+            <a class="nav-link ms-2" [routerLink]="['/home/updates']">
+                <i class="fas fa-bell fa-fw"></i>
+                <span class="ms-1">Updates</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Message -->
+        <div class="sidebar-card d-none d-lg-flex mt-2">
+            <p class="text-center mb-2">Be kind and share knowledge &hearts;</p>
+        </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                <!-- Topbar Search -->
+                <form class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                            aria-label="Search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button">
+                                <i class="fas fa-search fa-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <a [routerLink]="['/home/newNote']"> <button type="button" class="btn btn-primary d-none d-md-block "><i
+                            class="fas fa-plus fa-sm text-white-50 mr-3"></i>New
+                        Note</button></a>
+            </nav>
+            <!-- End of Topbar -->
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

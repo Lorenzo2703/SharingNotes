@@ -9,9 +9,9 @@
     <!-- Content Row -->
     <div class="row">
 
-        <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-4 col-md-6 mb-4" *ngFor="let item of listNotes">
-            <div class="card card-hover shadow h-100 py-2 {{returnColor()}}">
+        <!-- Card Example -->
+        <div class="col-xl-4 col-md-6 mb-4" *ngFor="let item of listNotes | filter:searchText">
+            <div class="card card-hover shadow h-100 py-2 {{item?.color}}">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">

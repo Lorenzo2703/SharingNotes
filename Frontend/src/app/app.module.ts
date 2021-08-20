@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,6 @@ import { ProfileComponent } from './profile/profile.component';
     LoginComponent,
     HomeComponent,
     RegisterComponent,
-
     DashboardComponent,
     ProfileComponent
   ],
@@ -30,6 +30,7 @@ import { ProfileComponent } from './profile/profile.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    Ng2SearchPipeModule,
     FormsModule,
     HttpClientModule,
     MatFormFieldModule,

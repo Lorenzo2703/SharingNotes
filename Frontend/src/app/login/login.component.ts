@@ -25,6 +25,12 @@ export class LoginComponent implements OnInit {
 
     this.ajax.login(this.form.get("email").value, this.form.get("password").value).subscribe((res) => {
       console.log(res);
+      let userName = res["name"];
+      let userID = res["_id"];
+      let userRating = res["rating"]
+      sessionStorage.setItem('UserName', userName);
+      sessionStorage.setItem('UserID', userID);
+      sessionStorage.setItem('UserRating', userRating);
       this.router.navigateByUrl("/home");
     });
   }

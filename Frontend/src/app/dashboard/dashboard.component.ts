@@ -1,5 +1,4 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
-import { AjaxService } from '../ajax.service';
 import { DataService } from '../data.service';
 
 @Component({

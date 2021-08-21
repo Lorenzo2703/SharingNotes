@@ -12,6 +12,7 @@ export class AjaxService {
   loginUrl = this.baseUrl + "login";
   registerUrl = this.baseUrl + "register";
   getNotesUrl = this.baseUrl + "getFiles";
+  uploadUrl = this.baseUrl + "fileUpload";
 
   login(email: string, password: string) {
     const data = { "email": email, "password": password };
@@ -21,6 +22,10 @@ export class AjaxService {
   register(name: string, email: string, password: string) {
     let params = new HttpParams().set('name', name).set('email', email).set("password", password);
     return this.httpClient.post(this.registerUrl, {}, { params: params });
+  }
+
+  submitFile(formData) {
+    return this.httpClient.post(this.uploadUrl, formData);
   }
 
   getNotes() {

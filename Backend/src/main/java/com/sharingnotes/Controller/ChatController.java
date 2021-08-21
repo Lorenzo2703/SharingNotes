@@ -14,9 +14,11 @@ import java.util.UUID;
 @RestController
 public class ChatController {
 
+    public MongoDb mongo=new MongoDb();
+
     @RequestMapping(value = "/createChat",method = RequestMethod.POST)
     public ResponseEntity<String> createChat(@RequestParam("id_user1")String user1,@RequestParam("id_user2") String user2){
-        new MongoDb().createChat(new Chat(UUID.randomUUID(),user1,user2));
+        mongo.createChat(new Chat(UUID.randomUUID(),user1,user2));
         return ResponseEntity.ok("success");
     }
 
@@ -31,8 +33,8 @@ public class ChatController {
             map.put(user2,messaggio);
         }
 
-        Chat chat=new MongoDb().getChat(user1, user2);
-        new MongoDb().sendMessage(chat,map);
+        Chat chat=mongo.getChat(user1, user2);
+        mongo.sendMessage(chat,map);
         return ResponseEntity.ok("success");
     }
 
@@ -43,14 +45,14 @@ public class ChatController {
         for (String i:id) {
             array[index++]=i;
         }
-        new MongoDb().createGroupChat(array);
+        mongo.createGroupChat(array);
         return ResponseEntity.ok("success");
     }
 
     @RequestMapping(value = "getGroupChat",method = RequestMethod.GET)
     public ResponseEntity getGroupChat(@RequestParam("id")String id){
         ArrayList arrayList=new ArrayList();
-        arrayList = new MongoDb().getGroupChat(id);
+        arrayList = mongo.getGroupChat(id);
 
         if (arrayList.isEmpty()){
             return new ResponseEntity<>("id errato",HttpStatus.BAD_REQUEST);

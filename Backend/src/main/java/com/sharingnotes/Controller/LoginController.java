@@ -1,7 +1,6 @@
 package com.sharingnotes.Controller;
 
 import com.google.gson.Gson;
-import com.mongodb.util.JSON;
 import com.sharingnotes.MongoDb.MongoDb;
 import com.sharingnotes.Security.Login;
 import org.springframework.http.HttpStatus;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LoginController {
 
+    public MongoDb mongo=new MongoDb();
     private static final Gson gson = new Gson();
 
     @PostMapping(value = "/login",produces = MediaType.APPLICATION_JSON_VALUE)
@@ -23,7 +23,7 @@ public class LoginController {
         try{
         Login login =new Login();
         if (login.authentication(email.toLowerCase(), password)){
-            return ResponseEntity.ok(new MongoDb().getUser(email.toLowerCase(),password));
+            return ResponseEntity.ok(mongo.getUser(email.toLowerCase(),password));
         }else{
             return new ResponseEntity<>(gson.toJson("New there? Please Register"), HttpStatus.FORBIDDEN);
         }}catch (Exception e){

@@ -7,14 +7,16 @@ import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NewNoteComponent } from './new-note/new-note.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,10 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     HomeComponent,
     RegisterComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    NewNoteComponent
+
+
   ],
   imports: [
     BrowserModule,
@@ -35,6 +40,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDialogModule,
     MatButtonModule
   ],
   providers: [],

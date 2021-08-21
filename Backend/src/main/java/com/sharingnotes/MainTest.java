@@ -1,5 +1,6 @@
 package com.sharingnotes;
 
+import com.google.gson.Gson;
 import com.sharingnotes.Cloud.CloudApi;
 import com.sharingnotes.Model.*;
 import com.sharingnotes.MongoDb.MongoDb;
@@ -18,6 +19,9 @@ import java.util.UUID;
 @RestController
 @SpringBootApplication
 public class MainTest {
+    public MongoDb mongo=new MongoDb();
+    private static final Gson gson = new Gson();
+
     public static void main(String[] args) {
         SpringApplication.run(MainTest.class, args);
         JSONObject json = new JSONObject(CloudApi.getAll()); // Convert text to object
@@ -32,36 +36,36 @@ public class MainTest {
     @RequestMapping(value = "/fileUpload", method = RequestMethod.POST)
     public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile multipartFile,@RequestParam("title") String title,@RequestParam("description") String description,@RequestParam("userId") String id) {
         CloudApi.uploadFile(convertFile(multipartFile),title,description,id);
-        return ResponseEntity.ok("Success");
+        return new ResponseEntity<>(gson.toJson("Success"), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/insertRecensione",method = RequestMethod.POST)
     public ResponseEntity<String> insertRecensione(){
-        new MongoDb().insertRecensione(new Recensione(UUID.randomUUID(),"1234","4321","1423","title","testo"));
+        mongo.insertRecensione(new Recensione(UUID.randomUUID(),"1234","4321","1423","title","testo"));
         return ResponseEntity.ok("success");
     }
 
     @RequestMapping(value = "/insertRichiesta",method = RequestMethod.POST)
     public ResponseEntity<String> insertRichiesta(){
-        new MongoDb().insertRichiesta(new Richiesta(UUID.randomUUID(),"1234","title","testo"));
+        mongo.insertRichiesta(new Richiesta(UUID.randomUUID(),"1234","title","testo"));
         return ResponseEntity.ok("success");
     }
 
     @RequestMapping(value = "/insertUser",method = RequestMethod.POST)
     public ResponseEntity<String> insertUser(){
-        new MongoDb().insertUser(new User(UUID.randomUUID(),"name","email","password"));
+        mongo.insertUser(new User(UUID.randomUUID(),"name","email","password"));
         return ResponseEntity.ok("success");
     }
 
 
     @RequestMapping(value = "/getUrlFiles",method = RequestMethod.GET)
     public ResponseEntity<String> getUrlfiles(){
-        return new ResponseEntity((new MongoDb().getUrlFiles()), HttpStatus.OK);
+        return new ResponseEntity((mongo.getUrlFiles()), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/getFiles",method = RequestMethod.GET)
     public ResponseEntity getFiles(@RequestParam("collection")String collection){
-        return new ResponseEntity((new MongoDb().getAllFilesInCollection(collection)), HttpStatus.OK);
+        return new ResponseEntity((mongo.getAllFilesInCollection(collection)), HttpStatus.OK);
     }
 
     public File convertFile(MultipartFile multipartFile){

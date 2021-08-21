@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ScoreController {
 
+    public MongoDb mongo=new MongoDb();
+
     @PostMapping(value = "/updateScore")
     public ResponseEntity<String> updateScore(@RequestParam("score") int score, @RequestParam("document")String document,@RequestParam("collection") String collection){
         try {
-            MongoDb mongoDb=new MongoDb();
+
             Document document1= Document.parse(document);
-            mongoDb.updateScore(document1,collection,score);
+            mongo.updateScore(document1,collection,score);
             System.out.println("MEDIA VOTI: "+avgScore(document1));
 
             return ResponseEntity.ok("Score aggiornato!");

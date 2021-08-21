@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   idUser = sessionStorage.getItem("UserID");
   ratingUser = sessionStorage.getItem("UserRating");
   listNotes = [];
-  noNotes = false; 
+  noNotes = false;
 
   ngOnInit(): void {
     this.getUserNotes();
@@ -26,12 +26,12 @@ export class ProfileComponent implements OnInit {
 
     this.ajaxService.getNotes().subscribe(res => {
       for (let x in res) {
-        if(res[x]["id_User"] == this.idUser){
+        if (res[x]["id_User"] == this.idUser) {
           this.listNotes.push(res[x]);
-        } 
+        }
       }
       console.log(this.listNotes);
-      if(this.listNotes.length == 0){
+      if (this.listNotes.length == 0) {
         this.noNotes = true;
       }
     })

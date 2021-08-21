@@ -103,9 +103,9 @@
                     </div>
                 </form>
 
+                <button type="button" (click)="openDialog()" class="btn btn-primary d-none d-md-block "><i
+                        class="fas fa-plus fa-sm text-white-50 mr-3"></i>New Note</button>
 
-                <a [routerLink]="['/home/newNote']"> <button type="button" class="btn btn-primary d-none d-md-block "><i
-                            class="fas fa-plus fa-sm text-white-50 mr-3"></i>New Note</button></a>
             </nav>
             <!-- End of Topbar -->
             <router-outlet></router-outlet>

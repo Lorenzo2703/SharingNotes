@@ -16,16 +16,16 @@ import java.util.UUID;
 @RestController
 public class RegisterController {
     private static final Gson gson = new Gson();
+    public MongoDb mongo=new MongoDb();
 
     @PostMapping("/register")
     public ResponseEntity register(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("password") String password){
         try{
-            MongoDb mongoDb = new MongoDb();
             User user=new User((UUID.randomUUID()),name,email.toLowerCase(),password);
-            mongoDb.insertUser(user);
+            mongo.insertUser(user);
             Login login =new Login();
             if (login.authentication(email.toLowerCase(), password)){
-                return ResponseEntity.ok(new MongoDb().getUser(email.toLowerCase(),password));
+                return ResponseEntity.ok(mongo.getUser(email.toLowerCase(),password));
             }else{
                 return new ResponseEntity<>(gson.toJson("Registration error, Please retry :("), HttpStatus.BAD_REQUEST);
             }

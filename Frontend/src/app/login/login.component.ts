@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-
+    
     this.ajax.login(this.form.get("email").value, this.form.get("password").value).subscribe((res) => {
       console.log(res);
       let userName = res["name"];

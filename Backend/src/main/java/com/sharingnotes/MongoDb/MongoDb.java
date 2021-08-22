@@ -31,6 +31,10 @@ public class MongoDb {
         database = mongoClient.getDatabase("test");
     }
 
+    public void destroy(){
+        mongoClient.close();
+    }
+
     public void createCollection(String name) {
         database.createCollection(name);
     }

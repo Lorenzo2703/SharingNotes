@@ -96,9 +96,10 @@
                             [(ngModel)]="searchText" autocomplete="off" name="name" aria-label="Search"
                             aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
+                            <a [routerLink]="['/home']" routerLinkActive="router-link-active">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button></a>
                         </div>
                     </div>
                 </form>

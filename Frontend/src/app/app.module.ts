@@ -17,6 +17,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NewNoteComponent } from './new-note/new-note.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { NoteComponent } from './note/note.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     RegisterComponent,
     DashboardComponent,
     ProfileComponent,
-    NewNoteComponent
+    NewNoteComponent,
+    NoteComponent
 
 
   ],

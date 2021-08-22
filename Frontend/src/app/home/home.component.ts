@@ -3,6 +3,7 @@ import { AjaxService } from '../ajax.service';
 import { DataService } from '../data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NewNoteComponent } from '../new-note/new-note.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,6 +14,7 @@ export class HomeComponent implements OnInit, DoCheck {
   constructor(private ajaxService: AjaxService, private dataservice: DataService, public dialog: MatDialog) { }
 
   ngDoCheck(): void {
+   
     this.dataservice.searchText = this.searchText;
   }
 
@@ -29,7 +31,6 @@ export class HomeComponent implements OnInit, DoCheck {
     const dialogRef = this.dialog.open(NewNoteComponent);
 
   }
-
 
   getNotes() {
 

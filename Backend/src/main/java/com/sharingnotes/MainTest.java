@@ -11,8 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.annotation.PreDestroy;
 import java.io.File;
-import java.util.HashMap;
 import java.util.UUID;
 
 @CrossOrigin()
@@ -26,6 +27,13 @@ public class MainTest {
         SpringApplication.run(MainTest.class, args);
         JSONObject json = new JSONObject(CloudApi.getAll()); // Convert text to object
         System.out.println(json.toString(5));
+
+
+    }
+
+    @PreDestroy
+    public void destroy(){
+        mongo.destroy();
     }
 
     @GetMapping("/getAllFile")

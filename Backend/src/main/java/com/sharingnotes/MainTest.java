@@ -48,9 +48,9 @@ public class MainTest {
     }
 
     @RequestMapping(value = "/insertRecensione",method = RequestMethod.POST)
-    public ResponseEntity<String> insertRecensione(){
-        mongo.insertRecensione(new Recensione(UUID.randomUUID(),"1234","4321","1423","title","testo"));
-        return ResponseEntity.ok("success");
+    public ResponseEntity<String> insertRecensione(@RequestParam("idRecensore") String idRecensore,@RequestParam("idUserRecensito") String idUserRecensito,@RequestParam("idNotaRecensita") String idNotaRecensita,@RequestParam("title") String title,@RequestParam("testo") String testo){
+        mongo.insertRecensione(new Recensione(UUID.randomUUID(), idRecensore, idUserRecensito, idNotaRecensita, title, testo));
+        return new ResponseEntity<>(gson.toJson("Success"), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/insertRichiesta",method = RequestMethod.POST)

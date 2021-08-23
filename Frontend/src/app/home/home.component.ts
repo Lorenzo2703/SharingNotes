@@ -19,11 +19,13 @@ export class HomeComponent implements OnInit, DoCheck {
   }
 
   listNotes = [];
+  listReviews = [];
   searchText;
   i = 0;
 
   ngOnInit(): void {
     this.getNotes();
+    this.getReview();
   }
 
 
@@ -47,7 +49,24 @@ export class HomeComponent implements OnInit, DoCheck {
         this.listNotes[x].color = this.dataservice.listColor[this.i].color;
       }
       this.dataservice.listNotes = this.listNotes;
-      console.log(this.listNotes);
+    })
+  }
+
+  getReview() {
+
+    this.ajaxService.getReview().subscribe(res => {
+      for (let x in res) {
+        this.listReviews.push(res[x]);   
+      
+      if (this.i == this.dataservice?.listColor?.length - 1) {
+        this.i = 0;
+      } else {
+        this.i++;
+      }
+
+      this.listReviews[x].color = this.dataservice.listColor[this.i].color;
+    }
+    this.dataservice.listReviews = this.listReviews;
     })
   }
 

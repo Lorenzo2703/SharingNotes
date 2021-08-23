@@ -18,6 +18,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NewNoteComponent } from './new-note/new-note.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NoteComponent } from './note/note.component';
+import { ReviewComponent } from './review/review.component';
+import { ProfileReviewComponent } from './profile-review/profile-review.component';
+import { NewReviewComponent } from './new-review/new-review.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { NoteComponent } from './note/note.component';
     DashboardComponent,
     ProfileComponent,
     NewNoteComponent,
-    NoteComponent
+    NoteComponent,
+    ReviewComponent,
+    ProfileReviewComponent,
+    NewReviewComponent
 
 
   ],

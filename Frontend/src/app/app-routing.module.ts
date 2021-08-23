@@ -6,6 +6,8 @@ import { LoginComponent } from './login/login.component';
 import { NoteComponent } from './note/note.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
+import { ReviewComponent } from './review/review.component';
+import { ProfileReviewComponent } from './profile-review/profile-review.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
@@ -13,8 +15,10 @@ const routes: Routes = [
   {
     path: "home", component: HomeComponent, children: [
       { path: "", component: DashboardComponent },
-      { path: "profile", component: ProfileComponent },
-      { path: 'note/:_id', component: NoteComponent }]
+      { path: "profile/notes", component: ProfileComponent },
+      { path: "profile/reviews", component: ProfileReviewComponent },
+      { path: 'note/:_id', component: NoteComponent },
+      { path: 'review/:_id', component: ReviewComponent }],
   },
   { path: '**', component: LoginComponent }];
 

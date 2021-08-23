@@ -12,7 +12,9 @@ export class AjaxService {
   loginUrl = this.baseUrl + "login";
   registerUrl = this.baseUrl + "register";
   getNotesUrl = this.baseUrl + "getFiles";
+  getReviewsUrl = this.baseUrl + "getFiles";
   uploadUrl = this.baseUrl + "fileUpload";
+  uploadReview = this.baseUrl + "insertRecensione";
 
   login(email: string, password: string) {
     const data = { "email": email, "password": password };
@@ -28,7 +30,15 @@ export class AjaxService {
     return this.httpClient.post(this.uploadUrl, formData);
   }
 
+  submitRecensione(formData) {
+    return this.httpClient.post(this.uploadReview, formData);
+  }
+
   getNotes() {
     return this.httpClient.get(this.getNotesUrl, { params: { collection: "notes" } });
+  }
+
+  getReview() {
+    return this.httpClient.get(this.getReviewsUrl, { params: { collection: "recensioni" } });
   }
 }

@@ -15,6 +15,7 @@ export class NoteComponent implements OnInit, DoCheck {
   constructor(private activatedRoute: ActivatedRoute, private data: DataService, public dialog: MatDialog, private ajaxService: AjaxService) { }
 
   listReviews = [];
+  nameUserReview = [];
   note = {
     color: "",
     description: "",
@@ -55,6 +56,13 @@ export class NoteComponent implements OnInit, DoCheck {
       for (let x in res) {
         if (res[x]["id_Nota_Recensita"] == this.note._id) {
           this.listReviews.push(res[x]);
+          this.ajaxService.getUserByID().subscribe(user => {
+            for (let y in user){
+              if(user[y]["_id"] == res[x]["id_Recensore"]){
+                this.nameUserReview.push(user[y]["name"]);
+              }
+            }
+          });
         }
       }
     })

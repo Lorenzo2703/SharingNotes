@@ -13,6 +13,7 @@ export class AjaxService {
   registerUrl = this.baseUrl + "register";
   getNotesUrl = this.baseUrl + "getFiles";
   getReviewsUrl = this.baseUrl + "getFiles";
+  getUserbyIDUrl = this.baseUrl + "getFiles";
   uploadUrl = this.baseUrl + "fileUpload";
   uploadReview = this.baseUrl + "insertRecensione";
   downloadUrl = this.baseUrl + "download";
@@ -39,6 +40,10 @@ export class AjaxService {
     return this.httpClient.get(this.getNotesUrl, { params: { collection: "notes" } });
   }
 
+  getUserByID() {
+    return this.httpClient.get(this.getUserbyIDUrl, { params: { collection : "utenti" } });
+  }
+  
   download(url: string) {
     return this.httpClient.get(this.downloadUrl, { params: { url: url } });
   }

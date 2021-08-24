@@ -69,7 +69,7 @@ public class MongoDb {
 
     public Document getUserByID(String userID){
         MongoCollection<Document> collection = database.getCollection("utenti");
-        Document user = collection.find(eq("_id", userID)).first();
+        Document user = collection.find(Filters.eq("_id", userID)).first();
         System.out.println(user);
         return user;
 

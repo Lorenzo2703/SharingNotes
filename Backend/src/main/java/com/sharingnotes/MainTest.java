@@ -78,6 +78,7 @@ public class MainTest {
 
     @RequestMapping(value = "/getUserByID",method = RequestMethod.GET)
     public ResponseEntity getUserByID(@RequestParam("_id") String id){
+        System.out.println(id);
         return new ResponseEntity((mongo.getUserByID(id)), HttpStatus.OK);
     }
 

@@ -15,6 +15,7 @@ export class AjaxService {
   getReviewsUrl = this.baseUrl + "getFiles";
   uploadUrl = this.baseUrl + "fileUpload";
   uploadReview = this.baseUrl + "insertRecensione";
+  downloadUrl = this.baseUrl + "download";
 
   login(email: string, password: string) {
     const data = { "email": email, "password": password };
@@ -36,6 +37,10 @@ export class AjaxService {
 
   getNotes() {
     return this.httpClient.get(this.getNotesUrl, { params: { collection: "notes" } });
+  }
+
+  download(url: string) {
+    return this.httpClient.get(this.downloadUrl, { params: { url: url } });
   }
 
   getReview() {

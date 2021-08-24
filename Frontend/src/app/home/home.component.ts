@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit, DoCheck {
   constructor(private ajaxService: AjaxService, private dataservice: DataService, public dialog: MatDialog) { }
 
   ngDoCheck(): void {
-   
     this.dataservice.searchText = this.searchText;
   }
 
@@ -35,7 +34,6 @@ export class HomeComponent implements OnInit, DoCheck {
   }
 
   getNotes() {
-
     this.ajaxService.getNotes().subscribe(res => {
       for (let x in res) {
         this.listNotes.push(res[x]);

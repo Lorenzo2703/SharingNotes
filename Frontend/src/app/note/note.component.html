@@ -13,18 +13,26 @@
                 </div>
             </div>
             <!-- Bottone -->
-            <button type="button" (click)="openDialog()" class="btn btn-primary d-none d-md-block ml-5"><i
-                class="fas fa-plus fa-sm text-white-50 mr-3"></i>Add review</button>
+            <div class="w-100 d-inline">
+                <a href="{{note?.fileUrl}}" download="{{note?.title}}" target="_blank">
+                    <button type="button" class="btn btn-success p-2 mr-2 ml-5">
+                        <i class="fas fa-download fa-sm d-inline-block text-white-50 mr-2"></i>
+                        Download File</button></a>
+                <button type="button" (click)="openDialog()" class="btn btn-primary p-2 mr-2 ml-3"><i
+                        class="fas d-inline-block fa-pencil-alt fa-sm text-white-50 mr-2"></i>Add review</button>
+            </div>
         </div>
 
         <!-- Recensione -->
-        <div class="col-4 m-3 p-0" *ngFor="let item of listReviews">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h4 class="m-0 font-weight-bold text-primary">{{item?.title}}</h4>
-                </div>
-                <div class="card-body">
-                    <p>{{item?.testo}}</p>
+        <div class="row m-3 no-gutters">
+            <div class="col-4  p-0" *ngFor="let item of listReviews">
+                <div class="card m-3 shadow mb-4">
+                    <div class="card-header py-3">
+                        <h4 class="m-0 font-weight-bold text-primary">{{item?.title}}</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>{{item?.testo}}</p>
+                    </div>
                 </div>
             </div>
         </div>

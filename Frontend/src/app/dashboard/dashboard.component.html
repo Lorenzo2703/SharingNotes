@@ -7,7 +7,7 @@
     </div>
 
     <!-- Content Row -->
-    <div class="row">
+    <div class="row mb-4">
 
         <!-- Card -->
         <div class="col-xl-4 col-md-6 mb-4" *ngFor="let item of listNotes | filter:searchText">
@@ -16,32 +16,14 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                <div class="h5 font-weight-bold text-primary text-uppercase mb-1">
                                     {{item?.title}}</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{item?.description}}</div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-download fa-2x text-gray-300"></i>
+                                <div class=" h6 mt-2 font-weight-bold text-gray-800">{{item?.description}}</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </a>
-        </div>
-    </div>
-
-
-    <!-- Approach -->
-    <div class="col-6 m-0 p-0">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Example Review</h6>
-            </div>
-            <div class="card-body">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia perspiciatis debitis corporis
-                    blanditiis placeat. Nemo, quo tempora obcaecati ipsa pariatur eius earum assumenda asperiores, quasi
-                    magni sit nobis quis deleniti!</p>
-            </div>
         </div>
     </div>
 </div>

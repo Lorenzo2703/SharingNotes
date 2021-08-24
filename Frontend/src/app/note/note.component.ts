@@ -15,18 +15,6 @@ export class NoteComponent implements OnInit, DoCheck {
   constructor(private activatedRoute: ActivatedRoute, private data: DataService, public dialog: MatDialog, private ajaxService: AjaxService) { }
 
   listReviews = [];
-
-  ngDoCheck(): void {
-    if (this.note._id === "") {
-      this.getParam();
-    }
-  }
-
-  openDialog() {
-    const dialogRef = this.dialog.open(NewReviewComponent);
-
-  }
-
   note = {
     color: "",
     description: "",
@@ -36,6 +24,18 @@ export class NoteComponent implements OnInit, DoCheck {
     title: "",
     _id: ""
   }
+
+  ngDoCheck(): void {
+    if (this.note._id === "") {
+      this.getParam();
+    }
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(NewReviewComponent);
+  }
+
+
 
   getParam() {
     this.activatedRoute.params.subscribe(params => {
@@ -51,7 +51,6 @@ export class NoteComponent implements OnInit, DoCheck {
   }
 
   getNotesReview() {
-
     this.ajaxService.getReview().subscribe(res => {
       for (let x in res) {
         if (res[x]["id_Nota_Recensita"] == this.note._id) {

@@ -15,6 +15,7 @@ export class NewNoteComponent implements OnInit {
   constructor(private ajax: AjaxService, public dialogRef: MatDialogRef<HomeComponent>) { }
   form;
   file;
+  loading;
 
   initForm() {
     this.form = new FormGroup({
@@ -25,13 +26,14 @@ export class NewNoteComponent implements OnInit {
   }
 
   submit() {
+    this.loading = true;
     const formData = new FormData();
     formData.append("file", this.file);
     formData.append('title', this.form.get("title").value);
     formData.append("description", this.form.get("description").value);
     formData.append("userId", sessionStorage.getItem("UserID"));
     this.ajax.submitFile(formData).subscribe((res) => {
-      console.log(res);
+      this.loading = false;
       this.dialogRef.close();
     });
   }

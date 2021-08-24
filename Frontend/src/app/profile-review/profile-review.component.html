@@ -3,11 +3,11 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-left mb-4">
-        <h1 class="h3 mb-0 text-black"> Ciao {{nameUser}}, benvenuto!</h1>
+        <h1 class="h3 mb-0 text-black"> Hi {{nameUser}}!</h1>
         <!-- Rating del profilo -->
         <div class="content text-center">
-            <span class="ml-5"> Valutato: </span>
-            <div class="ratings ml-5"> <span class="product-rating"> {{ratingUser}} </span><span>/5</span>
+            <span class="ml-5"> Your Score: </span>
+            <div class="ratings ml-5"> <span class="product-rating h4"> {{ratingUser}} </span><span>/5</span>
                 <div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                         class="fa fa-star"></i> </div>
             </div>
@@ -37,10 +37,11 @@
             </a>
         </div>
         <div class="d-sm-flex align-items-center justify-content-between mb-4" *ngIf="noRev">
-            <h3 class="h3 mb-0 text-gray-600"> Al momento non hai recensito alcuna dispensa.</h3>
+            <h3 class="h3 mb-0 text-gray-600"> You have not currently reviewed any handouts</h3>
         </div>
         <div class="d-sm-flex align-items-center justify-content-between mb-4" *ngIf="noRev">
-            <h3 class="h3 mb-0 text-gray-600"> Recensisci i file che utilizzi, in questo modo consentirai ad altri utenti di avere maggiori informazioni!</h3>
+            <h3 class="h3 mb-0 text-gray-600"> Review the files you use, in this way you will give other users the
+                opportunity to have more information!</h3>
         </div>
     </div>
 

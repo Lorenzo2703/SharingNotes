@@ -33,7 +33,6 @@ export class NewReviewComponent implements OnInit {
     formData.append('title', this.form.get("title").value);
     formData.append("testo", this.form.get("testo").value);
     this.ajax.submitRecensione(formData).subscribe((res) => {
-      console.log(res);
       this.dialogRef.close();
     });
   }

@@ -10,6 +10,7 @@ import org.bson.Document;
 import org.bson.UuidRepresentation;
 
 import javax.print.Doc;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -172,6 +173,4 @@ public class MongoDb {
         }
         return arrayList;
     }
-
-
 }

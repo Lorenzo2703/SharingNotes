@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit, DoCheck {
 
   ngDoCheck(): void {
     this.searchText = this.dataService?.searchText;
-    this.listNotes = this.dataService.listNotes;
+    this.listNotes = this.dataService?.listNotes;
   }
 
   searchText;

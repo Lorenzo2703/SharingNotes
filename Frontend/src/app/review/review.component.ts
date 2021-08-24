@@ -1,6 +1,7 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
+import { AjaxService } from '../ajax.service';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { DataService } from '../data.service';
 })
 export class ReviewComponent implements OnInit {
   
-  constructor(private activatedRoute: ActivatedRoute, private data: DataService) { }
+  constructor(private activatedRoute: ActivatedRoute, private data: DataService, private ajaxService: AjaxService) { }
 
   ngDoCheck(): void {
     if (this.review._id === "") {
@@ -18,11 +19,13 @@ export class ReviewComponent implements OnInit {
     }
   }
 
+  userReview 
+
   review = {
     idNotaRecensita: "",
     testo: "",
     idUserRecensito: "",
-    idRecensore: "",
+    id_Recensore: "",
     score: 0,
     title: "",
     _id: ""
@@ -32,13 +35,20 @@ export class ReviewComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       let id = params['_id'];
       this.data.listReviews.forEach(element => {
-        console.log(element._id)
         if (element._id == id) {
           this.review = element;
+          this.ajaxService.getUserByID().subscribe(res => {
+              for (let x in res){
+                if(res[x]["_id"] == this.review.id_Recensore){
+                  this.userReview = res[x];
+                }
+              }
+            });
         }
       });
     });
   }
+
 
   ngOnInit(): void {
     this.getParam();

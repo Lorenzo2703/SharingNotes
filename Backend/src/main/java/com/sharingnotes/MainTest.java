@@ -76,6 +76,11 @@ public class MainTest {
         return new ResponseEntity((mongo.getAllFilesInCollection(collection)), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/getUserByID",method = RequestMethod.GET)
+    public ResponseEntity getUserByID(@RequestParam("_id") String id){
+        return new ResponseEntity((mongo.getUserByID(id)), HttpStatus.OK);
+    }
+
     public File convertFile(MultipartFile multipartFile){
         String fileName = multipartFile.getOriginalFilename();
         String prefix = fileName != null ? fileName.substring(fileName.lastIndexOf(".")) : null;

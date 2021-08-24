@@ -67,6 +67,14 @@ public class MongoDb {
         return user;
     }
 
+    public Document getUserByID(String userID){
+        MongoCollection<Document> collection = database.getCollection("utenti");
+        Document user = collection.find(eq("_id", userID)).first();
+        System.out.println(user);
+        return user;
+
+    }
+
     public void insertRecensione(Recensione recensione){
         Document insertRecensione = new Document();
         insertRecensione.append("_id",recensione.getId())

@@ -65,7 +65,6 @@ public class MainTest {
         return ResponseEntity.ok("success");
     }
 
-
     @RequestMapping(value = "/getUrlFiles",method = RequestMethod.GET)
     public ResponseEntity<String> getUrlfiles(){
         return new ResponseEntity((mongo.getUrlFiles()), HttpStatus.OK);
@@ -78,7 +77,6 @@ public class MainTest {
 
     @RequestMapping(value = "/getUserByID",method = RequestMethod.GET)
     public ResponseEntity getUserByID(@RequestParam("_id") String id){
-        System.out.println(id);
         return new ResponseEntity((mongo.getUserByID(id)), HttpStatus.OK);
     }
 

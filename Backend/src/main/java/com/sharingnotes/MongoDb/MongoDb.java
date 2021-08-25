@@ -68,11 +68,14 @@ public class MongoDb {
     }
 
     public Document getUserByID(String userID){
-        MongoCollection<Document> collection = database.getCollection("utenti");
-        Document user = collection.find(Filters.eq("_id", userID)).first();
-        System.out.println(user);
-        return user;
-
+        FindIterable<Document> documents=database.getCollection("utenti").find();
+        Document documento=null;
+        for (Document document : documents) {
+            if ((document.get("_id").toString()).equals(userID.trim())){
+                documento=document;
+            }
+        }
+        return documento;
     }
 
     public void insertRecensione(Recensione recensione){
@@ -109,6 +112,17 @@ public class MongoDb {
         return chat;
     }
 
+    public ArrayList getChatWithUser(String idUser1){
+        ArrayList arrayList=new ArrayList();
+        FindIterable<Document> documents=database.getCollection("chat").find();
+        for (Document document : documents) {
+            if (document.get("id_User1").equals(idUser1)){
+                arrayList.add(document);
+            }
+        }
+        return arrayList;
+    }
+
     public void createGroupChat(String ...id){
         Document createGroupChat = new Document();
         int index=1;
@@ -138,7 +152,6 @@ public class MongoDb {
         }
         return arrayList;
     }
-
 
     public void insertRichiesta(Richiesta richiesta){
         Document insertRichiesta = new Document();

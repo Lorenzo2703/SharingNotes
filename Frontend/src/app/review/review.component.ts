@@ -10,7 +10,7 @@ import { AjaxService } from '../ajax.service';
   styleUrls: ['./review.component.scss']
 })
 export class ReviewComponent implements OnInit {
-  
+
   constructor(private activatedRoute: ActivatedRoute, private data: DataService, private ajaxService: AjaxService) { }
 
   ngDoCheck(): void {
@@ -19,7 +19,7 @@ export class ReviewComponent implements OnInit {
     }
   }
 
-  userReview 
+  userReview
 
   review = {
     idNotaRecensita: "",
@@ -37,13 +37,7 @@ export class ReviewComponent implements OnInit {
       this.data.listReviews.forEach(element => {
         if (element._id == id) {
           this.review = element;
-          this.ajaxService.getUserByID().subscribe(res => {
-              for (let x in res){
-                if(res[x]["_id"] == this.review.id_Recensore){
-                  this.userReview = res[x];
-                }
-              }
-            });
+
         }
       });
     });

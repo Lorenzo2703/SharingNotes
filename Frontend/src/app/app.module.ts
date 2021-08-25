@@ -21,6 +21,7 @@ import { NoteComponent } from './note/note.component';
 import { ReviewComponent } from './review/review.component';
 import { ProfileReviewComponent } from './profile-review/profile-review.component';
 import { NewReviewComponent } from './new-review/new-review.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NewReviewComponent } from './new-review/new-review.component';
     NoteComponent,
     ReviewComponent,
     ProfileReviewComponent,
-    NewReviewComponent
+    NewReviewComponent,
+    MessagesComponent
 
 
   ],

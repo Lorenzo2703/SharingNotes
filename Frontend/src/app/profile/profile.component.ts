@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AjaxService } from '../ajax.service';
+import { DataService } from '../data.service';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { AjaxService } from '../ajax.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private ajaxService: AjaxService) { }
+  constructor(private ajaxService: AjaxService, private data: DataService) { }
 
   nameUser = sessionStorage.getItem("UserName");
   idUser = sessionStorage.getItem("UserID");
@@ -19,18 +20,15 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserNotes();
-
   }
 
   getUserNotes() {
-
     this.ajaxService.getNotes().subscribe(res => {
       for (let x in res) {
         if (res[x]["id_User"] == this.idUser) {
           this.listNotes.push(res[x]);
         }
       }
-      console.log(this.listNotes);
       if (this.listNotes.length == 0) {
         this.noNotes = true;
       }

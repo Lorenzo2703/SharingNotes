@@ -11,7 +11,7 @@
 
         <!-- Card -->
         <div class="col-xl-4 col-md-6 mb-4" *ngFor="let item of listNotes | filter:searchText">
-            <a [routerLink]="['/home/note',item?._id]">
+            <a class="text-decoration-none" [routerLink]="['/home/note',item?._id]">
                 <div class="card card-hover shadow h-100 py-2 {{item?.color}}">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
@@ -21,6 +21,7 @@
                                 <div class=" h6 mt-2 font-weight-bold text-gray-800">{{item?.description}}</div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </a>

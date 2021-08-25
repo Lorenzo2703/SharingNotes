@@ -22,6 +22,11 @@ public class ChatController {
         return ResponseEntity.ok("success");
     }
 
+    @RequestMapping(value = "/getAllChat",method = RequestMethod.GET)
+    public ResponseEntity getChat(@RequestParam("id_user1")String user1){
+        return ResponseEntity.ok(mongo.getChatWithUser(user1));
+    }
+
     @RequestMapping(value = "/sendMessage",method = RequestMethod.POST)
     public ResponseEntity<String> sendMessage(@RequestParam("id_user1")String user1,@RequestParam("id_user2")String user2,@RequestParam("sender")boolean sender,@RequestParam("messaggio") String messaggio){
         HashMap<String,String> map=new HashMap<>();

@@ -13,10 +13,10 @@ export class AjaxService {
   registerUrl = this.baseUrl + "register";
   getNotesUrl = this.baseUrl + "getFiles";
   getReviewsUrl = this.baseUrl + "getFiles";
-  getUserbyIDUrl = this.baseUrl + "getFiles";
+  getUserbyIDUrl = this.baseUrl + "getUserByID";
   uploadUrl = this.baseUrl + "fileUpload";
   uploadReview = this.baseUrl + "insertRecensione";
-  downloadUrl = this.baseUrl + "download";
+  getChat = this.baseUrl + "getAllChat";
 
   login(email: string, password: string) {
     const data = { "email": email, "password": password };
@@ -40,12 +40,12 @@ export class AjaxService {
     return this.httpClient.get(this.getNotesUrl, { params: { collection: "notes" } });
   }
 
-  getUserByID() {
-    return this.httpClient.get(this.getUserbyIDUrl, { params: { collection : "utenti" } });
+  getAllChat(id) {
+    return this.httpClient.get(this.getChat, { params: { id_user1: id } });
   }
-  
-  download(url: string) {
-    return this.httpClient.get(this.downloadUrl, { params: { url: url } });
+
+  getUserByID(id) {
+    return this.httpClient.get(this.getUserbyIDUrl, { params: { _id: id } });
   }
 
   getReview() {

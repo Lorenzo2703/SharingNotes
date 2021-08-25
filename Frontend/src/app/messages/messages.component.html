@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="row no-gutters">
+        <div class="col-12 mb-4" *ngFor="let item of listMessage">
+            <a class="text-decoration-none" [routerLink]="['/home/messages',item?._id]">
+                <div class="card shadow h-100 py-2 ">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-12 mr-2 ">
+                                <div class="h5 mr-4 font-weight-bold text-primary text-capitalize mb-1">
+                                    {{item?.name}}</div>
+                                <span
+                                    class="ml-4 align-content-end h6 mt-2 font-weight-bold text-gray-800 text-capitalize"
+                                    *ngIf="!item?.messaggio[item.messaggio.length-1]">No
+                                    message
+                                </span>
+                                <span
+                                    class=" h6 mt-2 font-weight-bold text-gray-800">{{item?.messaggio[item.messaggio.length-1]}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

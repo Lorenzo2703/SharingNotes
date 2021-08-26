@@ -1,0 +1,9 @@
+.lines {
+  text-overflow: ellipsis !important;
+  overflow-wrap: break-word;
+  overflow: hidden !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  white-space: nowrap;
+}

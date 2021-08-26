@@ -19,12 +19,14 @@ export class HomeComponent implements OnInit, DoCheck {
 
   listNotes = [];
   listReviews = [];
+  listChats = [];
   searchText;
   i = 0;
 
   ngOnInit(): void {
     this.getNotes();
     this.getReview();
+    this.getChat();
   }
 
 
@@ -65,6 +67,24 @@ export class HomeComponent implements OnInit, DoCheck {
       this.listReviews[x].color = this.dataservice.listColor[this.i].color;
     }
     this.dataservice.listReviews = this.listReviews;
+    })
+  }
+
+  getChat() {
+
+    this.ajaxService.getAllChat(sessionStorage.getItem("UserID")).subscribe(res => {
+      for (let x in res) {
+        this.listChats.push(res[x]);   
+      
+      if (this.i == this.dataservice?.listColor?.length - 1) {
+        this.i = 0;
+      } else {
+        this.i++;
+      }
+
+      this.listChats[x].color = this.dataservice.listColor[this.i].color;
+    }
+    this.dataservice.listChats = this.listChats;
     })
   }
 

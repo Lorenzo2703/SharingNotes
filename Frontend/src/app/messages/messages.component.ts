@@ -24,10 +24,17 @@ export class MessagesComponent implements OnInit {
     this.ajax.getAllChat(sessionStorage.getItem("UserID")).subscribe(res => {
       for (let x in res) {
         this.message = res[x];
-        this.ajax.getUserByID(res[x]["id_User2"]).subscribe(response => {
-          this.message.name = response["name"];
-          this.listMessage.push(this.message);
-        })
+        if(this.message.id_User1 == sessionStorage.getItem("UserID")){ 
+          this.ajax.getUserByID(res[x]["id_User2"]).subscribe(response => {
+            this.message.name = response["name"];
+            this.listMessage.push(this.message);
+          })
+        }else{ //se non sono io il creatore comunque non leggo il mio nome sulla chat
+          this.ajax.getUserByID(res[x]["id_User1"]).subscribe(response => {
+            this.message.name = response["name"];
+            this.listMessage.push(this.message);
+          })
+        }
       }
     });
   }

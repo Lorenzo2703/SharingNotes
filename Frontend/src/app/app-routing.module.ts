@@ -9,6 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { ReviewComponent } from './review/review.component';
 import { ProfileReviewComponent } from './profile-review/profile-review.component';
 import { MessagesComponent } from './messages/messages.component';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: "profile/notes", component: ProfileComponent },
       { path: "profile/reviews", component: ProfileReviewComponent },
       { path: 'note/:_id', component: NoteComponent },
+      { path: 'chat/:_id', component: ChatComponent },
       { path: 'review/:_id', component: ReviewComponent }],
   },
   { path: '**', component: LoginComponent }];

@@ -1,0 +1,27 @@
+<div class="container-fluid bootstrap snippets bootdey">
+    <div class="row">
+        <div class="message-wrap">
+            <div class="msg-wrap">
+                <div class="alert alert-info msg-date">
+                    <strong>Today</strong>
+                </div>
+                <div class="media msg" *ngFor="let item of chat?.messaggio">
+                    <div class="media-body">
+                        <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:10am</small>
+                        <h5 class="media-heading">{{user1?.name}}</h5>
+                        <small class="col-md-10 text-muted">{{item[user1ID]}}</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="send-wrap ">
+                <textarea class="form-control send-message" rows="3" placeholder="Write a reply..."></textarea>
+            </div>
+            <div class="btn-panel">
+                <button class="btn btn-success" role="button">
+                    <i class="fa fa-share"></i> Send Message
+                </button>
+            </div>
+        </div>
+    </div>
+</div>                

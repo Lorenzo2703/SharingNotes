@@ -37,7 +37,9 @@ export class ReviewComponent implements OnInit {
       this.data.listReviews.forEach(element => {
         if (element._id == id) {
           this.review = element;
-
+          this.ajaxService.getUserByID(this.review["id_Recensore"]).subscribe(user => {
+            this.userReview = user;
+          })
         }
       });
     });

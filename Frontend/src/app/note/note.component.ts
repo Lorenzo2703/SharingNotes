@@ -55,6 +55,9 @@ export class NoteComponent implements OnInit, DoCheck {
       for (let x in res) {
         if (res[x]["id_Nota_Recensita"] == this.note._id) {
           this.listReviews.push(res[x]);
+          this.ajaxService.getUserByID(res[x]["id_Recensore"]).subscribe(user => {
+            this.nameUserReview.push(user["name"])
+          })
         }
       }
     })

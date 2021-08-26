@@ -116,7 +116,7 @@ public class MongoDb {
         ArrayList arrayList=new ArrayList();
         FindIterable<Document> documents=database.getCollection("chat").find();
         for (Document document : documents) {
-            if (document.get("id_User1").equals(idUser1)){
+            if (document.get("id_User1").equals(idUser1)||document.get("id_User2").equals(idUser1)){
                 arrayList.add(document);
             }
         }

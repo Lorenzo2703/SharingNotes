@@ -25,8 +25,17 @@ export class MessagesComponent implements OnInit {
       for (let x in res) {
         this.message = res[x];
         this.ajax.getUserByID(res[x]["id_User2"]).subscribe(response => {
-          this.message.name = response["name"];
-          this.listMessage.push(this.message);
+          if (response["_id"] === sessionStorage.getItem("UserID")) {
+            this.ajax.getUserByID(res[x]["id_User1"]).subscribe(respo => {
+              this.message.name = respo["name"];
+              this.listMessage.push(this.message);
+            })
+          } else {
+            this.message.name = response["name"];
+            this.listMessage.push(this.message);
+          }
+
+
         })
       }
     });

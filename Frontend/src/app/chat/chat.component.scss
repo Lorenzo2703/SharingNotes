@@ -58,9 +58,24 @@
     border-bottom-right-radius: 0;
 }
 
-.msg-wrap .media-heading{
+.msg-wrap{
     color:#003bb3;
     font-weight: 700;
+}
+
+.media-heading{
+    color: rgb(0, 0, 95);
+    font-weight: 700;
+}
+
+.media-body1{
+    background-color: rgb(122, 156, 221);
+    border-radius: 15px;
+}
+
+.media-body2{
+    background-color: rgb(214, 214, 214);
+    border-radius: 15px;
 }
 
 .msg-date{

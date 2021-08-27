@@ -2,6 +2,7 @@ import { Component, DoCheck, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
 import { AjaxService } from '../ajax.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-chat',
@@ -15,6 +16,7 @@ export class ChatComponent implements OnInit {
   ngOnInit(): void {
     
     this.getParam();
+    this.initForm();
     
   }
 
@@ -22,6 +24,7 @@ export class ChatComponent implements OnInit {
   user2;
   user1ID;
   user2ID;
+  form;
 
   ngDoCheck(): void {
     if (this.chat._id === "") {
@@ -68,6 +71,30 @@ export class ChatComponent implements OnInit {
       })
     });
     console.log(this.chat);
+  }
+
+  initForm() {
+    this.form = new FormGroup({
+      id_user1: new FormControl('', [Validators.required]),
+      id_user2 : new FormControl('', [Validators.required]), 
+      sender : new FormControl('', [Validators.required]), 
+      messaggio : new FormControl('', [Validators.required]),
+    });
+  }
+
+  sendMessage(){
+    const formData = new FormData();
+    formData.append("id_user1", this.user1ID);
+    formData.append('id_user2', this.user2ID);
+    if(this.user1ID == sessionStorage.getItem("UserID")){
+      formData.append("sender", "true" );
+    }else{
+      formData.append("sender", "false" );
+    }
+    formData.append("messaggio", this.form.get("messaggio").value);
+    this.ajaxService.sendMessage(formData).subscribe((res) => {
+      console.log(res)
+    });
   }
 
 }

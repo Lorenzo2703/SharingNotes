@@ -13,15 +13,16 @@
                     </div>
                 </div>
             </div>
-
-            <div class="send-wrap ">
-                <textarea class="form-control send-message" rows="3" placeholder="Write a reply..."></textarea>
-            </div>
-            <div class="btn-panel">
-                <button class="btn btn-success" role="button">
-                    <i class="fa fa-share"></i> Send Message
-                </button>
-            </div>
+            <form [formGroup]="form" (ngSubmit)="sendMessage()" enctype="multipart/form-data">
+                <div class="send-wrap ">
+                    <textarea  type="text" formControlName="messaggio" placeholder="messaggio"  class="form-control send-message" rows="3" placeholder="Write a reply..."></textarea>
+                </div>
+                <div class="btn-panel">
+                    <button type="submit" class="btn btn-success" role="button">
+                        <i class="fa fa-share"></i> Send Message
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>                

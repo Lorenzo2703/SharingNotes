@@ -12,4 +12,5 @@ export class DataService {
   listNotes = [];
   listReviews = [];
   listChats = [];
+  listUsers= [];
 }

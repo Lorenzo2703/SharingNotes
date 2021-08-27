@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit, DoCheck {
   listNotes = [];
   listReviews = [];
   listChats = [];
+  listUsers = [];
   searchText;
   i = 0;
 
@@ -27,6 +28,7 @@ export class HomeComponent implements OnInit, DoCheck {
     this.getNotes();
     this.getReview();
     this.getChat();
+    this.getUser();
   }
 
 
@@ -85,6 +87,16 @@ export class HomeComponent implements OnInit, DoCheck {
       this.listChats[x].color = this.dataservice.listColor[this.i].color;
     }
     this.dataservice.listChats = this.listChats;
+    })
+  }
+
+  getUser(){
+    this.ajaxService.getUser().subscribe((res) =>{
+      for (let x in res) {
+        this.listUsers.push(res[x]);   
+
+    }
+    this.dataservice.listUsers = this.listUsers;
     })
   }
 

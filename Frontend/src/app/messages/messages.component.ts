@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 import { AjaxService } from '../ajax.service';
+import { MatDialog } from '@angular/material/dialog';
+import { NewChatComponent } from '../new-chat/new-chat.component';
 
 @Component({
   selector: 'app-messages',
@@ -8,7 +11,7 @@ import { AjaxService } from '../ajax.service';
 })
 export class MessagesComponent implements OnInit {
 
-  constructor(private ajax: AjaxService) { }
+  constructor(private ajax: AjaxService, public dialog: MatDialog, private dataservice: DataService) { }
 
   listMessage: any = [];
   message: any = {
@@ -19,28 +22,39 @@ export class MessagesComponent implements OnInit {
     "name": ""
   };
 
+  openDialog() {
+    const dialogRef = this.dialog.open(NewChatComponent);
+  }
+
 
   getChat() {
     this.ajax.getAllChat(sessionStorage.getItem("UserID")).subscribe(res => {
       for (let x in res) {
         this.message = res[x];
-        if(this.message.id_User1 == sessionStorage.getItem("UserID")){ 
-          this.ajax.getUserByID(res[x]["id_User2"]).subscribe(response => {
-            this.message.name = response["name"];
-            this.listMessage.push(this.message);
-          })
-        }else{ //se non sono io il creatore comunque non leggo il mio nome sulla chat
-          this.ajax.getUserByID(res[x]["id_User1"]).subscribe(response => {
-            this.message.name = response["name"];
-            this.listMessage.push(this.message);
-          })
-        }
+        this.listMessage.push(this.message);
       }
     });
   }
 
+  getChatName(){
+      this.listMessage.forEach(chat => {
+        this.dataservice.listUsers.forEach(user=>{
+          if (chat.id_User1 == sessionStorage.getItem("UserID")) {
+            if(user._id == chat.id_User2){
+              chat.name = user.name
+            }
+          } else { //se non sono io il creatore comunque non leggo il mio nome sulla chat
+            if(user._id == chat.id_User1){
+              chat.name = user.name
+            }
+          }
+        })
+      })
+  }
+
   ngOnInit(): void {
     this.getChat();
+    this.getChatName();
   }
 
 }

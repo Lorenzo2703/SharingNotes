@@ -98,6 +98,7 @@ export class HomeComponent implements OnInit, DoCheck {
     }
     this.dataservice.listUsers = this.listUsers;
     })
+    console.log(this.listUsers)
   }
 
 }

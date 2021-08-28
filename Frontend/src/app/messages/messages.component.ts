@@ -33,10 +33,12 @@ export class MessagesComponent implements OnInit {
         this.message = res[x];
         this.listMessage.push(this.message);
       }
+      this.getChatName()
     });
   }
 
   getChatName(){
+
       this.listMessage.forEach(chat => {
         this.dataservice.listUsers.forEach(user=>{
           if (chat.id_User1 == sessionStorage.getItem("UserID")) {
@@ -54,7 +56,6 @@ export class MessagesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getChat();
-    this.getChatName();
   }
 
 }

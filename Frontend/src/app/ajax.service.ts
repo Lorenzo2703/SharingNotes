@@ -20,6 +20,8 @@ export class AjaxService {
   getChat = this.baseUrl + "getAllChat";
   sendMessageUrl = this.baseUrl + "sendMessage";
   createChatUrl = this.baseUrl + "createChat";
+  createGroupChatUrl = this.baseUrl + "createGroupChat";
+  getGroupChatUrl = this.baseUrl + "getGroupChat";
 
   login(email: string, password: string) {
     const data = { "email": email, "password": password };
@@ -65,6 +67,14 @@ export class AjaxService {
 
   createChat(formData){
     return this.httpClient.post(this.createChatUrl, formData);
+  }
+
+  createGroupChat(formData){
+    return this.httpClient.post(this.createGroupChatUrl, formData)
+  }
+
+  getGroupChat(id){
+    return this.httpClient.get(this.getGroupChatUrl, { params: { id: id } })
   }
 
 }

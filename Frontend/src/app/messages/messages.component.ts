@@ -3,6 +3,7 @@ import { DataService } from '../data.service';
 import { AjaxService } from '../ajax.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NewChatComponent } from '../new-chat/new-chat.component';
+import { NewGroupChatComponent } from '../new-group-chat/new-group-chat.component';
 
 @Component({
   selector: 'app-messages',
@@ -24,6 +25,10 @@ export class MessagesComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(NewChatComponent);
+  }
+
+  openGroupDialog() {
+    const dialogRef = this.dialog.open(NewGroupChatComponent);
   }
 
 

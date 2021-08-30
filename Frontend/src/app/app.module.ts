@@ -24,6 +24,7 @@ import { NewReviewComponent } from './new-review/new-review.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ChatComponent } from './chat/chat.component';
 import { NewChatComponent } from './new-chat/new-chat.component';
+import { NewGroupChatComponent } from './new-group-chat/new-group-chat.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { NewChatComponent } from './new-chat/new-chat.component';
     NewReviewComponent,
     MessagesComponent,
     ChatComponent,
-    NewChatComponent
+    NewChatComponent,
+    NewGroupChatComponent
 
 
   ],

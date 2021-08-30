@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <div class="row m-0 p-0">
+        <div class="col-12">
+            <h2>Start new chat</h2>
+            <mat-form-field>
+                <mat-select placeholder="Toppings" [formControl]="toppings"  multiple>
+                  <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+</div>

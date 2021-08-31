@@ -16,9 +16,9 @@
 
                             <div class="dim media-body2  justify-content-start container-fluid m-0 pt-1"
                                 *ngIf="res.key == this.user2ID">
-                                <h4 style="text-align: end;" class="text-capitalize p-0 m-0 media-heading">
+                                <h4 class="text-capitalize p-0 m-0 media-heading">
                                     {{user2.name}}: </h4>
-                                <p style="text-align: end;" class="p-1 m-1 col-12 text-black media-heading2">
+                                <p class="p-1 m-1 col-12 text-black media-heading2">
                                     {{res.value}}
                                 </p>
 
@@ -27,7 +27,7 @@
                     </div>
                 </div>
             </div>
-            <form [formGroup]="form" (ngSubmit)="sendMessage()" enctype="multipart/form-data">
+            <form [formGroup]="form" (ngSubmit)="sendMessage($event)" enctype="multipart/form-data">
                 <div class="container-fluid m-0 p-0 justify-content-between">
                     <div class="row m-0 p-0 align-items-center justify-content-between">
                         <div class="send-wrap col-9">
@@ -35,8 +35,9 @@
                                 class="form-control send-message" rows="3" placeholder="Write a reply..."></textarea>
                         </div>
                         <div class="btn-panel col-3">
-                            <button type="submit" class="btn btn-success" role="button">
-                                <i class="fa fa-share"></i> Send Message
+                            <button type="submit" class="btn w-75 btn-success" role="button">
+                                <i class="fa fa-share"></i>
+                                <h3 class=" ml-2 d-none d-md-inline"> Send Message</h3>
                             </button>
                         </div>
                     </div>

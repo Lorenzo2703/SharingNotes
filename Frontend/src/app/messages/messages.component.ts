@@ -52,12 +52,12 @@ export class MessagesComponent implements OnInit {
 
   getGroupChat() {
     this.ajax.getGroupChat(sessionStorage.getItem("UserID")).subscribe(res => {
-      console.log(res)
       for (let x in res) {
         this.messageGroup = res[x];
         this.listGroupMessage.push(this.messageGroup);
       }
     });
+
   }
 
   getChatName(){

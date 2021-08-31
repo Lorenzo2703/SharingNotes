@@ -64,7 +64,7 @@ public class ChatController {
         if (arrayList.isEmpty()){
             return new ResponseEntity<>(gson.toJson("id errato"),HttpStatus.BAD_REQUEST);
         }else{
-            return ResponseEntity.ok(gson.toJson(arrayList.toString()));
+            return ResponseEntity.ok(gson.toJson(arrayList));
         }
     }
 

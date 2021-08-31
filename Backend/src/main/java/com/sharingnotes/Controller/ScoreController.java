@@ -1,5 +1,6 @@
 package com.sharingnotes.Controller;
 
+import com.google.gson.Gson;
 import com.sharingnotes.Model.Notes;
 import com.sharingnotes.MongoDb.MongoDb;
 import org.bson.Document;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class ScoreController {
 
     public MongoDb mongo=new MongoDb();
+    private static final Gson gson = new Gson();
+
 
     @PostMapping(value = "/updateScore")
     public ResponseEntity<String> updateScore(@RequestParam("score") int score, @RequestParam("document")String document,@RequestParam("collection") String collection){
@@ -24,7 +27,7 @@ public class ScoreController {
 
             return ResponseEntity.ok("Score aggiornato!");
         }catch (Exception e){
-            return new ResponseEntity<>("Score non aggiornato", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(gson.toJson("Score non aggiornato"), HttpStatus.BAD_REQUEST);
         }
     }
 

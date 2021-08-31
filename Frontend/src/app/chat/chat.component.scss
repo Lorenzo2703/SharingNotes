@@ -1,89 +1,81 @@
-
-                    
-.conversation-wrap{
-    box-shadow: -2px 0 3px #ddd;
-    padding:0;
-    max-height: 400px;
-    overflow: auto;
+.dim {
+  width: fit-content;
+  max-width: 90%;
 }
 
-.conversation{
-    padding:5px;
-    border-bottom:1px solid #ddd;
-    margin:0;
-
+.conversation-wrap {
+  box-shadow: -2px 0 3px #ddd;
+  padding: 0;
+  max-height: 90vh;
+  overflow: auto;
 }
 
-.message-wrap{
-    box-shadow: 0 0 3px #ddd;
-    padding:0;
-
+.conversation {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+  margin: 0;
 }
 
-.msg{
-    padding:5px;
-    margin:0;
+.message-wrap {
+  box-shadow: 0 0 3px #ddd;
+  padding: 0;
 }
 
-.msg-wrap{
-    padding:10px;
-    max-height: 400px;
-    overflow: auto;
+.msg {
+  padding: 3px;
+  margin: 0;
 }
 
-.time{
-    color:#bfbfbf;
+.msg-wrap {
+  padding: 10px;
+  max-height: 90vh;
+  overflow: auto;
 }
 
-.send-wrap{
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-    padding:10px;
+.time {
+  color: #bfbfbf;
 }
 
-.send-message{
-    resize: none;
+.send-wrap {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 10px;
 }
 
-.highlight{
-    background-color: #f7f7f9;
-    border: 1px solid #e1e1e8;
+.send-message {
+  resize: none;
 }
 
-.send-message-btn{
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 0;
-
-    border-bottom-right-radius: 0;
+.highlight {
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
 }
 
-.msg-wrap{
-    color:#003bb3;
-    font-weight: 700;
+.msg-wrap {
+  color: #003bb3;
+  font-weight: 700;
 }
 
-.media-heading{
-    color: rgb(0, 0, 95);
-    font-weight: 700;
+.media-heading {
+  color: rgb(0, 0, 95);
+  font-weight: 700;
 }
 
-.media-body1{
-    background-color: rgb(122, 156, 221);
-    border-radius: 15px;
+.media-body1 {
+  background-color: rgb(167, 192, 240);
+  border-radius: 15px;
 }
 
-.media-body2{
-    background-color: rgb(214, 214, 214);
-    border-radius: 15px;
+.media-body2 {
+  background-color: rgb(255, 225, 181);
+  border-radius: 15px;
 }
 
-.msg-date{
-    background: none;
-    text-align: center;
-    color:#aaa;
-    border:none;
-    box-shadow: none;
-    border-bottom: 1px solid #ddd;
+.msg-date {
+  background: none;
+  text-align: center;
+  color: #aaa;
+  border: none;
+  box-shadow: none;
+  border-bottom: 1px solid #ddd;
 }
-                

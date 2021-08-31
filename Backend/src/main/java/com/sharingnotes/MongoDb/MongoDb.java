@@ -123,11 +123,11 @@ public class MongoDb {
         return arrayList;
     }
 
-    public void createGroupChat(String ...id){
+    public void createGroupChat(String name, String ...id){
         Document createGroupChat = new Document();
         int index=1;
         createGroupChat.append("_id",UUID.randomUUID());
-
+        createGroupChat.append("name", name);
         for (String i:id) {
             createGroupChat.append(("id_"+index++),i);
         }

@@ -15,10 +15,18 @@ export class MessagesComponent implements OnInit {
   constructor(private ajax: AjaxService, public dialog: MatDialog, private dataservice: DataService) { }
 
   listMessage: any = [];
+  listGroupMessage: any = [];
   message: any = {
     "_id": "",
     "id_User1": "",
     "id_User2": "",
+    "messaggio": [],
+    "name": ""
+  };
+
+  messageGroup: any = {
+    "_id": "",
+    "id": [],
     "messaggio": [],
     "name": ""
   };
@@ -42,6 +50,17 @@ export class MessagesComponent implements OnInit {
     });
   }
 
+  getGroupChat() {
+    this.ajax.getGroupChat(sessionStorage.getItem("UserID")).subscribe(res => {
+      console.log(res)
+      for (let x in res) {
+        console.log(res[x])
+        this.messageGroup = res[x];
+        this.listGroupMessage.push(this.messageGroup);
+      }
+    });
+  }
+
   getChatName(){
 
       this.listMessage.forEach(chat => {
@@ -59,8 +78,10 @@ export class MessagesComponent implements OnInit {
       })
   }
 
+
   ngOnInit(): void {
     this.getChat();
+    this.getGroupChat();
   }
 
 }

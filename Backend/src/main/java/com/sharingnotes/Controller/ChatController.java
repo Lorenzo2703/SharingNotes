@@ -46,13 +46,13 @@ public class ChatController {
     }
 
     @RequestMapping(value = "createGroupChat", method = RequestMethod.POST)
-    public ResponseEntity<String> createGroupChat(@RequestParam("id") String ...id){
+    public ResponseEntity<String> createGroupChat(@RequestParam("name") String name, @RequestParam("id") String ...id){
         String[] array = new String[id.length];
         int index=0;
         for (String i:id) {
             array[index++]=i;
         }
-        mongo.createGroupChat(array);
+        mongo.createGroupChat(name, array);
         return ResponseEntity.ok("success");
     }
 

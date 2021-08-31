@@ -4,6 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { DataService } from '../data.service';
 import { AjaxService } from '../ajax.service';
 import { HomeComponent } from '../home/home.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @Component({
   selector: 'app-new-group-chat',
@@ -14,15 +15,17 @@ export class NewGroupChatComponent implements OnInit {
 
   constructor(private ajax: AjaxService,private dataservice: DataService, public dialogRef: MatDialogRef<HomeComponent>) { }
 
-  toppings = new FormControl();
-
-  toppingList = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
-  selectedToppings;
-
-
   form;
-  listUser = this.dataservice.listUsers;
-  okUser = false;
+  listUser = [];
+  
+  getOtherUser(){
+    this.dataservice.listUsers.forEach(element =>{
+      if(element._id != sessionStorage.getItem("UserID")){
+        this.listUser.push(element)
+      }
+    });
+  }
+  okUsers = false;
 
 
   initForm() {
@@ -32,26 +35,26 @@ export class NewGroupChatComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.form.get("id").value)
-    /*const formData = new FormData();
-    
-    formData.append("id", sessionStorage.getItem("UserID"));
-    this.dataservice.listUsers.forEach(element => {
-      if(element.name == this.form.get("id").value){
-        formData.append('id', element._id);
-        this.okUser = true
-      }
-    });
-    if(this.okUser == false){
-      this.dialogRef.close();
-      window.alert("User errato, inserire il nome corretto!");
+    const formData = new FormData();
+
+    if(this.form.get("id").value.length != 0){
+      this.okUsers = true
     }
-    this.ajax.createChat(formData).subscribe((res) => {
+    this.form.get("id").value.push(sessionStorage.getItem("UserID"))
+    formData.append("id", this.form.get("id").value )
+
+    if(this.okUsers == false){
       this.dialogRef.close();
-    });*/
+      window.alert("Inserire almeno un user");
+    }
+    console.log(formData)
+    this.ajax.createGroupChat(formData).subscribe((res) => {
+      this.dialogRef.close();
+    });
   }
 
   ngOnInit(): void {
+    this.getOtherUser();
     this.initForm();
     
   }

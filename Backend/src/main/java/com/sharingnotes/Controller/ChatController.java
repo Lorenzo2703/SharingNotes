@@ -1,5 +1,6 @@
 package com.sharingnotes.Controller;
 
+import com.google.gson.Gson;
 import com.sharingnotes.Model.Chat;
 import com.sharingnotes.MongoDb.MongoDb;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import java.util.UUID;
 public class ChatController {
 
     public MongoDb mongo=new MongoDb();
+    private static final Gson gson = new Gson();
 
     @RequestMapping(value = "/createChat",method = RequestMethod.POST)
     public ResponseEntity<String> createChat(@RequestParam("id_user1")String user1,@RequestParam("id_user2") String user2){
@@ -60,9 +62,9 @@ public class ChatController {
         arrayList = mongo.getGroupChat(id);
 
         if (arrayList.isEmpty()){
-            return new ResponseEntity<>("id errato",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(gson.toJson("id errato"),HttpStatus.BAD_REQUEST);
         }else{
-            return ResponseEntity.ok(arrayList.toString());
+            return ResponseEntity.ok(gson.toJson(arrayList.toString()));
         }
     }
 

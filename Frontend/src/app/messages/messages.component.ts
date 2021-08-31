@@ -54,7 +54,6 @@ export class MessagesComponent implements OnInit {
     this.ajax.getGroupChat(sessionStorage.getItem("UserID")).subscribe(res => {
       console.log(res)
       for (let x in res) {
-        console.log(res[x])
         this.messageGroup = res[x];
         this.listGroupMessage.push(this.messageGroup);
       }

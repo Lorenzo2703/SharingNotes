@@ -5,28 +5,42 @@
                 <div class="alert alert-info msg-date">
                     <strong>Chat</strong>
                 </div>
-                <div class="media msg container-fluid" *ngFor="let item of chat?.messaggio | keyvalue">
-                    <div class="media msg container-fluid" *ngFor="let res of item.value | keyvalue">
-                        <div class="media-body1 container-fluid" *ngIf = "res.key == this.user1ID">
-                            <h5 class="media-heading" >{{user1.name}}: </h5>
-                            <p class="col-md-10 text-black" >{{res.value}}</p>
-                        </div>
-                        <div class="media-body2 container-fluid" *ngIf = "res.key == this.user2ID" >
-                            <h5 class="media-heading" >{{user2.name}}: </h5>
-                            <p class="col-md-10 text-black media-heading2"> {{res.value}} </p>
+                <div class="container-fluid m-0 p-0">
+                    <div class="msg container-fluid " *ngFor="let item of chat?.messaggio | keyvalue">
+                        <div class=" msg container-fluid d-flex w-100" *ngFor="let res of item.value | keyvalue">
+                            <div class="dim media-body1 justify-content-end container-fluid m-0 pt-1 ml-auto"
+                                *ngIf="res.key == this.user1ID">
+                                <h4 class="p-0 m-0 media-heading text-capitalize">{{user1.name}}: </h4>
+                                <p class="p-1 m-1 col-12 text-black">{{res.value}}</p>
+                            </div>
+
+                            <div class="dim media-body2  justify-content-start container-fluid m-0 pt-1"
+                                *ngIf="res.key == this.user2ID">
+                                <h4 class="text-capitalize p-0 m-0 media-heading">
+                                    {{user2.name}}: </h4>
+                                <p class="p-1 m-1 col-12 text-black media-heading2">
+                                    {{res.value}}
+                                </p>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <form [formGroup]="form" (ngSubmit)="sendMessage()" enctype="multipart/form-data">
-                <div class="send-wrap ">
-                    <textarea type="text" formControlName="messaggio" placeholder="messaggio"
-                        class="form-control send-message" rows="3" placeholder="Write a reply..."></textarea>
-                </div>
-                <div class="btn-panel ml-2">
-                    <button type="submit" class="btn btn-success" role="button">
-                        <i class="fa fa-share"></i> Send Message
-                    </button>
+            <form [formGroup]="form" (ngSubmit)="sendMessage($event)" enctype="multipart/form-data">
+                <div class="container-fluid m-0 p-0 justify-content-between">
+                    <div class="row m-0 p-0 align-items-center justify-content-between">
+                        <div class="send-wrap col-9">
+                            <textarea type="text" formControlName="messaggio" placeholder="messaggio"
+                                class="form-control send-message" rows="3" placeholder="Write a reply..."></textarea>
+                        </div>
+                        <div class="btn-panel col-3">
+                            <button type="submit" class="btn w-75 btn-success" role="button">
+                                <i class="fa fa-share"></i>
+                                <h3 class=" ml-2 d-none d-md-inline"> Send Message</h3>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>

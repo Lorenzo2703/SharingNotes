@@ -14,10 +14,10 @@ export class ChatComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private data: DataService, private ajaxService: AjaxService) { }
 
   ngOnInit(): void {
-    
+
     this.getParam();
     this.initForm();
-    
+
   }
 
   user1;
@@ -76,25 +76,26 @@ export class ChatComponent implements OnInit {
   initForm() {
     this.form = new FormGroup({
       id_user1: new FormControl('', [Validators.required]),
-      id_user2 : new FormControl('', [Validators.required]), 
-      sender : new FormControl('', [Validators.required]), 
-      messaggio : new FormControl('', [Validators.required]),
+      id_user2: new FormControl('', [Validators.required]),
+      sender: new FormControl('', [Validators.required]),
+      messaggio: new FormControl('', [Validators.required]),
     });
   }
 
-  sendMessage(){
+  sendMessage(event) {
+    event.preventDefault();
     const formData = new FormData();
     formData.append("id_user1", this.user1ID);
     formData.append('id_user2', this.user2ID);
-    if(this.user1ID == sessionStorage.getItem("UserID")){
-      formData.append("sender", "true" );
-    }else{
-      formData.append("sender", "false" );
+    if (this.user1ID == sessionStorage.getItem("UserID")) {
+      formData.append("sender", "true");
+    } else {
+      formData.append("sender", "false");
     }
     formData.append("messaggio", this.form.get("messaggio").value);
     this.ajaxService.sendMessage(formData).subscribe((res) => {
     });
-    window.location.reload(); 
+    window.location.reload();
   }
 
 }

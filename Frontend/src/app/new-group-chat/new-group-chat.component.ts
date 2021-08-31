@@ -30,14 +30,15 @@ export class NewGroupChatComponent implements OnInit {
 
   initForm() {
     this.form = new FormGroup({
+      name: new FormControl( "" , [Validators.required]),
       id: new FormControl( [] , [Validators.required]),
     });
   }
 
   submit() {
     const formData = new FormData();
-
-    if(this.form.get("id").value.length != 0){
+    formData.append("name", this.form.get("name").value )
+    if(this.form.get("id").value.length > 1){
       this.okUsers = true
     }
     this.form.get("id").value.push(sessionStorage.getItem("UserID"))
@@ -45,12 +46,13 @@ export class NewGroupChatComponent implements OnInit {
 
     if(this.okUsers == false){
       this.dialogRef.close();
-      window.alert("Inserire almeno un user");
-    }
-    console.log(formData)
-    this.ajax.createGroupChat(formData).subscribe((res) => {
+      window.alert("Inserire almeno due users");
+    }else{
+      this.ajax.createGroupChat(formData).subscribe((res) => {
+      });
       this.dialogRef.close();
-    });
+    }
+    window.location.reload();
   }
 
   ngOnInit(): void {

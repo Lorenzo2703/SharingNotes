@@ -19,5 +19,22 @@
                 </div>
             </a>
         </div>
+
+        <div class="col-12 mb-4 mt-3" *ngFor="let item of listGroupMessage">
+            <a class="text-decoration-none">
+                <div class="card shadow h-100 py-2 ">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-12 mr-2 ">
+                                <div class="h5 mr-4 font-weight-bold text-primary text-capitalize mb-1">
+                                    {{item?.name}}</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
     </div>
 </div>

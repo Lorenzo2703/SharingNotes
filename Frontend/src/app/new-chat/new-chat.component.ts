@@ -37,10 +37,12 @@ export class NewChatComponent implements OnInit {
     if(this.okUser == false){
       this.dialogRef.close();
       window.alert("User errato, inserire il nome corretto!");
-    }
-    this.ajax.createChat(formData).subscribe((res) => {
+    }else{
+      this.ajax.createChat(formData).subscribe((res) => {
+      });
       this.dialogRef.close();
-    });
+    }
+    window.location.reload();
   }
 
   ngOnInit(): void {

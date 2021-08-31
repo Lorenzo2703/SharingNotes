@@ -4,6 +4,10 @@
             <h2>Start new chat</h2>
               <form [formGroup]="form" (ngSubmit)="submit()" enctype="multipart/form-data">
                 <mat-form-field class="w-100" MatFormFieldControl>
+                    <mat-label>Insert chat name</mat-label>
+                    <input type="text" formControlName="name" matInput placeholder="Insert chat name" />
+                </mat-form-field>
+                <mat-form-field class="w-100" MatFormFieldControl>
                     <mat-label>Add users</mat-label>
                     <mat-select formControlName="id" multiple>
                         <mat-option *ngFor="let user of this.listUser"  [value]="user._id">{{user.name}}</mat-option>

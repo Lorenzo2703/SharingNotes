@@ -17,6 +17,7 @@ export class NewGroupChatComponent implements OnInit {
 
   form;
   listUser = [];
+  idUser
   
   getOtherUser(){
     this.dataservice.listUsers.forEach(element =>{
@@ -37,11 +38,12 @@ export class NewGroupChatComponent implements OnInit {
 
   submit() {
     const formData = new FormData();
+    this.form.get("id").value = [sessionStorage.getItem("UserID")].concat(this.form.get("id").value)
+
     formData.append("name", this.form.get("name").value )
-    if(this.form.get("id").value.length > 1){
+    if(this.form.get("id").value.length > 2){
       this.okUsers = true
     }
-    this.form.get("id").value.push(sessionStorage.getItem("UserID"))
     formData.append("id", this.form.get("id").value )
 
     if(this.okUsers == false){

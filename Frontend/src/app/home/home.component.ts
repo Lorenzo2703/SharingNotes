@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit, DoCheck {
   listReviews = [];
   listChats = [];
   listUsers = [];
+  listGroupChat = [];
   searchText;
   i = 0;
 
@@ -29,6 +30,7 @@ export class HomeComponent implements OnInit, DoCheck {
     this.getReview();
     this.getChat();
     this.getUser();
+    this.getGroupChat();
   }
 
 
@@ -88,6 +90,17 @@ export class HomeComponent implements OnInit, DoCheck {
     }
     this.dataservice.listChats = this.listChats;
     })
+  }
+
+  getGroupChat(){
+
+      this.ajaxService.getGroupChat(sessionStorage.getItem("UserID")).subscribe(res => {
+        for (let x in res) {
+          this.listGroupChat.push(res[x]);   
+        
+      }
+      this.dataservice.listGroupChat = this.listGroupChat;
+      })
   }
 
   getUser(){

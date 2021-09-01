@@ -10,6 +10,7 @@ import { ReviewComponent } from './review/review.component';
 import { ProfileReviewComponent } from './profile-review/profile-review.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ChatComponent } from './chat/chat.component';
+import { ChatGroupComponent } from './chat-group/chat-group.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
       { path: "profile/reviews", component: ProfileReviewComponent },
       { path: 'note/:_id', component: NoteComponent },
       { path: 'chat/:_id', component: ChatComponent },
-      { path: 'review/:_id', component: ReviewComponent }],
+      { path: 'review/:_id', component: ReviewComponent },
+      { path: 'chat-group/:_id', component: ChatGroupComponent }],
   },
   { path: '**', component: LoginComponent }];
 

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -26,6 +25,7 @@ import { ChatComponent } from './chat/chat.component';
 import { NewChatComponent } from './new-chat/new-chat.component';
 import { NewGroupChatComponent } from './new-group-chat/new-group-chat.component';
 import {MatSelectModule} from '@angular/material/select';
+import { ChatGroupComponent } from './chat-group/chat-group.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,8 @@ import {MatSelectModule} from '@angular/material/select';
     MessagesComponent,
     ChatComponent,
     NewChatComponent,
-    NewGroupChatComponent
+    NewGroupChatComponent,
+    ChatGroupComponent
 
 
   ],

@@ -59,18 +59,17 @@ export class ChatComponent implements OnInit {
           } else {
             this.ajaxService.getUserByID(this.chat.id_User1).subscribe(response => {
               this.chat.name = response["name"];
-              this.user1 = response;
-              this.user1ID = this.user1._id
-            })
-            this.ajaxService.getUserByID(this.chat.id_User2).subscribe(response => {
               this.user2 = response;
               this.user2ID = this.user2._id
+            })
+            this.ajaxService.getUserByID(this.chat.id_User2).subscribe(response => {
+              this.user1 = response;
+              this.user1ID = this.user1._id
             })
           }
         }
       })
     });
-    console.log(this.chat);
   }
 
   initForm() {
@@ -94,8 +93,9 @@ export class ChatComponent implements OnInit {
     }
     formData.append("messaggio", this.form.get("messaggio").value);
     this.ajaxService.sendMessage(formData).subscribe((res) => {
+      window.location.reload();
     });
-    window.location.reload();
+    
   }
 
 }

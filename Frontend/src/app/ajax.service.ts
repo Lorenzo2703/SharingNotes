@@ -22,6 +22,7 @@ export class AjaxService {
   createChatUrl = this.baseUrl + "createChat";
   createGroupChatUrl = this.baseUrl + "createGroupChat";
   getGroupChatUrl = this.baseUrl + "getGroupChat";
+  sendGroupMessageUrl = this.baseUrl +"sendGroupMessage"
 
   login(email: string, password: string) {
     const data = { "email": email, "password": password };
@@ -75,6 +76,10 @@ export class AjaxService {
 
   getGroupChat(id){
     return this.httpClient.get(this.getGroupChatUrl, { params: { id: id } })
+  }
+
+  sendGroupMessage(formData){
+    return this.httpClient.post(this.sendGroupMessageUrl, formData)
   }
 
 }

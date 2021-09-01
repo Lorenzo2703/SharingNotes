@@ -2,11 +2,14 @@ package com.sharingnotes.Controller;
 
 import com.google.gson.Gson;
 import com.sharingnotes.Model.Chat;
+import com.sharingnotes.Model.GroupChat;
 import com.sharingnotes.MongoDb.MongoDb;
+import org.bson.Document;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
@@ -42,6 +45,15 @@ public class ChatController {
 
         Chat chat=mongo.getChat(user1, user2);
         mongo.sendMessage(chat,map);
+        return ResponseEntity.ok("success");
+    }
+
+    @RequestMapping(value = "/sendGroupMessage",method = RequestMethod.POST)
+    public ResponseEntity<String> sendGroupMessage(@RequestParam("id")String id, @RequestParam("id_user")String user,@RequestParam("messaggio") String messaggio){
+        HashMap<String,String> map=new HashMap<>();
+        map.put(user, messaggio);
+        GroupChat chat = mongo.getGroupChatByID(id);
+        mongo.sendGroupMessage(chat,map);
         return ResponseEntity.ok("success");
     }
 

@@ -26,8 +26,6 @@ public class Chat {
     }
 
 
-
-
     public UUID get_id() {
         return _id;
     }

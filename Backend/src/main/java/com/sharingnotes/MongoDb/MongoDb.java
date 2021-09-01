@@ -106,6 +106,24 @@ public class MongoDb {
         database.getCollection("chat").updateOne((Filters.and(eq("id_User1",chat.getId_user1()),eq("id_User2",chat.getId_user2()))), Updates.set("messaggio",chat.getMessaggi()));
     }
 
+    public void sendGroupMessage(GroupChat chat,HashMap<String,String> messaggio){
+        chat.insertMessage(messaggio);
+        database.getCollection("group-chat").updateOne((Filters.and(eq("_id",chat.get_id()))), Updates.set("messaggi",chat.getMessaggi()));
+    }
+
+    //get della chat di gruppo in base all'ID della chat di gruppo
+    public GroupChat getGroupChatByID(String id){
+        FindIterable<Document> documents=database.getCollection("group-chat").find();
+        Document documento=null;
+        for (Document document : documents) {
+            if ((document.get("_id").toString()).equals(id.trim())){
+                documento=document;
+            }
+        }
+        GroupChat chat = new GroupChat(UUID.fromString(documento.get("_id").toString()), (ArrayList<HashMap<String, String>>) documento.get("messaggi"));
+        return chat;
+    }
+
     public Chat getChat(String idUser1, String idUser2){
         Document document=database.getCollection("chat").find((and(eq("id_User1",idUser1),eq("id_User2",idUser2)))).first();
         Chat chat= new Chat(UUID.fromString(document.get("_id").toString()),document.get("id_User1").toString(),document.get("id_User2").toString(),(ArrayList)(document.get("messaggio")));

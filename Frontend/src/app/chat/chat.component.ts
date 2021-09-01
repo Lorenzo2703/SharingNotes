@@ -93,8 +93,8 @@ export class ChatComponent implements OnInit {
     }
     formData.append("messaggio", this.form.get("messaggio").value);
     this.ajaxService.sendMessage(formData).subscribe((res) => {
-      window.location.reload();
     });
+    window.location.reload();
     
   }
 

@@ -86,5 +86,6 @@ export class ChatGroupComponent implements OnInit {
     this.ajaxService.sendGroupMessage(formData).subscribe((res) => {
     });
     window.location.reload();
+    
   }
 }

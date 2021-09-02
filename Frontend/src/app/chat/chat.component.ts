@@ -46,6 +46,7 @@ export class ChatComponent implements OnInit {
       this.data.listChats.forEach(element => {
         if (element._id == id) {
           this.chat = element;
+          console.log(this.chat)
           if (this.chat.id_User1 == sessionStorage.getItem("UserID")) {
             this.ajaxService.getUserByID(this.chat.id_User2).subscribe(response => {
               this.chat.name = response["name"];
@@ -84,9 +85,9 @@ export class ChatComponent implements OnInit {
   sendMessage(event) {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("id_user1", this.user1ID);
-    formData.append('id_user2', this.user2ID);
-    if (this.user1ID == sessionStorage.getItem("UserID")) {
+    formData.append("id_user1",this.chat.id_User1);
+    formData.append('id_user2', this.chat.id_User2);
+    if (this.chat.id_User1 == sessionStorage.getItem("UserID")) {
       formData.append("sender", "true");
     } else {
       formData.append("sender", "false");

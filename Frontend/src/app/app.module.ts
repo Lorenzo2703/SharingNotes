@@ -26,6 +26,8 @@ import { NewChatComponent } from './new-chat/new-chat.component';
 import { NewGroupChatComponent } from './new-group-chat/new-group-chat.component';
 import {MatSelectModule} from '@angular/material/select';
 import { ChatGroupComponent } from './chat-group/chat-group.component';
+import { NewScoreComponent } from './new-score/new-score.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { ChatGroupComponent } from './chat-group/chat-group.component';
     ChatComponent,
     NewChatComponent,
     NewGroupChatComponent,
-    ChatGroupComponent
+    ChatGroupComponent,
+    NewScoreComponent
 
 
   ],
@@ -58,6 +61,7 @@ import { ChatGroupComponent } from './chat-group/chat-group.component';
     HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
+    MatIconModule,
     MatDialogModule,
     MatButtonModule,
     MatSelectModule

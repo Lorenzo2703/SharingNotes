@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NewReviewComponent } from '../new-review/new-review.component';
+import { NewScoreComponent } from '../new-score/new-score.component';
 import { AjaxService } from '../ajax.service';
 
 @Component({
@@ -35,6 +36,11 @@ export class NoteComponent implements OnInit, DoCheck {
   openDialog() {
     //apre new-review component
     const dialogRef = this.dialog.open(NewReviewComponent);
+  }
+
+  openScoreDialog(){
+    //apre new-score component
+    const dialogRef = this.dialog.open(NewScoreComponent);
   }
 
 

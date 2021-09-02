@@ -2,19 +2,17 @@
     <div class="row m-0 p-0">
         <div class="col-12">
             <!-- Titolo -->
-            <h2>Insert the document</h2>
+            <h2>Vote!</h2>
             <!-- Form -->
             <form [formGroup]="form" (ngSubmit)="submit()" enctype="multipart/form-data">
-                <!-- Insert titolo-->
-                <mat-form-field class="w-100" MatFormFieldControl>
-                    <mat-label>Title</mat-label>
-                    <input formControlName="title" matInput placeholder="Title" />
-                </mat-form-field>
-                <!-- Insert descrizione -->
-                <mat-form-field class="w-100">
-                    <mat-label>Description</mat-label>
-                    <input type="text" formControlName="testo" matInput placeholder="Testo" />
-                </mat-form-field>
+                <!-- Selezione del numero di stelle -->
+                <button mat-icon-button [color]="color" *ngFor="let ratingId of ratingArr;index as i"
+                    (click)="onClick(i+1)">
+                    <mat-icon>
+                        {{showIcon(i)}}
+                    </mat-icon>
+                </button>
+                <h5>Score: {{this.rating}}</h5>
                 <!-- Bottone submit-->
                 <div class="justify-content-center text-center align-items-center">
                     <button type="submit" mat-button mat-raised-button [disabled]="!form.valid"

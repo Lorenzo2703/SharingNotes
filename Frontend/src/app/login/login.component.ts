@@ -22,19 +22,22 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-
+    //prendo le info dal form
     this.ajax.login(this.form.get("email").value, this.form.get("password").value).subscribe((res) => {
+      //salvo le informazioni dell'user e le salvo nel session storage per poterle riutilizzare
       let userName = res["name"];
       let userID = res["_id"];
       let userRating = res["rating"]
       sessionStorage.setItem('UserName', userName);
       sessionStorage.setItem('UserID', userID);
       sessionStorage.setItem('UserRating', userRating);
+      //ti rimanda direttamente alla home
       this.router.navigateByUrl("/home");
     });
   }
 
   register() {
+    //ti rimanda alla pagina per registrarsi
     this.router.navigateByUrl("/register");
   }
 

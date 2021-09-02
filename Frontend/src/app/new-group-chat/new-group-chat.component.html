@@ -1,25 +1,29 @@
 <div class="container-fluid">
     <div class="row m-0 p-0">
         <div class="col-12">
+            <!-- Titolo -->
             <h2>Start new chat</h2>
+            <!-- Form -->
               <form [formGroup]="form" (ngSubmit)="submit()" enctype="multipart/form-data">
+                <!-- Insert nome della chat -->
                 <mat-form-field class="w-100" MatFormFieldControl>
                     <mat-label>Insert chat name</mat-label>
                     <input type="text" formControlName="name" matInput placeholder="Insert chat name" />
                 </mat-form-field>
+                <!-- Lista degli user per poterli checkare-->
                 <mat-form-field class="w-100" MatFormFieldControl>
                     <mat-label>Add users</mat-label>
                     <mat-select formControlName="id" multiple>
                         <mat-option *ngFor="let user of this.listUser"  [value]="user._id">{{user.name}}</mat-option>
                       </mat-select>
                 </mat-form-field>
+                <!-- Bottone del submit -->
                 <div class="justify-content-center text-center align-items-center">
                     <button type="submit" mat-button mat-raised-button class=" mt-4 btn btn btn-primary">
                         Submit
                     </button>
                 </div>
             </form>
-
         </div>
     </div>
 </div>

@@ -16,7 +16,7 @@ export class NewChatComponent implements OnInit {
   constructor(private ajax: AjaxService,private dataservice: DataService, public dialogRef: MatDialogRef<HomeComponent>) { }
   form;
   listUser = [];
-  okUser = false;
+  okUser = false; //boolean per verificare che l'utente esista e sia stato inserito correttamente
 
   initForm() {
     this.form = new FormGroup({
@@ -26,7 +26,10 @@ export class NewChatComponent implements OnInit {
   }
 
   submit() {
+    //inizializzo il form
     const formData = new FormData();
+    //aggiungo i campi al form
+    //L'user1 è l'utente loggato che crea la chat
     formData.append("id_user1", sessionStorage.getItem("UserID"));
     this.dataservice.listUsers.forEach(element => {
       if(element.name == this.form.get("id_user2").value){
@@ -34,6 +37,7 @@ export class NewChatComponent implements OnInit {
         this.okUser = true
       }
     });
+    //controllo se l'user non è corretto
     if(this.okUser == false){
       this.dialogRef.close();
       window.alert("User errato, inserire il nome corretto!");

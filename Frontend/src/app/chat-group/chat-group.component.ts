@@ -19,10 +19,10 @@ export class ChatGroupComponent implements OnInit {
     this.initForm();
 
   }
-  user1;
+  user1; //utente loggato
   user1ID;
   form;
-  id;
+  id; //ide della chat selezionata
 
   ngDoCheck(): void {
     if (this.chat._id === "") {
@@ -39,21 +39,25 @@ export class ChatGroupComponent implements OnInit {
 
   getParam() {
     this.activatedRoute.params.subscribe(params => {
+      //ricavo l'id della chat dall'url
       this.id = params['_id'];
       this.data.listGroupChat.forEach(element => {
+        //scorro la lista di tutte le chat e salvo quella che effettivamente ho selezionato confrontando l'id
         if (element._id == this.id) {
           this.chat = element;
           this.chat.name = element.name;
+          //scorro gli id degli user della chat finchè non trovo quello dell'utente loggato
           for (let i = 0; i < 10; i++) {
             if (sessionStorage.getItem("UserID") == element["id_" + i]) {
               this.user1ID = element["id_" + i]
             }
-
           }
         }
       })
     });
-    this.newChat()
+    //sostituisco gli id con i nomi
+    this.newChat() 
+    //Salvo l'utente loggato
     this.ajaxService.getUserByID(sessionStorage.getItem("UserID")).subscribe(res =>{
       this.user1= res
     })
@@ -68,8 +72,11 @@ export class ChatGroupComponent implements OnInit {
   }
 
   newChat() {
+    //scorro i messaggi
     for (let x in this.chat.messaggi) {
+      //scorro gli utenti
       for (let y in this.data.listUsers) {
+        //sostituisco la chiave nei messaggi usando al posto dell'id il nome
         if(this.data.listUsers[y]._id == Object.keys(this.chat.messaggi[x])){
           delete Object.assign(this.chat.messaggi[x], {[this.data.listUsers[y].name]: this.chat.messaggi[x][this.data.listUsers[y]._id] })[this.data.listUsers[y]._id];
         }
@@ -79,10 +86,13 @@ export class ChatGroupComponent implements OnInit {
 
   sendMessage(event) {
     event.preventDefault();
+    //inizializzo il form
     const formData = new FormData();
+    //riempio il form
     formData.append("id", this.id);
     formData.append('id_user', this.user1ID);
     formData.append("messaggio", this.form.get("messaggio").value);
+    //invio il messaggio
     this.ajaxService.sendGroupMessage(formData).subscribe((res) => {
     });
     window.location.reload();

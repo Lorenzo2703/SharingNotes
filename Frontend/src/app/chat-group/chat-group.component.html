@@ -2,17 +2,20 @@
     <div class="row">
         <div class="message-wrap">
             <div class="msg-wrap">
+                <!-- Testata della chat -->
                 <div class="alert alert-info msg-date">
                     <strong>{{chat.name}}</strong>
                 </div>
+                <!-- Spazio dei messaggi -->
                 <div class="container-fluid m-0 p-0">
                     <div class="msg container-fluid " *ngFor="let item of chat?.messaggi | keyvalue">
                         <div class=" msg container-fluid d-flex w-100" *ngFor="let res of item.value | keyvalue">
+                            <!-- Messaggi inviati -->
                             <div class="dim media-body1 justify-content-end container-fluid m-0 pt-1 ml-auto" *ngIf="res.key == this.user1.name">
                                         <h4 class="p-0 m-0 media-heading text-capitalize">{{res.key}}: </h4>
                                         <p class="p-1 m-1 col-12 text-black">{{res.value}}</p>
                             </div>
-
+                            <!-- Messaggi ricevuti -->
                             <div class="dim media-body2  justify-content-start container-fluid m-0 pt-1" *ngIf="res.key != this.user1.name">
                                 <h4 class="text-capitalize p-0 m-0 media-heading">
                                     {{res.key}}: </h4>
@@ -24,13 +27,16 @@
                     </div>
                 </div>
             </div>
+            <!-- Form per l'invio dei messaggi -->
             <form [formGroup]="form" (ngSubmit)="sendMessage($event)" enctype="multipart/form-data">
                 <div class="container-fluid m-0 p-0 justify-content-between">
                     <div class="row m-0 p-0 align-items-center justify-content-between">
+                        <!-- Spazio del testo-->
                         <div class="send-wrap col-9">
                             <textarea type="text" formControlName="messaggio" placeholder="messaggio"
                                 class="form-control send-message" rows="3" placeholder="Write a reply..."></textarea>
                         </div>
+                        <!-- Bottone dell'invio-->
                         <div class="btn-panel col-3">
                             <button type="submit" class="btn w-75 btn-success" role="button">
                                 <i class="fa fa-share"></i>

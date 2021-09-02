@@ -16,17 +16,18 @@ export class NewGroupChatComponent implements OnInit {
   constructor(private ajax: AjaxService,private dataservice: DataService, public dialogRef: MatDialogRef<HomeComponent>) { }
 
   form;
-  listUser = [];
-  idUser
+  listUser = []; //lista utenti nella chat
+  idUser //id user loggato
   
-  getOtherUser(){
+  getOtherUser(){ 
+    //riempio la lista di tutti gli user nella chat tranno quello dell'utente loggato 
     this.dataservice.listUsers.forEach(element =>{
       if(element._id != sessionStorage.getItem("UserID")){
         this.listUser.push(element)
       }
     });
   }
-  okUsers = false;
+  okUsers = false; //boolean di controllo 
 
 
   initForm() {
@@ -37,18 +38,19 @@ export class NewGroupChatComponent implements OnInit {
   }
 
   submit() {
+    //inizializzo il form
     const formData = new FormData();
+    //inserisco i parametri
     this.form.get("id").value = [sessionStorage.getItem("UserID")].concat(this.form.get("id").value)
-
     formData.append("name", this.form.get("name").value )
-    if(this.form.get("id").value.length > 2){
+    if(this.form.get("id").value.length > 2 && this.form.get("id").value.length < 10){
       this.okUsers = true
     }
     formData.append("id", this.form.get("id").value )
-
+    //if di controllo che le condizioni siano rispettate
     if(this.okUsers == false){
       this.dialogRef.close();
-      window.alert("Inserire almeno due users");
+      window.alert("Inserire tra i 2 e i 10 users");
     }else{
       this.ajax.createGroupChat(formData).subscribe((res) => {
       });

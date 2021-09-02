@@ -17,15 +17,16 @@ export class HomeComponent implements OnInit, DoCheck {
     this.dataservice.searchText = this.searchText;
   }
 
-  listNotes = [];
-  listReviews = [];
-  listChats = [];
-  listUsers = [];
-  listGroupChat = [];
+  listNotes = []; //lista delle note 
+  listReviews = []; //lista delle recensioni
+  listChats = []; //lista delle chat
+  listUsers = []; //lista degli utenti
+  listGroupChat = []; //lista delle chat di gruppo
   searchText;
   i = 0;
 
   ngOnInit(): void {
+    //riempio le liste iniazializzate sopra richiamando i metodi dall'ajax
     this.getNotes();
     this.getReview();
     this.getChat();
@@ -35,8 +36,8 @@ export class HomeComponent implements OnInit, DoCheck {
 
 
   openDialog() {
+    //apro il componente new-note
     const dialogRef = this.dialog.open(NewNoteComponent);
-
   }
 
   getNotes() {

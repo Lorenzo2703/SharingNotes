@@ -20,8 +20,8 @@ export class ChatComponent implements OnInit {
 
   }
 
-  user1;
-  user2;
+  user1; //utente loggato
+  user2; //altro utente
   user1ID;
   user2ID;
   form;
@@ -42,11 +42,13 @@ export class ChatComponent implements OnInit {
 
   getParam() {
     this.activatedRoute.params.subscribe(params => {
-      let id = params['_id'];
+      //ricavo l'id della chat dall'url
+      let id = params['_id']; 
       this.data.listChats.forEach(element => {
+        //scorro la lista di tutte le chat e salvo quella che effettivamente ho selezionato confrontando l'id
         if (element._id == id) {
           this.chat = element;
-          console.log(this.chat)
+          //caso in cui l'user loggato è l'id1 della chat
           if (this.chat.id_User1 == sessionStorage.getItem("UserID")) {
             this.ajaxService.getUserByID(this.chat.id_User2).subscribe(response => {
               this.chat.name = response["name"];
@@ -57,7 +59,8 @@ export class ChatComponent implements OnInit {
               this.user1 = response;
               this.user1ID = this.user1._id
             })
-          } else {
+            //caso in cui l'user loggato è l'id2 della chat
+          } else { 
             this.ajaxService.getUserByID(this.chat.id_User1).subscribe(response => {
               this.chat.name = response["name"];
               this.user2 = response;
@@ -84,7 +87,9 @@ export class ChatComponent implements OnInit {
 
   sendMessage(event) {
     event.preventDefault();
+    //inizializzo il form
     const formData = new FormData();
+    //riempio io campi del form
     formData.append("id_user1",this.chat.id_User1);
     formData.append('id_user2', this.chat.id_User2);
     if (this.chat.id_User1 == sessionStorage.getItem("UserID")) {
@@ -93,6 +98,7 @@ export class ChatComponent implements OnInit {
       formData.append("sender", "false");
     }
     formData.append("messaggio", this.form.get("messaggio").value);
+    //invio il messaggio
     this.ajaxService.sendMessage(formData).subscribe((res) => {
     });
     window.location.reload();

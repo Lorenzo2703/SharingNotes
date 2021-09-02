@@ -1,22 +1,26 @@
 <div class="container-fluid">
     <div class="row m-0 p-0">
         <div class="col-12">
+            <!-- Titolo -->
             <h2>Insert the document</h2>
+            <!-- Form -->
             <form [formGroup]="form" (ngSubmit)="submit()" enctype="multipart/form-data">
+                <!-- Insert Titolo-->
                 <mat-form-field class="w-100" MatFormFieldControl>
                     <mat-label>Title</mat-label>
                     <input formControlName="title" matInput placeholder="Title" />
                 </mat-form-field>
-
+                <!-- Insert della description -->
                 <mat-form-field class="w-100">
                     <mat-label>Description</mat-label>
                     <input type="text" formControlName="description" matInput placeholder="description" />
                 </mat-form-field>
-
+                <!-- Insert del file -->
                 <div class="justify-content-center text-center align-items-center">
                     <input (change)="handleFileInput($event.target.files)" class="form-control" formControlName="file"
                         type="file" name="file">
                     <br>
+                    <!-- Tasto del submit -->
                     <button type="submit" mat-button mat-raised-button [disabled]="!form.valid"
                         class=" mt-4 btn btn btn-primary">
                         Submit

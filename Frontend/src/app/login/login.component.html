@@ -1,24 +1,28 @@
 <div class="row m-0 justify-content-center align-items-center h-100 bg-dark">
-
+    <!-- Card-->
     <div class="card-custom">
         <div class="p-2 text-center m-3">
+            <!-- Titolo -->
             <h1 id="title" class="text-dark">Log In</h1>
+            <!-- Form -->
             <form [formGroup]="form" class="text-dark" (ngSubmit)="login()">
+                <!-- Inserire mail -->
                 <mat-form-field class="w-100">
                     <mat-label class="text-dark">Email</mat-label>
                     <input class="text-dark" formControlName="email" matInput placeholder="Email" />
                 </mat-form-field>
-
+                <!-- Inserire password -->
                 <mat-form-field class="w-100">
                     <mat-label class="text-dark">Password</mat-label>
                     <input class="text-dark" type="password" formControlName="password" matInput
                         placeholder="password" />
                 </mat-form-field>
-
+                <!-- Tasto submit-->
                 <button type="submit" [disabled]="!form.valid" class="mt-4 " color="primary" mat-raised-button>
                     Log in
                 </button>
             </form>
+            <!-- Per registrarsi -->
             <h5 id="register" class="text-secondary mt-4" (click)="register()">New there? please register!</h5>
         </div>
     </div>

@@ -1,12 +1,16 @@
 <div class="container-fluid">
     <div class="row m-0 p-0">
         <div class="col-12">
+            <!-- Titolo -->
             <h2>Start new chat</h2>
+            <!-- Form -->
             <form [formGroup]="form" (ngSubmit)="submit()" enctype="multipart/form-data">
+                <!-- Spazio per inserire il nome dell'user2-->
                 <mat-form-field class="w-100" MatFormFieldControl>
                     <mat-label>Insert user name</mat-label>
                     <input type="text" formControlName="id_user2" matInput placeholder="Insert User name" />
                 </mat-form-field>
+                <!-- Bottone submit -->
                 <div class="justify-content-center text-center align-items-center">
                     <button type="submit" mat-button mat-raised-button class=" mt-4 btn btn btn-primary">
                         Submit

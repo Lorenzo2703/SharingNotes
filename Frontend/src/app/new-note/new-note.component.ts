@@ -27,7 +27,9 @@ export class NewNoteComponent implements OnInit {
 
   submit() {
     this.loading = true;
+    //inizializzo il form
     const formData = new FormData();
+    //aggiungo i parametri
     formData.append("file", this.file);
     formData.append('title', this.form.get("title").value);
     formData.append("description", this.form.get("description").value);

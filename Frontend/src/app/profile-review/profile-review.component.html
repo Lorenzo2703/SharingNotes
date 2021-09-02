@@ -1,7 +1,6 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
-    <!-- Page Heading -->
+    <!-- Header -->
     <div class="d-sm-flex align-items-center justify-content-left mb-4">
         <h1 class="h3 mb-0 text-black"> Hi {{nameUser}}!</h1>
         <!-- Rating del profilo -->
@@ -13,11 +12,9 @@
             </div>
         </div>
     </div>
-
     <!-- Content Row -->
     <div class="row">
-
-        <!-- Card Example -->
+        <!-- Lista delle recensioni pubblicate dall'utente -->
         <div class="col-xl-4 col-md-6 mb-4" *ngFor="let item of listReviews">
             <a class="text-decoration-none" [routerLink]="['/home/review',item?._id]">
                 <div class="card card-hover shadow h-100 py-2 ">
@@ -36,6 +33,7 @@
                 </div>
             </a>
         </div>
+        <!-- Caso in cui non ci sono recensioni-->
         <div class="d-sm-flex align-items-center justify-content-between mb-4" *ngIf="noRev">
             <h3 class="h3 mb-0 text-gray-600"> You have not currently reviewed any handouts</h3>
         </div>
@@ -44,5 +42,4 @@
                 opportunity to have more information!</h3>
         </div>
     </div>
-
 </div>

@@ -1,7 +1,6 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
-    <!-- Page Heading -->
+    <!-- Header della pagina -->
     <div class="d-sm-flex align-items-center justify-content-left mb-4">
         <h1 class="h3 mb-0 text-black"> Welcome {{nameUser}}!</h1>
         <!-- Rating del profilo -->
@@ -13,11 +12,9 @@
             </div>
         </div>
     </div>
-
     <!-- Content Row -->
     <div class="row">
-
-        <!-- Card Example -->
+        <!-- Lista dei documenti pubblicati dall'utente -->
         <div class="col-xl-4 col-md-6 mb-4" *ngFor="let item of listNotes">
             <a class="text-decoration-none" [routerLink]="['/home/note',item?._id]">
                 <div class="card card-hover shadow h-100 py-2">
@@ -33,6 +30,7 @@
                 </div>
             </a>
         </div>
+        <!-- Caso in cui l'utente non ha pubblicato nessuna nota -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4" *ngIf="noNotes">
             <h3 class="h3 mb-0 text-gray-600"> There is nothing here, try posting a document</h3>
         </div>
@@ -40,5 +38,4 @@
             <h3 class="h3 mb-0 text-gray-600"> Click on the "New Note" button to get started right away!</h3>
         </div>
     </div>
-
 </div>

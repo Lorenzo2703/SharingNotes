@@ -26,7 +26,9 @@ export class NewReviewComponent implements OnInit {
   }
 
   submit() {
+    //inizializzo il form
     const formData = new FormData();
+    //inserisco i parametri
     formData.append("idRecensore", sessionStorage.getItem("UserID"));
     formData.append("idUserRecensito", sessionStorage.getItem("IDUserNota"));
     formData.append("idNotaRecensita", sessionStorage.getItem("IDNota"));

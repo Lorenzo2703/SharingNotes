@@ -15,8 +15,8 @@ export class ProfileReviewComponent implements OnInit {
   nameUser = sessionStorage.getItem("UserName");
   idUser = sessionStorage.getItem("UserID");
   ratingUser = sessionStorage.getItem("UserRating");
-  listReviews = [];
-  noRev = false;
+  listReviews = []; //lista delle recensioni scritte dall'utente
+  noRev = false; //boolean per verificare che ci siano recnesioni pubblicate dall'utente
 
   ngOnInit(): void {
     this.getUserReview();
@@ -24,7 +24,7 @@ export class ProfileReviewComponent implements OnInit {
   }
 
   getUserReview() {
-
+    //salvo tutte le recensioni scritte dall'utente
     this.ajaxService.getReview().subscribe(res => {
       for (let x in res) {
         if (res[x]["id_Recensore"] == this.idUser) {

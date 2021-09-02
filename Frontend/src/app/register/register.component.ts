@@ -23,16 +23,18 @@ export class RegisterComponent implements OnInit {
   }
 
   login() {
+    //ritorna alla pagina della login
     this.router.navigateByUrl("");
   }
 
   register() {
+    //registrazione
     this.ajax.register(this.form.get("name").value, this.form.get("email").value, this.form.get("password").value).subscribe((res) => {
       console.log(res);
       this.router.navigateByUrl("/home");
     });
   }
-
+  
   ngOnInit(): void {
     this.initForm();
   }

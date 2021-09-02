@@ -19,7 +19,7 @@ export class ReviewComponent implements OnInit {
     }
   }
 
-  userReview
+  userReview //user 
 
   review = {
     idNotaRecensita: "",
@@ -33,7 +33,9 @@ export class ReviewComponent implements OnInit {
 
   getParam() {
     this.activatedRoute.params.subscribe(params => {
+      //ricavo l'id della recensione dall'url
       let id = params['_id'];
+      //salvo la recensione selezionata
       this.data.listReviews.forEach(element => {
         if (element._id == id) {
           this.review = element;

@@ -15,14 +15,15 @@ export class ProfileComponent implements OnInit {
   nameUser = sessionStorage.getItem("UserName");
   idUser = sessionStorage.getItem("UserID");
   ratingUser = sessionStorage.getItem("UserRating");
-  listNotes = [];
-  noNotes = false;
+  listNotes = []; //lista delle note pubblicate dall'utente
+  noNotes = false; //boolean per verificare che ci siano note pubblicate dall'user
 
   ngOnInit(): void {
     this.getUserNotes();
   }
 
   getUserNotes() {
+    //salvo tutte le note pubblicate dall'utente
     this.ajaxService.getNotes().subscribe(res => {
       for (let x in res) {
         if (res[x]["id_User"] == this.idUser) {

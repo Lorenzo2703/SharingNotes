@@ -47,6 +47,12 @@ public class MainTest {
         return new ResponseEntity<>(gson.toJson("Success"), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/download", method = RequestMethod.GET)
+    public ResponseEntity<String> download(@RequestParam("fileUrl")String fileUrl) {
+        System.out.println(CloudApi.download(fileUrl));
+        return new ResponseEntity<>(gson.toJson(CloudApi.download(fileUrl)), HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/insertRecensione",method = RequestMethod.POST)
     public ResponseEntity<String> insertRecensione(@RequestParam("idRecensore") String idRecensore,@RequestParam("idUserRecensito") String idUserRecensito,@RequestParam("idNotaRecensita") String idNotaRecensita,@RequestParam("title") String title,@RequestParam("testo") String testo){
         mongo.insertRecensione(new Recensione(UUID.randomUUID(), idRecensore, idUserRecensito, idNotaRecensita, title, testo));

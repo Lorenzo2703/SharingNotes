@@ -25,4 +25,10 @@ public class CloudApi {
         return response.getBody();
     }
 
+    public static Object download(String fileUrl){
+        HttpResponse response=Unirest.get("http://127.0.0.1:5000/download?fileurl="+fileUrl.replace("#","$"))
+                .asString();
+        return  response.getBody();
+    }
+
 }

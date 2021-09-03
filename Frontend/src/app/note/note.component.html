@@ -8,8 +8,10 @@
                 <h2> {{note?.description}}</h2>
                 <!-- Punteggio -->
                 <div>
-                    <span> Rating: </span>
-                    <span class="ratings ml-1"> <span class="product-rating"> {{note?.rating}} </span><span>/5</span>
+                    <h3 class="mb-1 text-capitalize"> Author: <strong class="ml-1"> {{name}}</strong></h3>
+                    <h3 class="d-inline"> Rating: </h3>
+                    <span class="ratings ml-1"> <span class="product-rating"> {{note?.rating}}
+                        </span><span>/5</span>
                         <span class="stars ml-2"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                 class="fa fa-star"></i> <i class="fa fa-star"></i> </span>
                     </span>
@@ -18,23 +20,23 @@
             <!-- Bottoni-->
             <div class="w-100 d-inline">
                 <!-- Bottone per scaricare il file -->
-                <a href="{{note?.fileUrl}}" download="{{note?.title}}" target="_blank">
-                    <button type="button" class="btn btn-success p-2 mr-2 ml-5">
-                        <i class="fas fa-download fa-sm d-inline-block text-white-50 mr-2"></i>
-                        Download File</button></a>
+
+                <button type="button" (click)="download()" class="btn btn-success p-2 mr-2 ml-5">
+                    <i class="fas fa-download fa-sm d-inline-block text-white-50 mr-2"></i>
+                    Download File</button>
                 <!-- Bottone per aggiungere una recensione -->
                 <button type="button" (click)="openDialog()" class="btn btn-primary p-2 mr-2 ml-3"><i
                         class="fas d-inline-block fa-pencil-alt fa-sm text-white-50 mr-2"></i>Add Review</button>
                 <!-- Bottone per aggiungere un voto -->
                 <button type="button" (click)="openScoreDialog()" class="btn btn-warning p-2 mr-2 ml-3"><i
-                    class="fas d-inline-block fa-medal fa-sm text-white-50 mr-2"></i>Add Score</button>
+                        class="fas d-inline-block fa-medal fa-sm text-white-50 mr-2"></i>Add Score</button>
             </div>
         </div>
         <!-- Recensioni -->
         <div class="row m-3 no-gutters">
             <div class="col-4  p-0" *ngFor="let item of listReviews; let i = index">
-                <a [routerLink]="['/home/review',item?._id]">
-                    <div class="card m-3 shadow mb-4">
+                <a class="text-decoration-none" [routerLink]="['/home/review',item?._id]">
+                    <div class="card m-3 shadow mb-4 card-hover">
                         <div class="card-header py-3">
                             <h4 class="m-0 font-weight-bold text-primary">{{item?.title}} by {{nameUserReview[i]}}</h4>
                         </div>

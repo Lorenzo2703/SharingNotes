@@ -4,6 +4,7 @@ from werkzeug.utils import secure_filename
 from mega import Mega
 import time
 import json
+import re
 
 
 mega = Mega()
@@ -49,6 +50,17 @@ def upload_file():
         os.remove(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
     return url
+
+
+@app.route('/download', methods=['GET'])
+def download():
+    stringUrl = re.sub('[$]', '#', request.args["fileurl"])
+    m.download_url(stringUrl, "./download")
+    time.sleep(5)
+    file = os.path.join("./download", "./download"[1])
+    filez = os.path.join("./download", "./download"[0])
+    print(file+"     "+filez)
+    return "ok"
 
 
 @app.route('/getAll', methods=['GET'])

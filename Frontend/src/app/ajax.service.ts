@@ -24,6 +24,7 @@ export class AjaxService {
   getGroupChatUrl = this.baseUrl + "getGroupChat";
   sendGroupMessageUrl = this.baseUrl + "sendGroupMessage";
   updateScoreUrl = this.baseUrl + "updateScore"
+  downloadUrl = this.baseUrl + "download";
 
   login(email: string, password: string) {
     const data = { "email": email, "password": password };
@@ -86,6 +87,10 @@ export class AjaxService {
   updateScore(score, id) {
     let params = new HttpParams().set('score', score).set('id', id).set("collection", "notes");
     return this.httpClient.post(this.updateScoreUrl, {}, { params: params })
+  }
+
+  download(fileUrl) {
+    return this.httpClient.get(this.downloadUrl, { params: { fileUrl: fileUrl } });
   }
 
 }

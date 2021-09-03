@@ -43,7 +43,7 @@ export class ChatComponent implements OnInit {
   getParam() {
     this.activatedRoute.params.subscribe(params => {
       //ricavo l'id della chat dall'url
-      let id = params['_id']; 
+      let id = params['_id'];
       this.data.listChats.forEach(element => {
         //scorro la lista di tutte le chat e salvo quella che effettivamente ho selezionato confrontando l'id
         if (element._id == id) {
@@ -60,7 +60,7 @@ export class ChatComponent implements OnInit {
               this.user1ID = this.user1._id
             })
             //caso in cui l'user loggato è l'id2 della chat
-          } else { 
+          } else {
             this.ajaxService.getUserByID(this.chat.id_User1).subscribe(response => {
               this.chat.name = response["name"];
               this.user2 = response;
@@ -85,12 +85,14 @@ export class ChatComponent implements OnInit {
     });
   }
 
+
+
   sendMessage(event) {
     event.preventDefault();
     //inizializzo il form
     const formData = new FormData();
     //riempio io campi del form
-    formData.append("id_user1",this.chat.id_User1);
+    formData.append("id_user1", this.chat.id_User1);
     formData.append('id_user2', this.chat.id_User2);
     if (this.chat.id_User1 == sessionStorage.getItem("UserID")) {
       formData.append("sender", "true");
@@ -102,7 +104,7 @@ export class ChatComponent implements OnInit {
     this.ajaxService.sendMessage(formData).subscribe((res) => {
     });
     window.location.reload();
-    
+
   }
 
 }

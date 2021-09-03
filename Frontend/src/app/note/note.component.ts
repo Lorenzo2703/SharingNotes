@@ -26,6 +26,7 @@ export class NoteComponent implements OnInit, DoCheck {
     title: "",
     _id: ""
   }
+  name;
 
   ngDoCheck(): void {
     if (this.note._id === "") {
@@ -38,7 +39,7 @@ export class NoteComponent implements OnInit, DoCheck {
     const dialogRef = this.dialog.open(NewReviewComponent);
   }
 
-  openScoreDialog(){
+  openScoreDialog() {
     //apre new-score component
     const dialogRef = this.dialog.open(NewScoreComponent);
   }
@@ -57,6 +58,9 @@ export class NoteComponent implements OnInit, DoCheck {
     });
     sessionStorage.setItem("IDUserNota", this.note.id_User);
     sessionStorage.setItem("IDNota", this.note._id);
+    this.ajaxService.getUserByID(this.note.id_User).subscribe(user => {
+      this.name = user["name"];
+    })
   }
 
   getNotesReview() {
@@ -74,6 +78,13 @@ export class NoteComponent implements OnInit, DoCheck {
         }
       }
     })
+  }
+
+  download() {
+    this.ajaxService.download(this?.note?.fileUrl).subscribe(res => {
+      console.log(res);
+
+    });
   }
 
   ngOnInit(): void {

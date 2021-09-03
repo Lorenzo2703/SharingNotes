@@ -6,16 +6,17 @@ import com.sharingnotes.MongoDb.MongoDb;
 import org.bson.Document;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin()
 public class ScoreController {
 
     public MongoDb mongo=new MongoDb();
     private static final Gson gson = new Gson();
-
 
     @PostMapping(value = "/updateScore")
     public ResponseEntity<String> updateScore(@RequestParam("score") int score, @RequestParam("document")String document,@RequestParam("collection") String collection){

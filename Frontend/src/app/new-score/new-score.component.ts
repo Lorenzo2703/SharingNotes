@@ -26,13 +26,9 @@ export class NewScoreComponent implements OnInit {
   }
 
   submit() {
-    //recupero la mia nota da votare
-    this.data.listNotes.forEach(nota => {
-      if (nota._id == sessionStorage.getItem("IDNota")) {
-        this.nota= nota.toString()
-      }
-    })
-    this.ajax.updateScore(this.rating, this.nota).subscribe((res) => {
+
+    this.ajax.updateScore(this.rating, sessionStorage.getItem("IDNota")).subscribe((res) => {
+      console.log(res);
       this.dialogRef.close();
     });
   }

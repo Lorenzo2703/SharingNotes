@@ -22,7 +22,7 @@ export class AjaxService {
   createChatUrl = this.baseUrl + "createChat";
   createGroupChatUrl = this.baseUrl + "createGroupChat";
   getGroupChatUrl = this.baseUrl + "getGroupChat";
-  sendGroupMessageUrl = this.baseUrl +"sendGroupMessage";
+  sendGroupMessageUrl = this.baseUrl + "sendGroupMessage";
   updateScoreUrl = this.baseUrl + "updateScore"
 
   login(email: string, password: string) {
@@ -47,8 +47,8 @@ export class AjaxService {
     return this.httpClient.get(this.getNotesUrl, { params: { collection: "notes" } });
   }
 
-  getUser(){
-    return this.httpClient.get(this.getUserUrl, { params : { collection : "utenti"} });
+  getUser() {
+    return this.httpClient.get(this.getUserUrl, { params: { collection: "utenti" } });
   }
 
   getAllChat(id) {
@@ -62,29 +62,29 @@ export class AjaxService {
   getReview() {
     return this.httpClient.get(this.getReviewsUrl, { params: { collection: "recensioni" } });
   }
-  
+
   sendMessage(formData) {
     return this.httpClient.post(this.sendMessageUrl, formData);
   }
 
-  createChat(formData){
+  createChat(formData) {
     return this.httpClient.post(this.createChatUrl, formData);
   }
 
-  createGroupChat(formData){
+  createGroupChat(formData) {
     return this.httpClient.post(this.createGroupChatUrl, formData)
   }
 
-  getGroupChat(id){
+  getGroupChat(id) {
     return this.httpClient.get(this.getGroupChatUrl, { params: { id: id } })
   }
 
-  sendGroupMessage(formData){
+  sendGroupMessage(formData) {
     return this.httpClient.post(this.sendGroupMessageUrl, formData)
   }
 
-  updateScore(score, document){
-    let params = new HttpParams().set('score', score).set('document', document).set("collection", "notes");
+  updateScore(score, id) {
+    let params = new HttpParams().set('score', score).set('id', id).set("collection", "notes");
     return this.httpClient.post(this.updateScoreUrl, {}, { params: params })
   }
 

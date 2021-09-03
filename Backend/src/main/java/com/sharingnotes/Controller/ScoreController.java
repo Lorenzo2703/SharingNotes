@@ -19,28 +19,13 @@ public class ScoreController {
     private static final Gson gson = new Gson();
 
     @PostMapping(value = "/updateScore")
-    public ResponseEntity<String> updateScore(@RequestParam("score") int score, @RequestParam("document")String document,@RequestParam("collection") String collection){
+    public ResponseEntity<String> updateScore(@RequestParam("score") String score, @RequestParam("id")String id,@RequestParam("collection") String collection){
         try {
-
-            Document document1= Document.parse(document);
-            mongo.updateScore(document1,collection,score);
-            System.out.println("MEDIA VOTI: "+avgScore(document1));
-
-            return ResponseEntity.ok("Score aggiornato!");
+            mongo.updateScore(mongo.getDocumentByID(id,collection),collection,Integer.parseInt(score));
+            return new ResponseEntity<>(gson.toJson("Score aggiornato! con media: "+mongo.getDocumentByID(id,collection).getDouble("rating")), HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(gson.toJson("Score non aggiornato"), HttpStatus.BAD_REQUEST);
         }
     }
 
-    public float avgScore(Document document){
-        int rating=document.getInteger("rating");
-        int nvoti=document.getInteger("nvoti");
-        float media=0.0f;
-        try {
-            media = Math.round(rating/ nvoti);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return media;
-    }
 }

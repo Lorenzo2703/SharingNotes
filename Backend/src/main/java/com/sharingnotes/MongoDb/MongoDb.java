@@ -46,9 +46,23 @@ public class MongoDb {
 
     public void updateScore(Document document,String collection,int score){
         int newNoti=(document.getInteger("nvoti")+1);
-        int newRating=(document.getInteger("rating")+score);
+        int newSomma=(document.getInteger("sommaVoti")+score);
         database.getCollection(collection).updateOne(Filters.eq("_id",document.get("_id")), Updates.set("nvoti",newNoti));
-        database.getCollection(collection).updateOne(Filters.eq("_id",document.get("_id")), Updates.set("rating",newRating));
+        database.getCollection(collection).updateOne(Filters.eq("_id",document.get("_id")), Updates.set("sommaVoti",newSomma));
+        database.getCollection(collection).updateOne(Filters.eq("_id",document.get("_id")), Updates.set("rating",avgScore(document)));
+
+    }
+
+    public float avgScore(Document document){
+        int somma=document.getInteger("sommaVoti");
+        int nvoti=document.getInteger("nvoti");
+        float media=0.0f;
+        try {
+            media = Math.round(somma/ nvoti);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return media;
     }
 
     public void insertUser(User user){
@@ -72,6 +86,17 @@ public class MongoDb {
         Document documento=null;
         for (Document document : documents) {
             if ((document.get("_id").toString()).equals(userID.trim())){
+                documento=document;
+            }
+        }
+        return documento;
+    }
+
+    public Document getDocumentByID(String notesID, String collection){
+        FindIterable<Document> documents=database.getCollection(collection).find();
+        Document documento=null;
+        for (Document document : documents) {
+            if ((document.get("_id").toString()).equals(notesID.trim())){
                 documento=document;
             }
         }
@@ -189,6 +214,7 @@ public class MongoDb {
                 .append("title",notes.getTitle())
                 .append("description",notes.getDescription())
                 .append("rating",notes.getRating())
+                .append("nvoti",notes.getnVoti())
                 .append("fileUrl",notes.getFileUrl())
                 .append("id_User", notes.getId_User());
 

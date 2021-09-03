@@ -10,6 +10,7 @@ public class Notes {
     private String fileUrl;
     private String id_User;
     private int nVoti;
+    private int sommaVoti;
 
     public Notes(UUID _id, String title, String description, String fileUrl, String id_User) {
         this._id = _id;
@@ -19,6 +20,7 @@ public class Notes {
         this.fileUrl = fileUrl;
         this.id_User = id_User;
         this.nVoti = 0 ;
+        this.sommaVoti = 0;
     }
 
     public UUID getId() {
@@ -77,4 +79,11 @@ public class Notes {
         this.nVoti = nVoti;
     }
 
+    public int getSommaVoti() {
+        return sommaVoti;
+    }
+
+    public void setSommaVoti(int sommaVoti) {
+        this.sommaVoti = sommaVoti;
+    }
 }

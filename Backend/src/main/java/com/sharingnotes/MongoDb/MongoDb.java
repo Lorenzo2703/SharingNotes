@@ -45,15 +45,15 @@ public class MongoDb {
     }
 
     public void updateScore(Document document,String collection,int score){
-        int newNoti=(document.getInteger("nvoti")+1);
+        int newNVoti=(document.getInteger("nvoti")+1);
         int newSomma=(document.getInteger("sommaVoti")+score);
-        database.getCollection(collection).updateOne(Filters.eq("_id",document.get("_id")), Updates.set("nvoti",newNoti));
+        database.getCollection(collection).updateOne(Filters.eq("_id",document.get("_id")), Updates.set("nvoti",newNVoti));
         database.getCollection(collection).updateOne(Filters.eq("_id",document.get("_id")), Updates.set("sommaVoti",newSomma));
-        database.getCollection(collection).updateOne(Filters.eq("_id",document.get("_id")), Updates.set("rating",avgScore(document)));
+        database.getCollection(collection).updateOne(Filters.eq("_id",document.get("_id")), Updates.set("rating",Math.round(newSomma/ newNVoti)));
 
     }
 
-    public float avgScore(Document document){
+    /*public float avgScore(Document document){
         int somma=document.getInteger("sommaVoti");
         int nvoti=document.getInteger("nvoti");
         float media=0.0f;
@@ -63,7 +63,7 @@ public class MongoDb {
             e.printStackTrace();
         }
         return media;
-    }
+    }*/
 
     public void insertUser(User user){
         Document insertUser = new Document();
@@ -216,7 +216,8 @@ public class MongoDb {
                 .append("rating",notes.getRating())
                 .append("nvoti",notes.getnVoti())
                 .append("fileUrl",notes.getFileUrl())
-                .append("id_User", notes.getId_User());
+                .append("id_User", notes.getId_User())
+                .append("sommaVoti", notes.getSommaVoti());
 
         database.getCollection("notes").insertOne(insertNotes);
     }

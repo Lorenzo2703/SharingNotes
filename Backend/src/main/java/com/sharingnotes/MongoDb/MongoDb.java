@@ -47,9 +47,10 @@ public class MongoDb {
     public void updateScore(Document document,String collection,int score){
         int newNVoti=(document.getInteger("nvoti")+1);
         int newSomma=(document.getInteger("sommaVoti")+score);
+        int media = Math.round(newSomma/ newNVoti);
         database.getCollection(collection).updateOne(Filters.eq("_id",document.get("_id")), Updates.set("nvoti",newNVoti));
         database.getCollection(collection).updateOne(Filters.eq("_id",document.get("_id")), Updates.set("sommaVoti",newSomma));
-        database.getCollection(collection).updateOne(Filters.eq("_id",document.get("_id")), Updates.set("rating",Math.round(newSomma/ newNVoti)));
+        database.getCollection(collection).updateOne(Filters.eq("_id",document.get("_id")), Updates.set("rating",media));
 
     }
 

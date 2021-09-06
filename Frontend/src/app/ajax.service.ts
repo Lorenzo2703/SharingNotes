@@ -14,6 +14,7 @@ export class AjaxService {
   getNotesUrl = this.baseUrl + "getFiles";
   getReviewsUrl = this.baseUrl + "getFiles";
   getUserUrl = this.baseUrl + "getFiles";
+  getRequestUrl = this.baseUrl + "getFiles";
   getUserbyIDUrl = this.baseUrl + "getUserByID";
   uploadUrl = this.baseUrl + "fileUpload";
   uploadReview = this.baseUrl + "insertRecensione";
@@ -25,6 +26,7 @@ export class AjaxService {
   sendGroupMessageUrl = this.baseUrl + "sendGroupMessage";
   updateScoreUrl = this.baseUrl + "updateScore"
   downloadUrl = this.baseUrl + "download";
+  insertRichiestaUrl = this.baseUrl + "insertRichiesta";
 
   login(email: string, password: string) {
     const data = { "email": email, "password": password };
@@ -50,6 +52,10 @@ export class AjaxService {
 
   getUser() {
     return this.httpClient.get(this.getUserUrl, { params: { collection: "utenti" } });
+  }
+
+  getRequest(){
+    return this.httpClient.get( this.getRequestUrl, {params: { collection: "richieste"}});
   }
 
   getAllChat(id) {
@@ -91,6 +97,10 @@ export class AjaxService {
 
   download(fileUrl) {
     return this.httpClient.get(this.downloadUrl, { params: { fileUrl: fileUrl } });
+  }
+
+  insertRequest(formData){
+    return this.httpClient.post( this.insertRichiestaUrl, formData)
   }
 
 }

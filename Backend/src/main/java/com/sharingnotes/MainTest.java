@@ -60,8 +60,8 @@ public class MainTest {
     }
 
     @RequestMapping(value = "/insertRichiesta",method = RequestMethod.POST)
-    public ResponseEntity<String> insertRichiesta(){
-        mongo.insertRichiesta(new Richiesta(UUID.randomUUID(),"1234","title","testo"));
+    public ResponseEntity<String> insertRichiesta(@RequestParam("idRichiedente") String idRichiedente,@RequestParam("title") String title, @RequestParam("testo") String testo){
+        mongo.insertRichiesta(new Richiesta(UUID.randomUUID(),idRichiedente,title,testo));
         return ResponseEntity.ok("success");
     }
 

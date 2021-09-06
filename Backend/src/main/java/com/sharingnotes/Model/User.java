@@ -8,7 +8,8 @@ public class User {
     private String email;
     private String password;
     private int rating;
-    private int nVoti;
+    private int nvoti;
+    private int sommaVoti;
 
     public User(UUID _id, String name, String email, String password) {
         this._id = _id;
@@ -16,12 +17,13 @@ public class User {
         this.email = email;
         this.password = password;
         this.rating = 0;
-        this.nVoti = 0;
+        this.nvoti = 0;
+        this.sommaVoti = 0;
     }
 
     @Override
     public String toString() {
-        return ("id:"+ _id+"\n"+"name:"+ name+"\n"+"email:"+ email+"\n"+"password:"+ password+"\n"+"rating:"+ rating+"\n"+"nvoti:"+ nVoti+"\n");
+        return ("id:"+ _id+"\n"+"name:"+ name+"\n"+"email:"+ email+"\n"+"password:"+ password+"\n"+"rating:"+ rating+"\n"+"nvoti:"+ nvoti+"\n"+"sommaVoti:"+ sommaVoti+"\n");
     }
 
     public UUID getId() {
@@ -64,18 +66,19 @@ public class User {
         this.rating = rating;
     }
 
-    public int getnVoti() {
-        return nVoti;
+    public int getNvoti() {
+        return nvoti;
     }
 
-    public void setnVoti(int nVoti) {
-        this.nVoti = nVoti;
+    public void setNvoti(int nvoti) {
+        this.nvoti = nvoti;
     }
 
-    private void updateRating (int newVoto){
-        int sumVoti = this.rating*this.nVoti;
-        sumVoti += newVoto;
-        this.nVoti++;
-        this.rating= (sumVoti/nVoti);
+    public int getSommaVoti() {
+        return sommaVoti;
+    }
+
+    public void setSommaVoti(int sommaVoti) {
+        this.sommaVoti = sommaVoti;
     }
 }

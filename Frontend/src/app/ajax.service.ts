@@ -95,6 +95,11 @@ export class AjaxService {
     return this.httpClient.post(this.updateScoreUrl, {}, { params: params })
   }
 
+  updateUserScore(score, id) {
+    let params = new HttpParams().set('score', score).set('id', id).set("collection", "utenti");
+    return this.httpClient.post(this.updateScoreUrl, {}, { params: params })
+  }
+
   download(fileUrl) {
     return this.httpClient.get(this.downloadUrl, { params: { fileUrl: fileUrl } });
   }

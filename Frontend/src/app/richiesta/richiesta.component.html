@@ -3,13 +3,15 @@
         <div class="col-12 m-0 p-0">
             <div class="m-4 p-4">
                 <!-- Titolo documento-->
-                <h1><strong> {{richiesta?.title}}</strong></h1>
+                <h1 class="d-inline-block"><strong> {{richiesta?.title}}</strong></h1>
+                <!-- Se sei il creatore della richiesta puoi chiuderla -->
+                <button type="button" class="btn btn-danger ml-5 mb-1" *ngIf="idUser == idAutore"><i
+                        class="fas d-inline-block fa-check fa-sm text-white-50 mr-2"></i>Request complete</button>
                 <!-- Descizione -->
                 <h2> {{richiesta?.testo}}</h2>
                 <!-- Autore -->
                 <div>
                     <h3 class="mb-1 text-capitalize"> Richiedente: <strong class="ml-1"> {{autore}}</strong></h3>
-
                 </div>
             </div>
         </div>
@@ -22,7 +24,8 @@
                             <h4 class="font-weight-bold text-primary d-inline mr-5 mt-1">{{nameUserReview[i]}}</h4>
                             <!-- Bottone per aggiungere un voto -->
                             <button type="button" (click)="getUserID(i)" class="btn btn-warning"><i
-                                    class="fas d-inline-block fa-medal fa-sm text-white-50 mr-2"></i>Add User Score</button>
+                                    class="fas d-inline-block fa-medal fa-sm text-white-50 mr-2"></i>Add User
+                                Score</button>
                         </div>
                         <div class="card-body h5 mb-0 font-weight-bold text-gray-800">
                             <p>{{item?.testo}}</p>

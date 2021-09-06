@@ -28,6 +28,7 @@ export class RichiestaComponent implements OnInit {
   id;
   listReviews = [];
   nameUserReview = [];
+  idUser = sessionStorage.getItem("UserID")
 
   ngOnInit(): void {
     this.initForm();

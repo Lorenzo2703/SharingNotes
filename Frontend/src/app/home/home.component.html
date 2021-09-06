@@ -16,7 +16,7 @@
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
-        <!-- Heading -->
+        <!-- Profilo personale -->
         <div class="sidebar-heading ms-1">
             Profile
         </div>
@@ -34,6 +34,13 @@
                 <span class="ms-1">My Reviews</span>
             </a>
         </li>
+        <!-- Tasto Pagina delle richieste -->
+        <li class="nav-item">
+            <a class="nav-link ms-2" [routerLink]="['/home/profile/request']">
+                <i class="fas fa-fw fa-question-circle"></i>
+                <span class="ms-1">My Requests</span>
+            </a>
+        </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
         <!-- Heading -->
@@ -43,7 +50,7 @@
         <!-- Tasto per accedere alle chat -->
         <li class="nav-item">
             <a class="nav-link collapsed ms-2" [routerLink]="['/home/messages']">
-                <i class="fas fa-envelope fa-fw"></i>
+                <i class="fas fa-comments fa-fw"></i>
                 <span class="ms-1">Chat</span>
             </a>
         </li>

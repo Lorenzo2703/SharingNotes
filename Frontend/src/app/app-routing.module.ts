@@ -13,6 +13,7 @@ import { ChatComponent } from './chat/chat.component';
 import { ChatGroupComponent } from './chat-group/chat-group.component';
 import { RequestComponent } from './request/request.component';
 import { RichiestaComponent } from './richiesta/richiesta.component';
+import { ProfileRequestComponent } from './profile-request/profile-request.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
       { path: "messages", component: MessagesComponent },
       { path: "profile/notes", component: ProfileComponent },
       { path: "profile/reviews", component: ProfileReviewComponent },
+      { path: "profile/request", component: ProfileRequestComponent },
       { path: 'note/:_id', component: NoteComponent },
       { path: 'chat/:_id', component: ChatComponent },
       { path: 'review/:_id', component: ReviewComponent },

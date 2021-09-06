@@ -12,5 +12,39 @@
                 </div>
             </div>
         </div>
+        <!-- Risposte -->
+        <div class="row m-3 no-gutters justify-content-center">
+            <div class="col-10 justify-content-center p-0" *ngFor="let item of listReviews; let i = index">
+                <a class="text-decoration-none">
+                    <div class="card m-3 shadow mb-4 card-hover">
+                        <div class="card-header py-3">
+                            <h4 class="m-0 font-weight-bold text-primary">{{nameUserReview[i]}}</h4>
+                        </div>
+                        <div class="card-body h5 mb-0 font-weight-bold text-gray-800">
+                            <p>{{item?.testo}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!-- Form per l'invio di messaggi -->
+        <form [formGroup]="form" (ngSubmit)="submit()" enctype="multipart/form-data">
+            <div class="container-fluid m-0 p-0 mb-3 justify-content-between">
+                <div class="row m-0 p-0 align-items-center justify-content-between">
+                    <!-- Spazio del testo-->
+                    <div class="send-wrap col-9">
+                        <textarea type="text" formControlName="testo" placeholder="testo"
+                            class="form-control send-message" rows="3" placeholder="Write a reply..."></textarea>
+                    </div>
+                    <!-- Bottone dell'invio -->
+                    <div class="btn-panel col-3">
+                        <button type="submit" class="btn w-75 btn-success" role="button">
+                            <i class="fa fa-share"></i>
+                            <h3 class=" ml-2 d-none d-md-inline"> Comment</h3>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>

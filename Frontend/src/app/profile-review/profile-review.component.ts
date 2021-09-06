@@ -27,7 +27,7 @@ export class ProfileReviewComponent implements OnInit {
     //salvo tutte le recensioni scritte dall'utente
     this.ajaxService.getReview().subscribe(res => {
       for (let x in res) {
-        if (res[x]["id_Recensore"] == this.idUser) {
+        if (res[x]["id_Recensore"] == this.idUser && res[x]["title"] != "R1chiesta") {
           this.listReviews.push(res[x]);
         }
       }

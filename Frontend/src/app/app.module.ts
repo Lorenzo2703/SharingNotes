@@ -31,6 +31,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { RichiestaComponent } from './richiesta/richiesta.component';
 import { NewRichiestaComponent } from './new-richiesta/new-richiesta.component';
 import { RequestComponent } from './request/request.component';
+import { ProfileRequestComponent } from './profile-request/profile-request.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { RequestComponent } from './request/request.component';
     NewScoreComponent,
     RichiestaComponent,
     NewRichiestaComponent,
-    RequestComponent
+    RequestComponent,
+    ProfileRequestComponent
 
 
   ],

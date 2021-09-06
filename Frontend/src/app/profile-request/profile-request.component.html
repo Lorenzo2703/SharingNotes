@@ -1,0 +1,40 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Header della pagina -->
+    <div class="d-sm-flex align-items-center justify-content-left mb-4">
+        <h1 class="h3 mb-0 text-black"> My Requests</h1>
+    </div>
+
+    <!-- Spazio delle richieste -->
+    <div class="row mb-4 ">
+
+        <!-- Richiesta -->
+        <div class="col-4 mb-3" *ngFor="let item of listRequest">
+            <a class="text-decoration-none" [routerLink]="['/home/richiesta',item?._id]">
+                <div class="card card-hover shadow h-100 py-2 border-left-success" *ngIf="item?.completed == false">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="h5 font-weight-bold text-primary text-uppercase mb-1">
+                                    {{item?.title}}</div>
+                                <div class=" h6 mt-2 font-weight-bold text-gray-800">{{item?.testo}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-hover shadow h-100 py-2 border-left-danger" *ngIf="item?.completed == true">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="h5 font-weight-bold text-primary text-uppercase mb-1">
+                                    {{item?.title}}</div>
+                                <div class=" h6 mt-2 font-weight-bold text-gray-800">{{item?.testo}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

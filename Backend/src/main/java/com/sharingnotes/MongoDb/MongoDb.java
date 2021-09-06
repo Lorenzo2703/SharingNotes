@@ -72,7 +72,9 @@ public class MongoDb {
                 .append("name",user.getName())
                 .append("email",user.getEmail().toLowerCase())
                 .append("password",user.getPassword())
-                .append("rating",user.getRating());
+                .append("rating",user.getRating())
+                .append("nvoti",user.getNvoti())
+                .append("sommaVoti",user.getSommaVoti());
         database.getCollection("utenti").insertOne(insertUser);
     }
 

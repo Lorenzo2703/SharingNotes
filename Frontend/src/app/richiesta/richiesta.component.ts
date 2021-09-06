@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
 import { AjaxService } from '../ajax.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NewUserScoreComponent } from '../new-user-score/new-user-score.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-richiesta',
@@ -11,7 +13,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class RichiestaComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private data: DataService, private ajaxService: AjaxService) { }
+  constructor(private activatedRoute: ActivatedRoute, private data: DataService, public dialog: MatDialog, private ajaxService: AjaxService) { }
 
   richiesta = {
     testo: "",
@@ -37,6 +39,16 @@ export class RichiestaComponent implements OnInit {
     if (this.richiesta._id === "") {
       this.getParam();
     }
+  }
+
+  //utilizzoquesta funzione per potermi salvare l'id dell'user da votare
+  getUserID(number){
+    sessionStorage.setItem("idUserScore", this.listReviews[number]["id_Recensore"])
+    this.openScoreDialog()
+  }
+  openScoreDialog() {
+    //apre new-score component
+    const dialogRef = this.dialog.open(NewUserScoreComponent);
   }
 
   getParam() {

@@ -9,6 +9,7 @@
                 <!-- Autore -->
                 <div>
                     <h3 class="mb-1 text-capitalize"> Richiedente: <strong class="ml-1"> {{autore}}</strong></h3>
+
                 </div>
             </div>
         </div>
@@ -16,9 +17,12 @@
         <div class="row m-3 no-gutters justify-content-center">
             <div class="col-10 justify-content-center p-0" *ngFor="let item of listReviews; let i = index">
                 <a class="text-decoration-none">
-                    <div class="card m-3 shadow mb-4 card-hover">
+                    <div class="card m-3 shadow mb-4 card-hover ">
                         <div class="card-header py-3">
-                            <h4 class="m-0 font-weight-bold text-primary">{{nameUserReview[i]}}</h4>
+                            <h4 class="font-weight-bold text-primary d-inline mr-5 mt-1">{{nameUserReview[i]}}</h4>
+                            <!-- Bottone per aggiungere un voto -->
+                            <button type="button" (click)="getUserID(i)" class="btn btn-warning"><i
+                                    class="fas d-inline-block fa-medal fa-sm text-white-50 mr-2"></i>Add User Score</button>
                         </div>
                         <div class="card-body h5 mb-0 font-weight-bold text-gray-800">
                             <p>{{item?.testo}}</p>

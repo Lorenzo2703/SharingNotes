@@ -11,24 +11,25 @@
     </div>
 
     <!-- Spazio delle note -->
-    <div class="row mb-4">
+    <div class="row mb-4 justify-content-center">
 
         <!-- Richiesta -->
-        <div class="col-xl-4 col-md-6 mb-4" *ngFor="let item of listRequest">
-            <a class="text-decoration-none" [routerLink]="['/home/richiesta',item?._id]">
-                <div class="card card-hover shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="h5 font-weight-bold text-primary text-uppercase mb-1">
-                                    {{item?.title}}</div>
-                                <div class=" h6 mt-2 font-weight-bold text-gray-800">{{item?.testo}}</div>
+        <div class="col-10 mb-3" *ngFor="let item of listRequest">
+            <div *ngIf = "item?.completed == false">
+                <a class="text-decoration-none" [routerLink]="['/home/richiesta',item?._id]">
+                    <div class="card card-hover shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="h5 font-weight-bold text-primary text-uppercase mb-1">
+                                        {{item?.title}}</div>
+                                    <div class=" h6 mt-2 font-weight-bold text-gray-800">{{item?.testo}}</div>
+                                </div>
                             </div>
                         </div>
-
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
         </div>
     </div>
 </div>

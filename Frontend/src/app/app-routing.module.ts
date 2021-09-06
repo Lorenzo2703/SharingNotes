@@ -11,6 +11,8 @@ import { ProfileReviewComponent } from './profile-review/profile-review.componen
 import { MessagesComponent } from './messages/messages.component';
 import { ChatComponent } from './chat/chat.component';
 import { ChatGroupComponent } from './chat-group/chat-group.component';
+import { RequestComponent } from './request/request.component';
+import { RichiestaComponent } from './richiesta/richiesta.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
@@ -24,7 +26,9 @@ const routes: Routes = [
       { path: 'note/:_id', component: NoteComponent },
       { path: 'chat/:_id', component: ChatComponent },
       { path: 'review/:_id', component: ReviewComponent },
-      { path: 'chat-group/:_id', component: ChatGroupComponent }],
+      { path: 'chat-group/:_id', component: ChatGroupComponent },
+      { path: 'request', component: RequestComponent},
+      { path: 'richiesta/:_id', component: RichiestaComponent}],
   },
   { path: '**', component: LoginComponent }];
 

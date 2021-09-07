@@ -86,6 +86,16 @@ public class MainTest {
         return new ResponseEntity((mongo.getUserByID(id)), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/completeRequest", method = RequestMethod.POST)
+    public ResponseEntity<String> completeRequest(@RequestParam("bool") String bool, @RequestParam("id")String id,@RequestParam("collection") String collection){
+        try {
+            mongo.completeRequest(mongo.getDocumentByID(id,collection),collection, Boolean.parseBoolean(bool));
+            return new ResponseEntity<>(gson.toJson("Richiesta chiusa correttamente"), HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(gson.toJson("Richiesta non chiusa"), HttpStatus.BAD_REQUEST);
+        }
+    }
+
     public File convertFile(MultipartFile multipartFile){
         String fileName = multipartFile.getOriginalFilename();
         String prefix = fileName != null ? fileName.substring(fileName.lastIndexOf(".")) : null;

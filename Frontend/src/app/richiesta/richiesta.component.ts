@@ -91,7 +91,9 @@ export class RichiestaComponent implements OnInit {
     })
   }
 
-
+  completeRequest(){
+    this.ajaxService.completeRequest(this.id);
+  }
   submit() {
     //inizializzo il form
     const formData = new FormData();

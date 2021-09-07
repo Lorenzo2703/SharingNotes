@@ -44,6 +44,10 @@ public class MongoDb {
         database.getCollection(collection).deleteOne(document);
     }
 
+    public void completeRequest(Document document,String collection,boolean bool){
+        database.getCollection(collection).updateOne(Filters.eq("_id",document.get("_id")), Updates.set("completed",bool));
+    }
+
     public void updateScore(Document document,String collection,int score){
         int newNVoti=(document.getInteger("nvoti")+1);
         int newSomma=(document.getInteger("sommaVoti")+score);

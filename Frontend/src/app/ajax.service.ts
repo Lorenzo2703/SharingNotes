@@ -27,7 +27,13 @@ export class AjaxService {
   updateScoreUrl = this.baseUrl + "updateScore"
   downloadUrl = this.baseUrl + "download";
   insertRichiestaUrl = this.baseUrl + "insertRichiesta";
+  completeRequestUrl = this.baseUrl + 'completeRequest'
 
+  completeRequest(id){
+    let params = new HttpParams().set('bool', "true").set('id', id).set("collection", "richieste");
+    return this.httpClient.post(this.completeRequestUrl, {}, { params: params })
+  }
+  
   login(email: string, password: string) {
     const data = { "email": email, "password": password };
     return this.httpClient.post(this.loginUrl, {}, { params: data });

@@ -91,13 +91,15 @@ export class RichiestaComponent implements OnInit {
     })
   }
 
+  //completamento della richiesta
   completeRequest(){
+    //richiesta completed passa da true a false
     this.ajaxService.completeRequest(this.id).subscribe( res =>{
       console.log(res)
     });
     window.location.reload()
   }
-  
+
   submit() {
     //inizializzo il form
     const formData = new FormData();

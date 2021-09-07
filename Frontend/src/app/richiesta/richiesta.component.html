@@ -5,8 +5,11 @@
                 <!-- Titolo documento-->
                 <h1 class="d-inline-block"><strong> {{richiesta?.title}}</strong></h1>
                 <!-- Se sei il creatore della richiesta puoi chiuderla -->
-                <button type="button" (click)="completeRequest()" class="btn btn-danger ml-5 mb-1" *ngIf="idUser == idAutore"><i
-                        class="fas d-inline-block fa-check fa-sm text-white-50 mr-2"></i>Request complete</button>
+                <button type="button" (click)="completeRequest()" class="btn btn-danger ml-5 mb-1" *ngIf="idUser == idAutore && richiesta?.completed == false"><i
+                        class="fas d-inline-block fa-check fa-sm text-white-50 mr-2"></i>Close Request</button>
+                <!-- Se sei il creatore della richiesta puoi chiuderla -->
+                <button type="button" class="btn btn-danger ml-5 mb-1" *ngIf="idUser == idAutore && richiesta?.completed == true"><i
+                    class="fas d-inline-block fa-check fa-sm text-white-50 mr-2"></i>Request completed</button>
                 <!-- Descizione -->
                 <h2> {{richiesta?.testo}}</h2>
                 <!-- Autore -->

@@ -73,7 +73,7 @@ export class NoteComponent implements OnInit, DoCheck {
           /* salvo i nomi dei recensori
           avrò in questo modo una correlazioni tra nome del recensore e recensione grazie alla posizione */
           this.ajaxService.getUserByID(res[x]["id_Recensore"]).subscribe(user => {
-            this.nameUserReview.push(user["name"])
+            this.nameUserReview.splice(Number(x), 0, user["name"])
           })
         }
       }

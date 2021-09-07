@@ -43,7 +43,7 @@ export class RichiestaComponent implements OnInit {
   }
 
   //utilizzoquesta funzione per potermi salvare l'id dell'user da votare
-  getUserID(number){
+  getUserID(number) {
     sessionStorage.setItem("idUserScore", this.listReviews[number]["id_Recensore"])
     this.openScoreDialog()
   }
@@ -57,13 +57,13 @@ export class RichiestaComponent implements OnInit {
       //prendo l'id della nota dall'url
       this.id = params['_id'];
       //scorro la lista dei documenti e salvo quello che ho selezionato
-      this.ajaxService.getRequest().subscribe(res =>{
-        for(let x in res){
-          if(res[x]._id == this.id){
+      this.ajaxService.getRequest().subscribe(res => {
+        for (let x in res) {
+          if (res[x]._id == this.id) {
             this.richiesta = res[x];
             this.idAutore = res[x]["id_Richiedente"]
             //scrivo il nome dell'autore della richiesta
-            this.ajaxService.getUserByID(res[x]["id_Richiedente"]).subscribe(res =>{
+            this.ajaxService.getUserByID(res[x]["id_Richiedente"]).subscribe(res => {
               this.autore = res["name"];
             })
           }
@@ -79,12 +79,14 @@ export class RichiestaComponent implements OnInit {
         if (res[x]["id_Nota_Recensita"] == this.id) {
           //salvo le recensioni nella lista
           this.listReviews.push(res[x]);
-          /* salvo i nomi dei recensori
-          avrò in questo modo una correlazioni tra nome del recensore e recensione grazie alla posizione */
-          this.ajaxService.getUserByID(res[x]["id_Recensore"]).subscribe(user => {
-            this.nameUserReview.push(user["name"])
-          })
         }
+      }
+    /* salvo i nomi dei recensori
+    avrò in questo modo una correlazioni tra nome del recensore e recensione grazie alla posizione */
+      for(let x in this.listReviews){
+        this.ajaxService.getUserByID(this.listReviews[x]["id_Recensore"]).subscribe(user => {
+          this.nameUserReview.splice(Number(x), 0, user["name"])
+        })
       }
     })
   }

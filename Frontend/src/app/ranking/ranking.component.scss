@@ -1,0 +1,37 @@
+@import "/node_modules/material-icons/iconfont/material-icons.scss";
+
+#container1 {
+    margin-bottom: 120px;
+    padding:20px;
+    background-color:#f5f5f5;
+}
+
+.rating {
+    margin-left: 30px;
+}
+
+div.user {
+    background: #5cb85c;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    padding: 3px 4px;
+}
+
+.note {
+    background: #be1010;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    padding: 3px 4px;
+    border: none;
+}
+
+.skillLine {
+   display: inline-block;
+    width: 100%;
+    min-height: 90px;
+    padding: 3px 4px;
+}
+
+

@@ -33,6 +33,7 @@ import { NewRichiestaComponent } from './new-richiesta/new-richiesta.component';
 import { RequestComponent } from './request/request.component';
 import { ProfileRequestComponent } from './profile-request/profile-request.component';
 import { NewUserScoreComponent } from './new-user-score/new-user-score.component';
+import { RankingComponent } from './ranking/ranking.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { NewUserScoreComponent } from './new-user-score/new-user-score.component
     NewRichiestaComponent,
     RequestComponent,
     ProfileRequestComponent,
-    NewUserScoreComponent
+    NewUserScoreComponent,
+    RankingComponent
 
 
   ],

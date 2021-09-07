@@ -14,6 +14,7 @@ import { ChatGroupComponent } from './chat-group/chat-group.component';
 import { RequestComponent } from './request/request.component';
 import { RichiestaComponent } from './richiesta/richiesta.component';
 import { ProfileRequestComponent } from './profile-request/profile-request.component';
+import { RankingComponent } from './ranking/ranking.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
       { path: 'review/:_id', component: ReviewComponent },
       { path: 'chat-group/:_id', component: ChatGroupComponent },
       { path: 'request', component: RequestComponent},
+      { path: 'ranking', component: RankingComponent},
       { path: 'richiesta/:_id', component: RichiestaComponent}],
   },
   { path: '**', component: LoginComponent }];

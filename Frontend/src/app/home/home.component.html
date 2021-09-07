@@ -54,11 +54,24 @@
                 <span class="ms-1">Chat</span>
             </a>
         </li>
-        <!-- Tasto per accedere agli updates -->
+        <!-- Tasto per vedere la bacheca delle richieste -->
         <li class="nav-item">
             <a class="nav-link ms-2" [routerLink]="['/home/request']">
                 <i class="fas fa-file-alt fa-fw"></i>
                 <span class="ms-1">Request</span></a>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+        <!-- Heading -->
+        <div class="sidebar-heading ms-1">
+            Ranking
+        </div>
+        <!-- Tasto per accedere alla classifica degli utente -->
+        <li class="nav-item">
+            <a class="nav-link collapsed ms-2" [routerLink]="['/home/ranking']">
+                <i class="fas fa-medal fa-fw"></i>
+                <span class="ms-1">Top 10</span>
+            </a>
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">

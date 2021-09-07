@@ -1,0 +1,63 @@
+<div class="container" id="container1">
+    <div class="col-12">
+        <div class="panel panel-default">
+            <!-- Header User -->
+            <div class="panel-body text-center">
+                <p class="lead text-dark">
+                    <strong>Users' ranking</strong>
+                </p>
+            </div>
+            <!-- User Ranking -->
+            <div>
+                <ul class="list-group list-group-flush text-center" *ngFor="let user of this.listUsers; index as i">
+                    <li class="list-group-item">
+                        <div class="skillLineDefault">
+                            <!-- User -->
+                            <div class="user pull-left text-center mt-5 mr-5 d-inline-block ">#{{i+1}} {{user?.name}}
+                            </div>
+                            <!-- Rating -->
+                            <button mat-icon-button [color]="color" *ngFor="let ratingId of ratingArr;index as i">
+                                <mat-icon>
+                                    {{showIcon(i, user?.rating)}}
+                                </mat-icon>
+                            </button>
+                            <!-- Numero voti -->
+                            <div class="ml-5 d-inline-block "><strong>N.voti: {{user?.nvoti}}</strong></div>
+                        </div>
+                        <!-- Divider -->
+                        <hr class="sidebar-divider d-none d-md-block">
+                    </li>
+                </ul>
+            </div>
+            <!-- Header Note -->
+            <div class="panel-body text-center mt-3 mb-3">
+                <p class="lead text-dark">
+                    <strong>Notes' ranking</strong>
+                </p>
+            </div>
+            <!-- Note Ranking -->
+            <div>
+                <ul class="list-group list-group-flush text-center" *ngFor="let note of this.listNotes; index as i">
+                    <li class="list-group-item" *ngIf= "i < 10">
+                        <div class="skillLineDefault">
+                            <!-- User -->
+                            <div class="pull-left text-center mt-5 mr-5 d-inline-block" [routerLink]="['/home/note',note?._id]">
+                                <button class="note">#{{i+1}} {{note?.title}}</button>
+                            </div>
+                            <!-- Rating -->
+                            <button mat-icon-button [color]="color" *ngFor="let ratingId of ratingArr;index as i">
+                                <mat-icon>
+                                    {{showIcon(i, note?.rating)}}
+                                </mat-icon>
+                            </button>
+                            <!-- Numero voti -->
+                            <div class="ml-5 d-inline-block "><strong>N.voti: {{note?.nvoti}}</strong></div>
+                        </div>
+                        <!-- Divider -->
+                        <hr class="sidebar-divider d-none d-md-block">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

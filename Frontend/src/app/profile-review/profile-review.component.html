@@ -2,21 +2,13 @@
 <div class="container-fluid">
     <!-- Header -->
     <div class="d-sm-flex align-items-center justify-content-left mb-4">
-        <h1 class="h3 mb-0 text-black"> Hi {{nameUser}}!</h1>
-        <!-- Rating del profilo -->
-        <div class="content text-center">
-            <span class="ml-5"> Your Score: </span>
-            <div class="ratings ml-5"> <span class="product-rating h4"> {{ratingUser}} </span><span>/5</span>
-                <div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                        class="fa fa-star"></i> </div>
-            </div>
-        </div>
+        <h1 class="h3 mb-0 text-black"> My Review</h1>
     </div>
     <!-- Content Row -->
     <div class="row">
         <!-- Lista delle recensioni pubblicate dall'utente -->
         <div class="col-xl-4 col-md-6 mb-4" *ngFor="let item of listReviews">
-            <a class="text-decoration-none" [routerLink]="['/home/review',item?._id]">
+            <a class="text-decoration-none" [routerLink]="['/home/note',item?.id_Nota_Recensita]">
                 <div class="card card-hover shadow h-100 py-2 ">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">

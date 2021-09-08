@@ -7,13 +7,13 @@
             <form [formGroup]="form" (ngSubmit)="submit()" enctype="multipart/form-data">
                 <!-- Insert Titolo-->
                 <mat-form-field class="w-100" MatFormFieldControl>
-                    <mat-label>Title</mat-label>
-                    <input formControlName="title" matInput placeholder="Title" />
+                    <mat-label>Subject</mat-label>
+                    <input formControlName="title" matInput placeholder="Subject" />
                 </mat-form-field>
                 <!-- Insert della description -->
                 <mat-form-field class="w-100">
                     <mat-label>Description</mat-label>
-                    <input type="text" formControlName="description" matInput placeholder="description" />
+                    <input type="text" formControlName="description" matInput placeholder="Description (University, professor, academic year,.. )" />
                 </mat-form-field>
                 <!-- Insert del file -->
                 <div class="justify-content-center text-center align-items-center">

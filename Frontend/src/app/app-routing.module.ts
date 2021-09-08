@@ -15,6 +15,7 @@ import { RequestComponent } from './request/request.component';
 import { RichiestaComponent } from './richiesta/richiesta.component';
 import { ProfileRequestComponent } from './profile-request/profile-request.component';
 import { RankingComponent } from './ranking/ranking.component';
+import { ProfileNoteComponent } from './profile-note/profile-note.component';
 
 const routes: Routes = [
   { path: "", component: LoginComponent },
@@ -23,7 +24,7 @@ const routes: Routes = [
     path: "home", component: HomeComponent, children: [
       { path: "", component: DashboardComponent },
       { path: "messages", component: MessagesComponent },
-      { path: "profile/notes", component: ProfileComponent },
+      { path: "profile/notes", component: ProfileNoteComponent },
       { path: "profile/reviews", component: ProfileReviewComponent },
       { path: "profile/request", component: ProfileRequestComponent },
       { path: 'note/:_id', component: NoteComponent },

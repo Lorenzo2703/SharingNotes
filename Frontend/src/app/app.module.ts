@@ -34,6 +34,8 @@ import { RequestComponent } from './request/request.component';
 import { ProfileRequestComponent } from './profile-request/profile-request.component';
 import { NewUserScoreComponent } from './new-user-score/new-user-score.component';
 import { RankingComponent } from './ranking/ranking.component';
+import { ProfileNoteComponent } from './profile-note/profile-note.component';
+
 
 @NgModule({
   declarations: [
@@ -59,9 +61,9 @@ import { RankingComponent } from './ranking/ranking.component';
     RequestComponent,
     ProfileRequestComponent,
     NewUserScoreComponent,
-    RankingComponent
-
-
+    RankingComponent,
+    ProfileNoteComponent,
+    
   ],
   imports: [
     BrowserModule,

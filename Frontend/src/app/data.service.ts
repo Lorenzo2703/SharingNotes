@@ -14,4 +14,5 @@ export class DataService {
   listChats = [];
   listUsers= [];
   listGroupChat = [];
+  listCategorie = ["Matematica", "Fisica", "Beni Culturali e Storia dell'arte", "Informatica", "Ingegneria", "Chimica, Biologia, Biotecnologie", "Agraria, Geologia, Scienze dei materiali", "Scienze della Nutrizione, Metaboliche e Neuroscienze", "Lettere", "Giurisprudenza", "Storia e Filosofia", "Medicina e Farmacia", "Economia", "Architettura", "Lingue Straniere", "Psicologia", "Scienze Umane, Politiche e Sociali", "Scienze motorie" ]
 }

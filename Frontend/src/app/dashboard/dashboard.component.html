@@ -4,8 +4,19 @@
     <!-- Header della pagina -->
     <div class="d-sm-flex align-items-center justify-content-left mb-4">
         <h1 class="h3 mb-0 text-black"> Welcome {{nameUser}}!</h1>
-        <!-- Rating del profilo -->
     </div>
+
+    <!-- Filtro -->
+    <!-- Form -->
+    <form [formGroup]="form" enctype="multipart/form-data">
+        <!-- Filtra in base alla categoria-->
+        <mat-form-field class="w-100" MatFormFieldControl>
+            <mat-label>Select Categories</mat-label>
+            <mat-select formControlName="id">
+                <mat-option *ngFor="let cat of categories"  [value]="cat">{{cat}}</mat-option>
+              </mat-select>
+        </mat-form-field>
+    </form>
 
     <!-- Spazio delle note -->
     <div class="row mb-4">

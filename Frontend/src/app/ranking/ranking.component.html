@@ -13,7 +13,8 @@
                     <li class="list-group-item">
                         <div class="skillLineDefault">
                             <!-- User -->
-                            <div class="user pull-left text-center mt-5 mr-5 d-inline-block ">#{{i+1}} {{user?.name}}
+                            <div class="user pull-left text-center mt-5 mr-5 d-inline-block "[routerLink]="['/home/profile',user?._id]">
+                                <button class= "user"> #{{i+1}} {{user?.name}} </button>
                             </div>
                             <!-- Rating -->
                             <button mat-icon-button [color]="color" *ngFor="let ratingId of ratingArr;index as i">

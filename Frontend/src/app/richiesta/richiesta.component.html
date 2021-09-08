@@ -14,7 +14,11 @@
                 <h2> {{richiesta?.testo}}</h2>
                 <!-- Autore -->
                 <div>
-                    <h3 class="mb-1 text-capitalize"> Richiedente: <strong class="ml-1"> {{autore}}</strong></h3>
+                    <h3 class="mb-1 text-capitalize"> Richiedente: 
+                        <strong class="ml-1"> 
+                        <a class="text-decoration-none" [routerLink]="['/home/profile',richiesta?.id_Richiedente]">{{autore}}</a>
+                        </strong>
+                    </h3>
                 </div>
             </div>
         </div>
@@ -24,7 +28,9 @@
                 <a class="text-decoration-none">
                     <div class="card m-3 shadow mb-4 card-hover ">
                         <div class="card-header py-3">
-                            <h4 class="font-weight-bold text-primary d-inline mr-5 mt-1">{{nameUserReview[i]}}</h4>
+                            <h4 class="font-weight-bold text-primary d-inline mr-5 mt-1">
+                                <a class="text-decoration-none" [routerLink]="['/home/profile',item?.id_Recensore]">{{nameUserReview[i]}}</a>
+                            </h4>
                             <!-- Bottone per aggiungere un voto -->
                             <button type="button" (click)="getUserID(i)" class="btn btn-warning"><i
                                     class="fas d-inline-block fa-medal fa-sm text-white-50 mr-2"></i>Add User

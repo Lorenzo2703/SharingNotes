@@ -1,1 +1,88 @@
-<p>profile-note works!</p>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Header della pagina -->
+    <div class="d-sm-flex align-items-center justify-content-left mb-4">
+        <h1 class="h3 mb-0 text-black"> Hi {{user?.name}}!</h1>
+        <!-- Rating del profilo -->
+        <div class="content text-center">
+            <span class="ml-5"> Your Score: </span>
+            <div class="ratings ml-5"> <span class="product-rating h4"> {{user?.rating}} </span><span>/5</span>
+                <div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                        class="fa fa-star"></i> </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pubblicazioni dell'utente-->
+    <div class="row mb-4">
+        <!-- Spazio delle note -->
+        <h2 class="h3 mb-0 text-black"> Published {{this.listNotes.length}} notes:</h2>
+        <div class="col-xl-4 col-md-6 mb-4" *ngFor="let item of listNotes">
+            <a class="text-decoration-none" [routerLink]="['/home/note',item?._id]">
+                <div class="card card-hover shadow h-100 py-2 {{item?.color}}">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="h5 font-weight-bold text-primary text-uppercase mb-1">
+                                    {{item?.title}}</div>
+                                <div class=" h6 mt-2 font-weight-bold text-gray-800">{{item?.description}}</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Spazio delle recensioni-->
+        <h2 class="h3 mb-0 text-black"> Published {{this.listReviews.length}} reviews:</h2>
+        <div class="col-xl-4 col-md-6 mb-4" *ngFor="let item of listReviews">
+            <a class="text-decoration-none" [routerLink]="['/home/note',item?.id_Nota_Recensita]">
+                <div class="card card-hover shadow h-100 py-2 ">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="h5 font-weight-bold text-primary text-uppercase mb-1 ">
+                                    {{item?.title}}</div>
+                                <div class=" h6 mt-2 font-weight-bold text-gray-800 ">{{item?.testo}}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-user-edit fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Spazio delle richieste -->
+        <h2 class="h3 mb-0 text-black"> Published {{this.listRequest.length}} requests:</h2>
+        <div class="col-4 mb-3" *ngFor="let item of listRequest">
+            <a class="text-decoration-none" [routerLink]="['/home/richiesta',item?._id]">
+                <div class="card card-hover shadow h-100 py-2 border-left-success" *ngIf="item?.completed == false">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="h5 font-weight-bold text-primary text-uppercase mb-1">
+                                    {{item?.title}}</div>
+                                <div class=" h6 mt-2 font-weight-bold text-gray-800">{{item?.testo}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-hover shadow h-100 py-2 border-left-danger" *ngIf="item?.completed == true">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="h5 font-weight-bold text-primary text-uppercase mb-1">
+                                    {{item?.title}}</div>
+                                <div class=" h6 mt-2 font-weight-bold text-gray-800">{{item?.testo}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

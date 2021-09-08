@@ -12,7 +12,8 @@
         <li class="nav-item active my-1">
             <a class="nav-link ms-2" [routerLink]="['/home']">
                 <i class="fas fa-fw fa-home"></i>
-                <span class="ms-1">Dashboard</span></a>
+                <span class="ms-1">Dashboard</span>
+            </a>
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -20,6 +21,13 @@
         <div class="sidebar-heading ms-1">
             Profile
         </div>
+        <!-- Tasto Pagina del profilo -->
+        <li class="nav-item">
+            <a class="nav-link ms-2" [routerLink]="['/home/profile/',this.userID]">
+                <i class="fas fa-fw fa-user"></i>
+                <span class="ms-1">My Profile</span>
+            </a>
+        </li>
         <!-- Tasto Pagina delle note -->
         <li class="nav-item">
             <a class="nav-link ms-2" [routerLink]="['/home/profile/notes']">

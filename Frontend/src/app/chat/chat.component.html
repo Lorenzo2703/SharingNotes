@@ -20,7 +20,7 @@
                             <!-- Messaggi ricevuti -->
                             <div class="dim media-body2  justify-content-start container-fluid m-0 pt-1"
                                 *ngIf="res.key != this.user1ID">
-                                <h4 class="text-capitalize p-0 m-0 media-heading">
+                                <h4 class="text-capitalize p-0 m-0 media-heading" [routerLink]="['/home/profile',user2?._id]">
                                     {{user2.name}}: </h4>
                                 <p class="p-1 m-1 col-12 text-black media-heading2">
                                     {{res.value}}

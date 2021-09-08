@@ -4,6 +4,7 @@ import { DataService } from '../data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NewNoteComponent } from '../new-note/new-note.component';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -23,6 +24,8 @@ export class HomeComponent implements OnInit, DoCheck {
   listUsers = []; //lista degli utenti
   listGroupChat = []; //lista delle chat di gruppo
   searchText;
+  userID = sessionStorage.getItem("UserID")
+
   i = 0;
 
   ngOnInit(): void {
@@ -61,17 +64,17 @@ export class HomeComponent implements OnInit, DoCheck {
 
     this.ajaxService.getReview().subscribe(res => {
       for (let x in res) {
-        this.listReviews.push(res[x]);   
-      
-      if (this.i == this.dataservice?.listColor?.length - 1) {
-        this.i = 0;
-      } else {
-        this.i++;
-      }
+        this.listReviews.push(res[x]);
 
-      this.listReviews[x].color = this.dataservice.listColor[this.i].color;
-    }
-    this.dataservice.listReviews = this.listReviews;
+        if (this.i == this.dataservice?.listColor?.length - 1) {
+          this.i = 0;
+        } else {
+          this.i++;
+        }
+
+        this.listReviews[x].color = this.dataservice.listColor[this.i].color;
+      }
+      this.dataservice.listReviews = this.listReviews;
     })
   }
 
@@ -79,38 +82,38 @@ export class HomeComponent implements OnInit, DoCheck {
 
     this.ajaxService.getAllChat(sessionStorage.getItem("UserID")).subscribe(res => {
       for (let x in res) {
-        this.listChats.push(res[x]);   
-      
-      if (this.i == this.dataservice?.listColor?.length - 1) {
-        this.i = 0;
-      } else {
-        this.i++;
-      }
+        this.listChats.push(res[x]);
 
-      this.listChats[x].color = this.dataservice.listColor[this.i].color;
-    }
-    this.dataservice.listChats = this.listChats;
+        if (this.i == this.dataservice?.listColor?.length - 1) {
+          this.i = 0;
+        } else {
+          this.i++;
+        }
+
+        this.listChats[x].color = this.dataservice.listColor[this.i].color;
+      }
+      this.dataservice.listChats = this.listChats;
     })
   }
 
-  getGroupChat(){
+  getGroupChat() {
 
-      this.ajaxService.getGroupChat(sessionStorage.getItem("UserID")).subscribe(res => {
-        for (let x in res) {
-          this.listGroupChat.push(res[x]);   
-        
+    this.ajaxService.getGroupChat(sessionStorage.getItem("UserID")).subscribe(res => {
+      for (let x in res) {
+        this.listGroupChat.push(res[x]);
+
       }
       this.dataservice.listGroupChat = this.listGroupChat;
-      })
+    })
   }
 
-  getUser(){
-    this.ajaxService.getUser().subscribe((res) =>{
+  getUser() {
+    this.ajaxService.getUser().subscribe((res) => {
       for (let x in res) {
-        this.listUsers.push(res[x]);   
+        this.listUsers.push(res[x]);
 
-    }
-    this.dataservice.listUsers = this.listUsers;
+      }
+      this.dataservice.listUsers = this.listUsers;
     })
     console.log(this.listUsers)
   }

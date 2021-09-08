@@ -8,7 +8,13 @@
                 <h2> {{note?.description}}</h2>
                 <!-- Punteggio -->
                 <div>
-                    <h3 class="mb-1 text-capitalize"> Author: <strong class="ml-1"> {{name}}</strong></h3>
+                    <h3 class="mb-1 text-capitalize"> Author: 
+                        <strong class="ml-1">
+                            <a class="text-decoration-none" [routerLink]="['/home/profile',note?.id_User]">
+                                {{name}}
+                            </a>
+                        </strong>
+                    </h3>
                     <h3 class="d-inline"> Rating: </h3>
                     <span class="ratings ml-1"> <span class="product-rating"> {{note?.rating}}
                         </span><span>/5</span>

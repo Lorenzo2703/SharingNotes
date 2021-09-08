@@ -27,6 +27,7 @@ const routes: Routes = [
       { path: "profile/notes", component: ProfileNoteComponent },
       { path: "profile/reviews", component: ProfileReviewComponent },
       { path: "profile/request", component: ProfileRequestComponent },
+      { path: 'profile/:_id', component: ProfileComponent },
       { path: 'note/:_id', component: NoteComponent },
       { path: 'chat/:_id', component: ChatComponent },
       { path: 'review/:_id', component: ReviewComponent },

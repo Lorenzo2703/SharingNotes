@@ -11,8 +11,9 @@ public class Notes {
     private String id_User;
     private int nVoti;
     private int sommaVoti;
+    private String categoria;
 
-    public Notes(UUID _id, String title, String description, String fileUrl, String id_User) {
+    public Notes(UUID _id, String title, String description, String fileUrl, String id_User, String categoria) {
         this._id = _id;
         this.title = title;
         this.description = description;
@@ -21,6 +22,7 @@ public class Notes {
         this.id_User = id_User;
         this.nVoti = 0 ;
         this.sommaVoti = 0;
+        this.categoria = categoria;
     }
 
     public UUID getId() {
@@ -85,5 +87,21 @@ public class Notes {
 
     public void setSommaVoti(int sommaVoti) {
         this.sommaVoti = sommaVoti;
+    }
+
+    public UUID get_id() {
+        return _id;
+    }
+
+    public void set_id(UUID _id) {
+        this._id = _id;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }

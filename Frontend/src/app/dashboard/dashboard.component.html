@@ -12,8 +12,8 @@
         <!-- Filtra in base alla categoria-->
         <mat-form-field class="w-100" MatFormFieldControl>
             <mat-label>Select Categories</mat-label>
-            <mat-select formControlName="id">
-                <mat-option *ngFor="let cat of categories"  [value]="cat">{{cat}}</mat-option>
+            <mat-select formControlName="category">
+                <mat-option *ngFor="let cat of categories" [value]="cat" [routerLink]="['/home/cat',cat]">{{cat}}</mat-option>
               </mat-select>
         </mat-form-field>
     </form>

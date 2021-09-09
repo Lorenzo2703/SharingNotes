@@ -23,6 +23,7 @@ const routes: Routes = [
   {
     path: "home", component: HomeComponent, children: [
       { path: "", component: DashboardComponent },
+      { path: "cat/:category", component: DashboardComponent },
       { path: "messages", component: MessagesComponent },
       { path: "profile/notes", component: ProfileNoteComponent },
       { path: "profile/reviews", component: ProfileReviewComponent },

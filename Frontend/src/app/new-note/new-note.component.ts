@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AjaxService } from '../ajax.service';
+import { DataService } from '../data.service';
 import { HomeComponent } from '../home/home.component';
 
 @Component({
@@ -12,15 +13,17 @@ import { HomeComponent } from '../home/home.component';
 })
 export class NewNoteComponent implements OnInit {
 
-  constructor(private ajax: AjaxService, public dialogRef: MatDialogRef<HomeComponent>) { }
+  constructor(private ajax: AjaxService, private data: DataService, public dialogRef: MatDialogRef<HomeComponent>) { }
   form;
   file;
   loading;
+  listCategorie = this.data.listCategorie;
 
   initForm() {
     this.form = new FormGroup({
       title: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
+      categoria: new FormControl('', [Validators.required]),
       file: new FormControl('', Validators.required)
     });
   }
@@ -34,6 +37,7 @@ export class NewNoteComponent implements OnInit {
     formData.append('title', this.form.get("title").value);
     formData.append("description", this.form.get("description").value);
     formData.append("userId", sessionStorage.getItem("UserID"));
+    formData.append("categoria", this.form.get("categoria").value)
     this.ajax.submitFile(formData).subscribe((res) => {
       this.loading = false;
       this.dialogRef.close();

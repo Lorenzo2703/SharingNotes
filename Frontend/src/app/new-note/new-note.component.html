@@ -15,6 +15,13 @@
                     <mat-label>Description</mat-label>
                     <input type="text" formControlName="description" matInput placeholder="Description (University, professor, academic year,.. )" />
                 </mat-form-field>
+                <!-- Lista delle categorie-->
+                <mat-form-field class="w-100" MatFormFieldControl>
+                    <mat-label>Add category</mat-label>
+                    <mat-select formControlName="categoria">
+                        <mat-option *ngFor="let cat of this.listCategorie"  [value]="cat">{{cat}}</mat-option>
+                      </mat-select>
+                </mat-form-field>
                 <!-- Insert del file -->
                 <div class="justify-content-center text-center align-items-center">
                     <input (change)="handleFileInput($event.target.files)" class="form-control" formControlName="file"

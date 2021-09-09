@@ -42,8 +42,8 @@ public class MainTest {
     }
 
     @RequestMapping(value = "/fileUpload", method = RequestMethod.POST)
-    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile multipartFile,@RequestParam("title") String title,@RequestParam("description") String description,@RequestParam("userId") String id) {
-        CloudApi.uploadFile(convertFile(multipartFile),title,description,id);
+    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile multipartFile,@RequestParam("title") String title,@RequestParam("description") String description,@RequestParam("userId") String id,@RequestParam("categoria") String categoria) {
+        CloudApi.uploadFile(convertFile(multipartFile),title,description,id, categoria);
         return new ResponseEntity<>(gson.toJson("Success"), HttpStatus.OK);
     }
 

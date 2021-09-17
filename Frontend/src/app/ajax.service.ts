@@ -29,11 +29,11 @@ export class AjaxService {
   insertRichiestaUrl = this.baseUrl + "insertRichiesta";
   completeRequestUrl = this.baseUrl + 'completeRequest'
 
-  completeRequest(id){
+  completeRequest(id) {
     let params = new HttpParams().set('bool', "true").set('id', id).set("collection", "richieste");
     return this.httpClient.post(this.completeRequestUrl, {}, { params: params })
   }
-  
+
   login(email: string, password: string) {
     const data = { "email": email, "password": password };
     return this.httpClient.post(this.loginUrl, {}, { params: data });
@@ -60,8 +60,8 @@ export class AjaxService {
     return this.httpClient.get(this.getUserUrl, { params: { collection: "utenti" } });
   }
 
-  getRequest(){
-    return this.httpClient.get( this.getRequestUrl, {params: { collection: "richieste"}});
+  getRequest() {
+    return this.httpClient.get(this.getRequestUrl, { params: { collection: "richieste" } });
   }
 
   getAllChat(id) {
@@ -106,12 +106,12 @@ export class AjaxService {
     return this.httpClient.post(this.updateScoreUrl, {}, { params: params })
   }
 
-  download(fileUrl) {
-    return this.httpClient.get(this.downloadUrl, { params: { fileUrl: fileUrl } });
+  download(fileUrl): any {
+    return this.httpClient.get("http://127.0.0.1:5000/download", { params: { fileUrl: fileUrl } });
   }
 
-  insertRequest(formData){
-    return this.httpClient.post( this.insertRichiestaUrl, formData)
+  insertRequest(formData) {
+    return this.httpClient.post(this.insertRichiestaUrl, formData)
   }
 
 }

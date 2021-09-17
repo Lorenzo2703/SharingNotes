@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NewReviewComponent } from '../new-review/new-review.component';
 import { NewScoreComponent } from '../new-score/new-score.component';
 import { AjaxService } from '../ajax.service';
+import { filesaver } from "file-saver";
 
 @Component({
   selector: 'app-note',
@@ -44,7 +45,6 @@ export class NoteComponent implements OnInit, DoCheck {
     const dialogRef = this.dialog.open(NewScoreComponent);
   }
 
-
   getParam() {
     this.activatedRoute.params.subscribe(params => {
       //prendo l'id della nota dall'url
@@ -81,10 +81,22 @@ export class NoteComponent implements OnInit, DoCheck {
   }
 
   download() {
-    this.ajaxService.download(this?.note?.fileUrl).subscribe(res => {
-      console.log(res);
+    //funzione di download dei file con api di mega
+    /* this.ajaxService.download(this?.note?.fileUrl).subscribe(res => {
+       console.log(res);
+ 
+       this.downloadURI(res, "document.pdf");
+     });
+     */
 
-    });
+  }
+
+  downloadURI(uri, name) {
+    var link = document.createElement("a");
+    link.download = name;
+    link.href = "data:application/pdf;base64," + uri;
+    link.click();
+    link.remove();
   }
 
   ngOnInit(): void {

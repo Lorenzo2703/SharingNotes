@@ -1,10 +1,12 @@
 import os
 from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
 from werkzeug.utils import secure_filename
 from mega import Mega
 import time
 import json
 import re
+import base64
 
 
 mega = Mega()
@@ -24,6 +26,7 @@ UPLOAD_FOLDER = '.'
 ALLOWED_EXTENSIONS = {'pdf'}
 
 app = Flask(__name__)
+cors = CORS(app)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
@@ -53,17 +56,23 @@ def upload_file():
 
 
 @app.route('/download', methods=['GET'])
+@cross_origin()
 def download():
-    stringUrl = re.sub('[$]', '#', request.args["fileurl"])
+    # stringUrl = re.sub('[$]', '#', request.args["fileurl"])
+    stringUrl = request.args["fileUrl"]
     m.download_url(stringUrl, "./download")
-    time.sleep(5)
-    file = os.path.join("./download", "./download"[1])
-    filez = os.path.join("./download", "./download"[0])
-    print(file+"     "+filez)
-    return "ok"
+    time.sleep(3)
+    file = os.listdir("./download")[0]
+
+    filez = base64.b64encode(open("ciao.pdf", "rb").read())
+    # os.remove("./download"[0])
+    jsonstring = jsonify(filez)
+    print(jsonstring)
+
+    return jsonstring
 
 
-@app.route('/getAll', methods=['GET'])
+@ app.route('/getAll', methods=['GET'])
 def getAll():
     filesInNode = m.get_files_in_node(target=1)
 
@@ -74,6 +83,10 @@ def getAll():
         extracted.append(m.get_link(filez))
 
     return jsonify(extracted)
+
+
+def pdf_encode(pdf_filename):
+    return open(pdf_filename, "rb").read().encode("base64")
 
 
 app.secret_key = 'super secret key'

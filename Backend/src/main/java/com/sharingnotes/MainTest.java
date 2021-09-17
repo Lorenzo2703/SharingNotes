@@ -28,7 +28,6 @@ public class MainTest {
         JSONObject json = new JSONObject(CloudApi.getAll()); // Convert text to object
         System.out.println(json.toString(5));
 
-
     }
 
     @PreDestroy
@@ -49,7 +48,6 @@ public class MainTest {
 
     @RequestMapping(value = "/download", method = RequestMethod.GET)
     public ResponseEntity<String> download(@RequestParam("fileUrl")String fileUrl) {
-        System.out.println(CloudApi.download(fileUrl));
         return new ResponseEntity<>(gson.toJson(CloudApi.download(fileUrl)), HttpStatus.OK);
     }
 

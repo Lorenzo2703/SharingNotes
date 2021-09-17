@@ -5,7 +5,10 @@ import com.sharingnotes.MongoDb.MongoDb;
 import kong.unirest.HttpResponse;
 import kong.unirest.JsonNode;
 import kong.unirest.Unirest;
+
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.util.UUID;
 
 public class CloudApi {
@@ -25,10 +28,25 @@ public class CloudApi {
         return response.getBody();
     }
 
-    public static Object download(String fileUrl){
-        HttpResponse response=Unirest.get("http://127.0.0.1:5000/download?fileurl="+fileUrl.replace("#","$"))
+    public static File download(String fileUrl){
+        HttpResponse<String> response=Unirest.get("http://127.0.0.1:5000/download?fileurl="+fileUrl.replace("#","$"))
+                .header("Content-Type", "application/octet-stream")
                 .asString();
-        return  response.getBody();
+
+        File tempFile = null;
+
+        try {
+            tempFile  = File.createTempFile("info-", "-temp");
+            BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
+            bw.write(response.getBody());
+            bw.close();
+            tempFile.deleteOnExit();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        System.out.println(response.getBody());
+        return tempFile;
     }
 
 }

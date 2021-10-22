@@ -22,7 +22,9 @@ public class RegisterController {
     public ResponseEntity register(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("password") String password){
         try{
             User user=new User((UUID.randomUUID()),name,email.toLowerCase(),password);
-            mongo.insertUser(user);
+            if(mongo.usedName(name) == false && mongo.usedEmail(email) == false) {
+                mongo.insertUser(user);
+            }
             Login login =new Login();
             if (login.authentication(email.toLowerCase(), password)){
                 return ResponseEntity.ok(mongo.getUser(email.toLowerCase(),password));

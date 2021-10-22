@@ -88,6 +88,28 @@ public class MongoDb {
         return user;
     }
 
+    public boolean usedName(String name){
+        FindIterable<Document> documents=database.getCollection("utenti").find();
+        boolean used = false;
+        for (Document document : documents) {
+            if ((document.get("name").toString()).equals(name.trim())){
+                used = true;
+            }
+        }
+        return used;
+    }
+
+    public boolean usedEmail(String email){
+        FindIterable<Document> documents=database.getCollection("utenti").find();
+        boolean used = false;
+        for (Document document : documents) {
+            if ((document.get("email").toString()).equals(email.trim())){
+                used = true;
+            }
+        }
+        return used;
+    }
+
     public Document getUserByID(String userID){
         FindIterable<Document> documents=database.getCollection("utenti").find();
         Document documento=null;

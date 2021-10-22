@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -33,8 +34,11 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem('UserRating', userRating);
       //ti rimanda direttamente alla home
       this.router.navigateByUrl("/home");
-    });
-  }
+    },(error) => {                              //Error callback
+      window.alert("Email o passwor errate, riprova")
+    }
+    )}
+
 
   register() {
     //ti rimanda alla pagina per registrarsi

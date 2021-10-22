@@ -32,6 +32,8 @@ export class RegisterComponent implements OnInit {
     this.ajax.register(this.form.get("name").value, this.form.get("email").value, this.form.get("password").value).subscribe((res) => {
       console.log(res);
       this.router.navigateByUrl("/home");
+    },(error) => {                              //Error callback
+      window.alert("Name o email già utilizzate, usa altre credenziali!")
     });
   }
   

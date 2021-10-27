@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AjaxService } from '../ajax.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,7 +13,8 @@ import { AjaxService } from '../ajax.service';
 export class LoginComponent implements OnInit {
 
   form: any;
-
+  //variabile per il caricamento
+  openSpinner = false; 
   constructor(private route: ActivatedRoute, private router: Router, private ajax: AjaxService) { }
 
   initForm() {
@@ -23,6 +25,8 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    //apre il segno di caricamento
+    this.openSpinner = true ;
     //prendo le info dal form
     this.ajax.login(this.form.get("email").value, this.form.get("password").value).subscribe((res) => {
       //salvo le informazioni dell'user e le salvo nel session storage per poterle riutilizzare

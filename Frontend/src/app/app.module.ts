@@ -35,7 +35,7 @@ import { ProfileRequestComponent } from './profile-request/profile-request.compo
 import { NewUserScoreComponent } from './new-user-score/new-user-score.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { ProfileNoteComponent } from './profile-note/profile-note.component';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -78,7 +78,8 @@ import { ProfileNoteComponent } from './profile-note/profile-note.component';
     MatIconModule,
     MatDialogModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

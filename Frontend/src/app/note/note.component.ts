@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NewReviewComponent } from '../new-review/new-review.component';
 import { NewScoreComponent } from '../new-score/new-score.component';
 import { AjaxService } from '../ajax.service';
-import { filesaver } from "file-saver";
+//import { filesaver } from "file-saver";
 
 @Component({
   selector: 'app-note',

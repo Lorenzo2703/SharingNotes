@@ -28,6 +28,8 @@
             </form>
             <!-- Return alla login -->
             <h5 id="register" class="text-secondary mt-4" (click)="login()">Already a member? Log in now!</h5>
+            <!-- Spinner -->
+            <mat-progress-spinner *ngIf="openSpinner" [diameter]="60" mode="indeterminate"></mat-progress-spinner>
         </div>
     </div>
 </div>

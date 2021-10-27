@@ -11,6 +11,8 @@ import { AjaxService } from '../ajax.service';
 export class RegisterComponent implements OnInit {
 
   form: any;
+  //variabile per il caricamento
+  openSpinner = false; 
 
   constructor(private route: ActivatedRoute, private router: Router, private ajax: AjaxService) { }
 
@@ -28,6 +30,8 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    //apre il segno di caricamento
+    this.openSpinner = true ;
     //registrazione
     this.ajax.register(this.form.get("name").value, this.form.get("email").value, this.form.get("password").value).subscribe((res) => {
       console.log(res);

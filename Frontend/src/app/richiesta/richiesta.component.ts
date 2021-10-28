@@ -34,6 +34,7 @@ export class RichiestaComponent implements OnInit {
     this.initForm();
     this.getComments()
     this.getParam();
+    console.log(this.listReviews)
   }
 
   ngDoCheck(): void {
@@ -42,7 +43,7 @@ export class RichiestaComponent implements OnInit {
     }
   }
 
-  //utilizzoquesta funzione per potermi salvare l'id dell'user da votare
+  //utilizzo questa funzione per potermi salvare l'id dell'user da votare
   getUserID(number) {
     sessionStorage.setItem("idUserScore", this.listReviews[number]["id_Recensore"])
     this.openScoreDialog()

@@ -1,35 +1,37 @@
-<div class="row m-0 justify-content-center align-items-center h-100 bg-dark">
-    <div class="card-custom">
-        <div class="p-2 text-center m-3">
-            <!-- Titolo -->
-            <h1 id="title" class="text-dark">Register</h1>
-            <!-- Form -->
-            <form [formGroup]="form" class="text-dark" (ngSubmit)="register()">
-                <!-- Insert nome-->
-                <mat-form-field class="w-100">
-                    <mat-label class="text-dark">Name</mat-label>
-                    <input class="text-dark" formControlName="name" matInput placeholder="Name" />
-                </mat-form-field>
-                <!-- Insert email -->
-                <mat-form-field class="w-100">
-                    <mat-label class="text-dark">Email</mat-label>
-                    <input class="text-dark" formControlName="email" matInput placeholder="Email" />
-                </mat-form-field>
-                <!-- Insert password -->
-                <mat-form-field class="w-100">
-                    <mat-label class="text-dark">Password</mat-label>
-                    <input class="text-dark" type="password" formControlName="password" matInput
-                        placeholder="password" />
-                </mat-form-field>
-                <!-- Bottone submit -->
-                <button type="submit" [disabled]="!form.valid" class="mt-4 " color="primary" mat-raised-button>
-                    Register
-                </button>
-            </form>
-            <!-- Return alla login -->
-            <h5 id="register" class="text-secondary mt-4" (click)="login()">Already a member? Log in now!</h5>
-            <!-- Spinner -->
-            <mat-progress-spinner *ngIf="openSpinner" [diameter]="60" mode="indeterminate"></mat-progress-spinner>
+<div class="container-fluid m-0 p-0 vh-100 bg-dark">
+    <div class="m-0 d-flex justify-content-center align-items-center vh-100 ">
+        <div class="card-custom">
+            <div class="p-2 text-center m-3">
+                <!-- Titolo -->
+                <h1 id="title" class="text-dark">Register</h1>
+                <!-- Form -->
+                <form [formGroup]="form" class="text-dark" (ngSubmit)="register()">
+                    <!-- Insert nome-->
+                    <mat-form-field class="w-100">
+                        <mat-label class="text-dark">Name</mat-label>
+                        <input class="text-dark" formControlName="name" matInput placeholder="Name" />
+                    </mat-form-field>
+                    <!-- Insert email -->
+                    <mat-form-field class="w-100">
+                        <mat-label class="text-dark">Email</mat-label>
+                        <input class="text-dark" formControlName="email" matInput placeholder="Email" />
+                    </mat-form-field>
+                    <!-- Insert password -->
+                    <mat-form-field class="w-100">
+                        <mat-label class="text-dark">Password</mat-label>
+                        <input class="text-dark" type="password" formControlName="password" matInput
+                            placeholder="password" />
+                    </mat-form-field>
+                    <!-- Bottone submit -->
+                    <button type="submit" [disabled]="!form.valid" class="mt-4 " color="primary" mat-raised-button>
+                        Register
+                    </button>
+                </form>
+                <!-- Return alla login -->
+                <h5 id="register" class="text-secondary mt-4" (click)="login()">Already a member? Log in now!</h5>
+                <!-- Spinner -->
+                <mat-progress-spinner *ngIf="openSpinner" [diameter]="40" mode="indeterminate"></mat-progress-spinner>
+            </div>
         </div>
     </div>
 </div>

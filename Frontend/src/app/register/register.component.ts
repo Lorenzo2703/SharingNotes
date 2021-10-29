@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { AjaxService } from '../ajax.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class RegisterComponent implements OnInit {
 
   form: any;
   //variabile per il caricamento
-  openSpinner = false; 
+  openSpinner = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private ajax: AjaxService) { }
 
@@ -31,16 +32,17 @@ export class RegisterComponent implements OnInit {
 
   register() {
     //apre il segno di caricamento
-    this.openSpinner = true ;
+    this.openSpinner = true;
     //registrazione
     this.ajax.register(this.form.get("name").value, this.form.get("email").value, this.form.get("password").value).subscribe((res) => {
       console.log(res);
       this.router.navigateByUrl("/home");
-    },(error) => {                              //Error callback
-      window.alert("Name o email già utilizzate, usa altre credenziali!")
+    }, (error) => {
+      this.openSpinner = false;                   //Error callback
+      Swal.fire({ title: "Name o email già utilizzate, usa altre credenziali!", icon: "error" });
     });
   }
-  
+
   ngOnInit(): void {
     this.initForm();
   }

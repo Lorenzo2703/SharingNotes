@@ -1,9 +1,8 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { AjaxService } from '../ajax.service';
-
 
 @Component({
   selector: 'app-login',
@@ -14,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   form: any;
   //variabile per il caricamento
-  openSpinner = false; 
+  openSpinner = false;
   constructor(private route: ActivatedRoute, private router: Router, private ajax: AjaxService) { }
 
   initForm() {
@@ -26,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     //apre il segno di caricamento
-    this.openSpinner = true ;
+    this.openSpinner = true;
     //prendo le info dal form
     this.ajax.login(this.form.get("email").value, this.form.get("password").value).subscribe((res) => {
       //salvo le informazioni dell'user e le salvo nel session storage per poterle riutilizzare
@@ -38,10 +37,14 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem('UserRating', userRating);
       //ti rimanda direttamente alla home
       this.router.navigateByUrl("/home");
-    },(error) => {                              //Error callback
-      window.alert("Email o passwor errate, riprova")
+    }, (error) => {
+      //Error callback
+      Swal.fire({ title: "Email o passwor errate, riprova", icon: 'error', position: "center" });
+      this.openSpinner = false;
+
     }
-    )}
+    )
+  }
 
 
   register() {
@@ -51,6 +54,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+
   }
 
 }

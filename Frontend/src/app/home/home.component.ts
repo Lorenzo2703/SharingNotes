@@ -4,6 +4,7 @@ import { DataService } from '../data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NewNoteComponent } from '../new-note/new-note.component';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -35,6 +36,7 @@ export class HomeComponent implements OnInit, DoCheck {
     this.getChat();
     this.getUser();
     this.getGroupChat();
+   
   }
 
 

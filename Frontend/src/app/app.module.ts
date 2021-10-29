@@ -24,10 +24,10 @@ import { MessagesComponent } from './messages/messages.component';
 import { ChatComponent } from './chat/chat.component';
 import { NewChatComponent } from './new-chat/new-chat.component';
 import { NewGroupChatComponent } from './new-group-chat/new-group-chat.component';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { ChatGroupComponent } from './chat-group/chat-group.component';
 import { NewScoreComponent } from './new-score/new-score.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { RichiestaComponent } from './richiesta/richiesta.component';
 import { NewRichiestaComponent } from './new-richiesta/new-richiesta.component';
 import { RequestComponent } from './request/request.component';
@@ -35,7 +35,7 @@ import { ProfileRequestComponent } from './profile-request/profile-request.compo
 import { NewUserScoreComponent } from './new-user-score/new-user-score.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { ProfileNoteComponent } from './profile-note/profile-note.component';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -63,7 +63,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     NewUserScoreComponent,
     RankingComponent,
     ProfileNoteComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -79,7 +79,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatDialogModule,
     MatButtonModule,
     MatSelectModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

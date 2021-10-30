@@ -36,6 +36,7 @@ import { NewUserScoreComponent } from './new-user-score/new-user-score.component
 import { RankingComponent } from './ranking/ranking.component';
 import { ProfileNoteComponent } from './profile-note/profile-note.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatButtonModule,
     MatSelectModule,
     MatProgressSpinnerModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

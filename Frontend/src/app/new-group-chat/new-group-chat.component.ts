@@ -5,6 +5,7 @@ import { DataService } from '../data.service';
 import { AjaxService } from '../ajax.service';
 import { HomeComponent } from '../home/home.component';
 import {MatSelectModule} from '@angular/material/select';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-new-group-chat',

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
 import { AjaxService } from '../ajax.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-request',
@@ -10,18 +11,23 @@ import { AjaxService } from '../ajax.service';
 })
 export class ProfileRequestComponent implements OnInit {
 
-  constructor(private data: DataService, private ajaxService: AjaxService) { }
+  constructor(private data: DataService, private router: Router, private ajaxService: AjaxService) { }
 
-  listRequest=[];
+  listRequest = [];
 
   ngOnInit(): void {
-    this.getRequest();
+    if (sessionStorage.getItem('UserID') == "") {
+      Swal.fire({ title: "Try to Log in 😅", icon: 'info', position: "center" });
+      this.router.navigateByUrl("/login");
+    } else {
+      this.getRequest();
+    }
   }
 
-  getRequest(){
-    this.ajaxService.getRequest().subscribe(res =>{
-      for(let x in res){
-        if(res[x]["id_Richiedente"] == sessionStorage.getItem("UserID")){
+  getRequest() {
+    this.ajaxService.getRequest().subscribe(res => {
+      for (let x in res) {
+        if (res[x]["id_Richiedente"] == sessionStorage.getItem("UserID")) {
           this.listRequest.push(res[x]);
         }
       }

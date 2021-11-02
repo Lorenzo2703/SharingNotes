@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AjaxService } from '../ajax.service';
 import { DataService } from '../data.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-note',
@@ -8,8 +10,8 @@ import { DataService } from '../data.service';
   styleUrls: ['./profile-note.component.scss']
 })
 export class ProfileNoteComponent implements OnInit {
-  
-  constructor(private ajaxService: AjaxService, private data: DataService) { }
+
+  constructor(private ajaxService: AjaxService, private router: Router, private data: DataService) { }
 
   nameUser = sessionStorage.getItem("UserName");
   idUser = sessionStorage.getItem("UserID");
@@ -18,7 +20,12 @@ export class ProfileNoteComponent implements OnInit {
   noNotes = false; //boolean per verificare che ci siano note pubblicate dall'user
 
   ngOnInit(): void {
-    this.getUserNotes();
+    if (sessionStorage.getItem('UserID') == "") {
+      Swal.fire({ title: "Try to Log in 😅", icon: 'info', position: "center" });
+      this.router.navigateByUrl("/login");
+    } else {
+      this.getUserNotes();
+    }
   }
 
   getUserNotes() {

@@ -1,10 +1,11 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NewReviewComponent } from '../new-review/new-review.component';
 import { NewScoreComponent } from '../new-score/new-score.component';
 import { AjaxService } from '../ajax.service';
+import Swal from 'sweetalert2';
 //import { filesaver } from "file-saver";
 
 @Component({
@@ -14,7 +15,7 @@ import { AjaxService } from '../ajax.service';
 })
 export class NoteComponent implements OnInit, DoCheck {
 
-  constructor(private activatedRoute: ActivatedRoute, private data: DataService, public dialog: MatDialog, private ajaxService: AjaxService) { }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private data: DataService, public dialog: MatDialog, private ajaxService: AjaxService) { }
 
   listReviews = []; //lista recensioni relative alla nota
   nameUserReview = []; //nome di chi ha fatto la recnesione
@@ -28,7 +29,7 @@ export class NoteComponent implements OnInit, DoCheck {
     _id: ""
   }
   name;
-  idUser = sessionStorage.getItem("UserID")
+  idUser = sessionStorage.getItem("UserID");
 
   ngDoCheck(): void {
     if (this.note._id === "") {
@@ -38,12 +39,22 @@ export class NoteComponent implements OnInit, DoCheck {
 
   openDialog() {
     //apre new-review component
-    const dialogRef = this.dialog.open(NewReviewComponent);
+    if (sessionStorage.getItem('UserID') == "") {
+      Swal.fire({ title: "Try to Log in 😅", icon: 'info', position: "center" });
+      this.router.navigateByUrl("/login");
+    } else {
+      const dialogRef = this.dialog.open(NewReviewComponent);
+    }
   }
 
   openScoreDialog() {
     //apre new-score component
-    const dialogRef = this.dialog.open(NewScoreComponent);
+    if (sessionStorage.getItem('UserID') == "") {
+      Swal.fire({ title: "Try to Log in 😅", icon: 'info', position: "center" });
+      this.router.navigateByUrl("/login");
+    } else {
+      const dialogRef = this.dialog.open(NewScoreComponent);
+    }
   }
 
   getParam() {

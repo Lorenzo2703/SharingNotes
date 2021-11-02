@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AjaxService } from '../ajax.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile-review',
@@ -8,9 +10,9 @@ import { AjaxService } from '../ajax.service';
 })
 export class ProfileReviewComponent implements OnInit {
 
-  
 
-  constructor(private ajaxService: AjaxService) { }
+
+  constructor(private ajaxService: AjaxService, private router: Router) { }
 
   nameUser = sessionStorage.getItem("UserName");
   idUser = sessionStorage.getItem("UserID");
@@ -19,8 +21,12 @@ export class ProfileReviewComponent implements OnInit {
   noRev = false; //boolean per verificare che ci siano recnesioni pubblicate dall'utente
 
   ngOnInit(): void {
-    this.getUserReview();
-
+    if (sessionStorage.getItem('UserID') == "") {
+      Swal.fire({ title: "Try to Log in 😅", icon: 'info', position: "center" });
+      this.router.navigateByUrl("/login");
+    } else {
+      this.getUserReview();
+    }
   }
 
   getUserReview() {

@@ -4,6 +4,8 @@ import { AjaxService } from '../ajax.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NewChatComponent } from '../new-chat/new-chat.component';
 import { NewGroupChatComponent } from '../new-group-chat/new-group-chat.component';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-messages',
@@ -12,7 +14,7 @@ import { NewGroupChatComponent } from '../new-group-chat/new-group-chat.componen
 })
 export class MessagesComponent implements OnInit {
 
-  constructor(private ajax: AjaxService, public dialog: MatDialog, private dataservice: DataService) { }
+  constructor(private ajax: AjaxService, private router: Router, public dialog: MatDialog, private dataservice: DataService) { }
 
   listMessage: any = [];
   listGroupMessage: any = [];
@@ -44,6 +46,11 @@ export class MessagesComponent implements OnInit {
 
   getChat() {
     //prendo tutte le chat singole in cui c'è l'utente
+    if (sessionStorage.getItem('UserID') == "") {
+      Swal.fire({ title: "Try to Log in 😅", icon: 'info', position: "center" });
+      this.router.navigateByUrl("/login");
+    }
+
     this.ajax.getAllChat(sessionStorage.getItem("UserID")).subscribe(res => {
       for (let x in res) {
         this.message = res[x];
@@ -64,23 +71,23 @@ export class MessagesComponent implements OnInit {
 
   }
 
-  getChatName(){
+  getChatName() {
 
-      this.listMessage.forEach(chat => {
-        this.dataservice.listUsers.forEach(user=>{
-          //se l'user1 della chat sono il allora il name sarà dato dall'altro user
-          if (chat.id_User1 == sessionStorage.getItem("UserID")) {
-            if(user._id == chat.id_User2){
-              chat.name = user.name
-            }
-          //se non sono io il creatore comunque non leggo il mio nome sulla chat
-          } else { 
-            if(user._id == chat.id_User1){
-              chat.name = user.name
-            }
+    this.listMessage.forEach(chat => {
+      this.dataservice.listUsers.forEach(user => {
+        //se l'user1 della chat sono il allora il name sarà dato dall'altro user
+        if (chat.id_User1 == sessionStorage.getItem("UserID")) {
+          if (user._id == chat.id_User2) {
+            chat.name = user.name
           }
-        })
+          //se non sono io il creatore comunque non leggo il mio nome sulla chat
+        } else {
+          if (user._id == chat.id_User1) {
+            chat.name = user.name
+          }
+        }
       })
+    })
   }
 
 

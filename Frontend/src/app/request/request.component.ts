@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { AjaxService } from '../ajax.service';
 import { MatDialog } from '@angular/material/dialog';
 import { NewRichiestaComponent } from '../new-richiesta/new-richiesta.component'
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-request',
@@ -12,17 +13,22 @@ import { NewRichiestaComponent } from '../new-richiesta/new-richiesta.component'
 })
 export class RequestComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private data: DataService, public dialog: MatDialog, private ajaxService: AjaxService) { }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, public dialog: MatDialog, private ajaxService: AjaxService) { }
 
   listRequest = [];
 
   ngOnInit(): void {
-    this.getRequest();
+    if (sessionStorage.getItem('UserID') == "") {
+      Swal.fire({ title: "Try to Log in 😅", icon: 'info', position: "center" });
+      this.router.navigateByUrl("/login");
+    } else {
+      this.getRequest();
+    }
   }
 
-  getRequest(){
-    this.ajaxService.getRequest().subscribe(res =>{
-      for(let x in res){
+  getRequest() {
+    this.ajaxService.getRequest().subscribe(res => {
+      for (let x in res) {
         this.listRequest.push(res[x]);
       }
 
@@ -30,8 +36,7 @@ export class RequestComponent implements OnInit {
   }
 
   openDialog() {
-    //apre il new-chat component
+    //apre il new-Richiesta component
     const dialogRef = this.dialog.open(NewRichiestaComponent);
   }
-
 }

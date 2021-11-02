@@ -23,9 +23,11 @@
         </div>
         <!-- Tasto Pagina del profilo -->
         <li class="nav-item">
-            <a class="nav-link ms-2" [routerLink]="['/home/profile/',this.userID]">
+            <a class="nav-link ms-2 " [routerLink]="['/home/profile/',this.userID]">
                 <i class="fas fa-fw fa-user"></i>
-                <span class="ms-1">My Profile</span>
+                <span class="ms-1">My Profile </span>
+                <span class="ms-1 " *ngIf="!this.userID"><i class="fas fa-exclamation-triangle over-custom"> <span>Log
+                            in</span></i></span>
             </a>
         </li>
         <!-- Tasto Pagina delle note -->
@@ -33,6 +35,8 @@
             <a class="nav-link ms-2" [routerLink]="['/home/profile/notes']">
                 <i class="fas fa-fw fa-book"></i>
                 <span class="ms-1">My Notes</span>
+                <span class="ms-1 " *ngIf="!this.userID"><i class="fas fa-exclamation-triangle over-custom"> <span>Log
+                            in</span></i></span>
             </a>
         </li>
         <!-- Tasto Pagina delle recensioni -->
@@ -40,6 +44,8 @@
             <a class="nav-link ms-2" [routerLink]="['/home/profile/reviews']">
                 <i class="fas fa-fw fa-edit"></i>
                 <span class="ms-1">My Reviews</span>
+                <span class="ms-1 " *ngIf="!this.userID"><i class="fas fa-exclamation-triangle over-custom"> <span>Log
+                            in</span></i></span>
             </a>
         </li>
         <!-- Tasto Pagina delle richieste -->
@@ -47,6 +53,8 @@
             <a class="nav-link ms-2" [routerLink]="['/home/profile/request']">
                 <i class="fas fa-fw fa-question-circle"></i>
                 <span class="ms-1">My Requests</span>
+                <span class="ms-1 " *ngIf="!this.userID"><i class="fas fa-exclamation-triangle over-custom"> <span>Log
+                            in</span></i></span>
             </a>
         </li>
         <!-- Divider -->
@@ -60,13 +68,18 @@
             <a class="nav-link collapsed ms-2" [routerLink]="['/home/messages']">
                 <i class="fas fa-comments fa-fw"></i>
                 <span class="ms-1">Chat</span>
+                <span class="ms-1 " *ngIf="!this.userID"><i class="fas fa-exclamation-triangle over-custom"> <span>Log
+                            in</span></i></span>
             </a>
         </li>
         <!-- Tasto per vedere la bacheca delle richieste -->
         <li class="nav-item">
-            <a class="nav-link ms-2" [routerLink]="['/home/request']">
+            <a class="nav-link collapsed ms-2" [routerLink]="['/home/request']">
                 <i class="fas fa-file-alt fa-fw"></i>
-                <span class="ms-1">Request</span></a>
+                <span class="ms-1">Request</span>
+                <span class="ms-1 " *ngIf="!this.userID"><i class="fas fa-exclamation-triangle over-custom"> <span>Log
+                            in</span></i></span>
+            </a>
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
@@ -79,6 +92,18 @@
             <a class="nav-link collapsed ms-2" [routerLink]="['/home/ranking']">
                 <i class="fas fa-medal fa-fw"></i>
                 <span class="ms-1">Top 10</span>
+            </a>
+        </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+        <div class="sidebar-heading ms-1">
+            Exit
+        </div>
+        <!-- Tasto di Log out -->
+        <li class="nav-item">
+            <a class="nav-link collapsed ms-2" (click)="logOut()" [routerLink]="['/login']">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="ms-1">Log Out</span>
             </a>
         </li>
         <!-- Divider -->
@@ -113,6 +138,9 @@
                 <!-- Bottone per aggiungere una nota -->
                 <button type="button" (click)="openDialog()" class="btn btn-primary d-none d-md-block "><i
                         class="fas fa-plus fa-sm text-white-50 mr-3"></i>New Note</button>
+                <span class="ms-1 " *ngIf="this.userID==''"><i class="fas fa-exclamation-triangle over-custom-right">
+                        <span>Log
+                            in</span></i></span>
             </nav>
             <!-- End of Topbar -->
             <router-outlet></router-outlet>

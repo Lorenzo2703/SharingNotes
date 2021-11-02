@@ -1,8 +1,9 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { AjaxService } from '../ajax.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-chat',
@@ -11,13 +12,16 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ChatComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private data: DataService, private ajaxService: AjaxService) { }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private data: DataService, private ajaxService: AjaxService) { }
 
   ngOnInit(): void {
-
-    this.getParam();
-    this.initForm();
-
+    if (sessionStorage.getItem('UserID') == "") {
+      Swal.fire({ title: "Try to Log in 😅", icon: 'info', position: "center" });
+      this.router.navigateByUrl("/login");
+    } else {
+      this.getParam();
+      this.initForm();
+    }
   }
 
   user1; //utente loggato
@@ -41,6 +45,7 @@ export class ChatComponent implements OnInit {
   };
 
   getParam() {
+
     this.activatedRoute.params.subscribe(params => {
       //ricavo l'id della chat dall'url
       let id = params['_id'];

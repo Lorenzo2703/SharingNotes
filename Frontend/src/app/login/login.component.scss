@@ -1,6 +1,6 @@
 .card-custom {
   width: 310px;
-  height: 460px;
+  height: 470px;
   background: #fbfbfb;
   box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.65);
   border-radius: 3%;
@@ -21,6 +21,12 @@ body {
 
 #register:hover {
   color: orange !important;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#skip:hover {
+  color: var(--indigo) !important;
   cursor: pointer;
   text-decoration: underline;
 }

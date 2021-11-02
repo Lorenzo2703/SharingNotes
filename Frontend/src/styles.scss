@@ -3,7 +3,6 @@
 html,
 body {
   height: 100%;
-
 }
 body {
   margin: 0;
@@ -57,6 +56,75 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.over-custom {
+  position: absolute;
+  left: 140px;
+  margin-top: 5px;
+  span {
+    position: absolute;
+    width: 50px !important;
+    left: 25px;
+    outline: none;
+    text-decoration: none;
+    font-family: roboto;
+    font-size: 12px !important;
+    font-weight: 300;
+    color: yellow;
+    opacity: 0;
+    z-index: 500;
+  }
+}
+
+.over-custom:hover {
+  span {
+    opacity: 1;
+  }
+}
+
+.over-custom-top {
+  span {
+    position: relative;
+    bottom: 30px;
+    right: 25px;
+    width: 0px !important;
+    outline: none;
+    text-decoration: none;
+    font-family: roboto;
+    font-size: 12px !important;
+    font-weight: 300;
+    color: rgb(0, 0, 0);
+    opacity: 0;
+    z-index: 500;
+  }
+}
+
+.over-custom-top:hover {
+  span {
+    opacity: 1;
+  }
+}
+
+.over-custom-right {
+  span {
+    position: relative;
+    left: 5px;
+    width: 0px !important;
+    outline: none;
+    text-decoration: none;
+    font-family: roboto;
+    font-size: 12px !important;
+    font-weight: 300;
+    color: rgb(0, 0, 0);
+    opacity: 0;
+    z-index: 500;
+  }
+}
+
+.over-custom-right:hover {
+  span {
+    opacity: 1;
+  }
+}
 article,
 aside,
 figcaption,

@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class HomeComponent implements OnInit, DoCheck {
 
-  constructor(private ajaxService: AjaxService, private dataservice: DataService, public dialog: MatDialog) { }
+  constructor(private ajaxService: AjaxService, private router: Router, private dataservice: DataService, public dialog: MatDialog) { }
 
   ngDoCheck(): void {
     this.dataservice.searchText = this.searchText;
@@ -36,13 +36,18 @@ export class HomeComponent implements OnInit, DoCheck {
     this.getChat();
     this.getUser();
     this.getGroupChat();
-   
+
   }
 
 
   openDialog() {
     //apro il componente new-note
-    const dialogRef = this.dialog.open(NewNoteComponent);
+    if (sessionStorage.getItem('UserID') == "") {
+      Swal.fire({ title: "Try to Log in 😅", icon: 'info', position: "center" });
+      this.router.navigateByUrl("/login");
+    } else {
+      const dialogRef = this.dialog.open(NewNoteComponent);
+    }
   }
 
   getNotes() {
@@ -118,6 +123,14 @@ export class HomeComponent implements OnInit, DoCheck {
       this.dataservice.listUsers = this.listUsers;
     })
     console.log(this.listUsers)
+  }
+
+
+  logOut() {
+    Swal.fire({ title: "Good Bye 👋", icon: 'success', position: "center" });
+    sessionStorage.setItem('UserName', "");
+    sessionStorage.setItem('UserID', "");
+    sessionStorage.setItem('UserRating', "");
   }
 
 }

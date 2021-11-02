@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AjaxService } from '../ajax.service';
 import { DataService } from '../data.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -11,14 +12,14 @@ import { DataService } from '../data.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private ajaxService: AjaxService, private data: DataService) { }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private ajaxService: AjaxService, private data: DataService) { }
 
   listNotes = []; //lista delle note pubblicate dall'utente
   listReviews = []; //lista delle recensioni pubblicate dall'utente
   listRequest = []; //lista delle richieste pubblicate dall'utente
   noRev = false;
   noNotes = false; //boolean per verificare che ci siano note pubblicate dall'user
-  user : any = {
+  user: any = {
     _id: "",
     name: "",
     email: "",
@@ -32,13 +33,19 @@ export class ProfileComponent implements OnInit {
     if (this.user._id === "") {
       this.getParam();
     }
+
   }
 
   ngOnInit(): void {
-    this.getParam();
-    this.getUserNotes();
-    this.getUserReview();
-    this.getRequest();
+    if (sessionStorage.getItem('UserID') == "") {
+      Swal.fire({ title: "Try to Log in 😅", icon: 'info', position: "center" });
+      this.router.navigateByUrl("/login");
+    } else {
+      this.getParam();
+      this.getUserNotes();
+      this.getUserReview();
+      this.getRequest();
+    }
   }
 
   getUserNotes() {
@@ -72,7 +79,7 @@ export class ProfileComponent implements OnInit {
       for (let x in res) {
         if (res[x]["id_Recensore"] == this.user._id && res[x]["title"] != "R1chiesta") {
           this.listReviews.push(res[x]);
-          console.log(res[x])
+
         }
       }
       console.log(this.listReviews);
@@ -88,8 +95,7 @@ export class ProfileComponent implements OnInit {
       let id = params['_id'];
       //scorro la lista dei documenti e salvo quello che ho selezionato
       this.data.listUsers.forEach(element => {
-        console.log(element)
-        console.log(id)
+
         //posso usare sia l'id che il name dell'utente
         if (element._id == id || element.name == id) {
           this.user = element;

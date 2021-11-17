@@ -2,20 +2,34 @@
 <div class="container-fluid">
 
     <!-- Header della pagina -->
-    <div class="d-sm-flex align-items-center mb-4 mr-5">
-        <h1 class="h3 mb-0 text-gray-800"> Active request</h1>
+    <div class="d-flex align-items-center justify-content-around mb-4 ">
+        <span class="h3 mb-0 text-gray-800 mr-2 d-none d-md-inline-block"> Active request</span>
+        <form class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 p-1 bg-light " autocomplete="off"
+            style="min-width: 40%;">
+            <div class="input-group">
+                <input type="text" class="form-control  small " placeholder="Search a request" [(ngModel)]="searchText"
+                    autocomplete="off" name="name" aria-label="Search" aria-describedby="basic-addon2"
+                    style="background-color: rgb(255, 255, 255);">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
 
         <!-- Bottone per la creazione di una richiesta-->
-    <button type="button" (click)="openDialog()" class="btn btn-primary mb-3 mt-3 ml-5"><i
-        class="fas fa-plus fa-sm text-white-50 mr-3 "></i>New Request</button>
+        <button type="button" (click)="openDialog()" class="btn btn-primary mb-3 mt-3 ml-4"><i
+                class="fas fa-plus fa-sm text-white-50 "></i><span class="d-none ml-3 d-md-inline-block"> New
+                Request</span></button>
     </div>
 
     <!-- Spazio delle richieste -->
     <div class="row mb-4 justify-content-center">
 
         <!-- Richiesta -->
-        <div class="col-10 mb-3" *ngFor="let item of listRequest">
-            <div *ngIf = "item?.completed == false">
+        <div class="col-10 mb-3" *ngFor="let item of listRequest | filter:searchText">
+            <div *ngIf="item?.completed == false">
                 <a class="text-decoration-none" [routerLink]="['/home/richiesta',item?._id]">
                     <div class="card card-hover shadow h-100 py-2">
                         <div class="card-body">

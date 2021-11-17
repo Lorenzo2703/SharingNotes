@@ -16,6 +16,7 @@ export class RequestComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private router: Router, public dialog: MatDialog, private ajaxService: AjaxService) { }
 
   listRequest = [];
+  searchText;
 
   ngOnInit(): void {
     if (sessionStorage.getItem('UserID') == "") {

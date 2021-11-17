@@ -45,7 +45,6 @@ public class CloudApi {
             e.printStackTrace();
         }
 
-        System.out.println(response.getBody());
         return tempFile;
     }
 

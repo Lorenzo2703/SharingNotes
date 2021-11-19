@@ -78,7 +78,8 @@ public class MongoDb {
                 .append("password",user.getPassword())
                 .append("rating",user.getRating())
                 .append("nvoti",user.getNvoti())
-                .append("sommaVoti",user.getSommaVoti());
+                .append("sommaVoti",user.getSommaVoti())
+                .append("id_votati", user.getId_votati());
         database.getCollection("utenti").insertOne(insertUser);
     }
 
@@ -130,6 +131,11 @@ public class MongoDb {
             }
         }
         return documento;
+    }
+
+    public void insertIdVotati(User user,String id_votato){
+        user.insertId_votati(id_votato);
+        database.getCollection("utenti").updateOne((Filters.eq("_id",user.getId())), Updates.set("id_votati",user.getId_votati()));
     }
 
     public void insertRecensione(Recensione recensione){

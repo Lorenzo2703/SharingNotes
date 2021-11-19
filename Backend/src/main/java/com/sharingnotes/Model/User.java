@@ -1,5 +1,7 @@
 package com.sharingnotes.Model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.UUID;
 
 public class User {
@@ -10,6 +12,7 @@ public class User {
     private int rating;
     private int nvoti;
     private int sommaVoti;
+    private ArrayList<String> id_votati;
 
     public User(UUID _id, String name, String email, String password) {
         this._id = _id;
@@ -19,6 +22,7 @@ public class User {
         this.rating = 0;
         this.nvoti = 0;
         this.sommaVoti = 0;
+        this.id_votati = new ArrayList<>();
     }
 
     @Override
@@ -80,5 +84,18 @@ public class User {
 
     public void setSommaVoti(int sommaVoti) {
         this.sommaVoti = sommaVoti;
+    }
+
+    public ArrayList<String> getId_votati() {
+        return id_votati;
+    }
+
+    public void setId_votati(ArrayList<String> id_votati) {
+        this.id_votati = id_votati;
+    }
+
+    public ArrayList<String> insertId_votati(String id_votato) {
+        this.id_votati.add(id_votato);
+        return id_votati;
     }
 }

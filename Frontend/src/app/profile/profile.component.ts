@@ -26,7 +26,8 @@ export class ProfileComponent implements OnInit {
     password: "",
     rating: 0,
     nvoti: 0,
-    sommaVoti: 0
+    sommaVoti: 0,
+    id_votati: [],
   };
 
   ngDoCheck(): void {

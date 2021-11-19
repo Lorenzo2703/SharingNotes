@@ -27,6 +27,7 @@ export class AjaxService {
   updateScoreUrl = this.baseUrl + "updateScore"
   downloadUrl = this.baseUrl + "download";
   insertRichiestaUrl = this.baseUrl + "insertRichiesta";
+  insertIdVotatiUrl = this.baseUrl + "insertIdVotati"
   completeRequestUrl = this.baseUrl + 'completeRequest'
 
   completeRequest(id) {
@@ -112,6 +113,11 @@ export class AjaxService {
 
   insertRequest(formData) {
     return this.httpClient.post(this.insertRichiestaUrl, formData)
+  }
+
+  insertIdVotati(id, id_votato){
+    let params = new HttpParams().set("id_votato", id_votato).set('id', id);
+    return this.httpClient.post(this.insertRichiestaUrl, {}, { params: params })
   }
 
 }

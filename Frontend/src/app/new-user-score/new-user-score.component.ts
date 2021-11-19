@@ -44,6 +44,7 @@ export class NewUserScoreComponent implements OnInit {
       this.ajax.updateUserScore(this.rating, sessionStorage.getItem("idUserScore")).subscribe((res) => {
         console.log(res);
         this.dialogRef.close();
+        window.location.reload();
       });
     }
   }

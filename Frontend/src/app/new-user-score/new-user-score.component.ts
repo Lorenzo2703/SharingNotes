@@ -78,10 +78,10 @@ export class NewUserScoreComponent implements OnInit {
       let id = params['_id'];
       //scorro la lista dei documenti e salvo quello che ho selezionato
       this.data.listUsers.forEach(element => {
-
         //posso usare sia l'id che il name dell'utente
-        if (element._id == id || element.name == id) {
+        if (element._id == sessionStorage.getItem("UserID") || element.name == id) {
           this.user = element;
+          console.log(this.user)
         }
       });
     });

@@ -6,6 +6,7 @@ import { DataService } from '../data.service';
 import { Router } from '@angular/router';
 import { AjaxService } from '../ajax.service';
 import { HomeComponent } from '../home/home.component';
+import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_compiler';
 
 @Component({
   selector: 'app-new-score',
@@ -82,9 +83,8 @@ export class NewScoreComponent implements OnInit {
       let id = params['_id'];
       //scorro la lista dei documenti e salvo quello che ho selezionato
       this.data.listUsers.forEach(element => {
-
-        //posso usare sia l'id che il name dell'utente
-        if (element._id == id || element.name == id) {
+        //posso usare sia l'id che il name dell'utente)
+        if (element._id == sessionStorage.getItem("UserID") || element.name == id) {
           this.user = element;
         }
       });

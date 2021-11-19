@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PreDestroy;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.UUID;
 
 @CrossOrigin()
@@ -65,7 +66,7 @@ public class MainTest {
 
     @RequestMapping(value = "/insertUser",method = RequestMethod.POST)
     public ResponseEntity<String> insertUser(){
-        mongo.insertUser(new User(UUID.randomUUID(),"name","email","password"));
+        mongo.insertUser(new User(UUID.randomUUID(),"name","email","password", new ArrayList<String>()));
         return ResponseEntity.ok("success");
     }
 

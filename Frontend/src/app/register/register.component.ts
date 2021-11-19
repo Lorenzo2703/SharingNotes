@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
     //registrazione
     this.ajax.register(this.form.get("name").value, this.form.get("email").value, this.form.get("password").value).subscribe((res) => {
       console.log(res);
-      this.router.navigateByUrl("/home");
+      this.router.navigateByUrl("/login");
     }, (error) => {
       this.openSpinner = false;                   //Error callback
       Swal.fire({ title: "Name o email già utilizzate, usa altre credenziali!", icon: "error" });

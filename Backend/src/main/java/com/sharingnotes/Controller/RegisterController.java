@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
 import java.util.UUID;
 
 @CrossOrigin()
@@ -21,7 +23,7 @@ public class RegisterController {
     @PostMapping("/register")
     public ResponseEntity register(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("password") String password){
         try{
-            User user=new User((UUID.randomUUID()),name,email.toLowerCase(),password);
+            User user=new User((UUID.randomUUID()),name,email.toLowerCase(),password, new ArrayList<>());
             if(mongo.usedName(name) == false && mongo.usedEmail(email) == false) {
                 mongo.insertUser(user);
             }

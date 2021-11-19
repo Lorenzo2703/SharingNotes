@@ -38,7 +38,7 @@ public class ScoreController {
     public ResponseEntity<String> insertIdVotati(@RequestParam("id_votato") String id_votato, @RequestParam("id")String id){
         try {
             Document documento = mongo.getUserByID(id);
-            User user = new User(UUID.fromString(documento.get("_id").toString()), (String) documento.get("name"), (String) documento.get("email"), (String) documento.get("password"));
+            User user = new User(UUID.fromString(documento.get("_id").toString()), (String) documento.get("name"), (String) documento.get("email"), (String) documento.get("password"), (ArrayList<String>) documento.get("id_votati"));
             mongo.insertIdVotati(user,id_votato);
             return new ResponseEntity<>(gson.toJson("Id_votato aggiornato"), HttpStatus.OK);
         }catch (Exception e){

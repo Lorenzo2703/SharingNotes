@@ -14,7 +14,7 @@ public class User {
     private int sommaVoti;
     private ArrayList<String> id_votati;
 
-    public User(UUID _id, String name, String email, String password) {
+    public User(UUID _id, String name, String email, String password, ArrayList<String> id_votati) {
         this._id = _id;
         this.name = name;
         this.email = email;
@@ -22,7 +22,7 @@ public class User {
         this.rating = 0;
         this.nvoti = 0;
         this.sommaVoti = 0;
-        this.id_votati = new ArrayList<>();
+        this.id_votati = id_votati;
     }
 
     @Override

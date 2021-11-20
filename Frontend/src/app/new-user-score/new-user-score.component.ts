@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { AjaxService } from '../ajax.service';
 import { HomeComponent } from '../home/home.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-user-score',
@@ -38,14 +39,14 @@ export class NewUserScoreComponent implements OnInit {
 
   submit() {
     if(this.user.id_votati.includes(sessionStorage.getItem("idUserScore")) ){
-      window.alert("Hai già votato questa nota!")
+      Swal.fire({ title: "Utente già votato!", icon: 'error', position: "center" });
     }else{
       this.ajax.insertIdVotati(sessionStorage.getItem("UserID"),sessionStorage.getItem("idUserScore")).subscribe((res) => {})
       this.ajax.updateUserScore(this.rating, sessionStorage.getItem("idUserScore")).subscribe((res) => {
         console.log(res);
         this.dialogRef.close();
         window.location.reload();
-      });
+      })
     }
   }
 

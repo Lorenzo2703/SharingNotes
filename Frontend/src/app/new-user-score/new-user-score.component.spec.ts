@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { NewUserScoreComponent } from './new-user-score.component';
 
 describe('NewUserScoreComponent', () => {

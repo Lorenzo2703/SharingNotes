@@ -1,25 +1,27 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Header -->
-    <div class="d-sm-flex align-items-center justify-content-left mb-4">
-        <h1 class="h3 mb-0 text-black"> My Review</h1>
+    <div class="d-sm-flex align-items-center justify-content-center mb-4">
+        <h1 class="h3 mb-0 text-primary"><strong> My Review</strong></h1>
     </div>
+    <div class="row">
+        <div class="line my-2 mx-4"></div>
+    </div>
+
     <!-- Content Row -->
     <div class="row">
         <!-- Lista delle recensioni pubblicate dall'utente -->
-        <div class="col-xl-4 col-md-6 mb-4" *ngFor="let item of listReviews">
+        <div class="col-12 col-md-6 mb-4" *ngFor="let item of listReviews">
             <a class="text-decoration-none" [routerLink]="['/home/note',item?.id_Nota_Recensita]">
                 <div class="card card-hover shadow h-100 py-2 ">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="h5 font-weight-bold text-primary text-uppercase mb-1 ">
+                                <div class="h5 font-weight-bold text-primary text-center text-uppercase mb-1 ">
                                     {{item?.title}}</div>
                                 <div class=" h6 mt-2 font-weight-bold text-gray-800 ">{{item?.testo}}</div>
                             </div>
-                            <div class="col-auto">
-                                <i class="fas fa-user-edit fa-2x text-gray-300"></i>
-                            </div>
+
                         </div>
                     </div>
                 </div>

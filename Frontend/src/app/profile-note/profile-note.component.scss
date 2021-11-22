@@ -20,8 +20,10 @@ body {
   margin-top: 10px;
 }
 
+
+
+
 .card-hover:hover {
-  height: 100% !important;
   cursor: pointer;
   transition: all 300ms ease-in-out;
   -webkit-transition: all 300ms ease-in-out;
@@ -33,8 +35,9 @@ body {
 }
 
 .card-hover {
-  height: 140px !important;
+  height: 100px !important;
   overflow-y: hidden;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   transition: all 300ms ease-in-out;
   -webkit-transition: all 300ms ease-in-out;
   -moz-transition: all 300ms ease-in-out;

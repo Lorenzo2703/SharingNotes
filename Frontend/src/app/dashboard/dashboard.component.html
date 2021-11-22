@@ -1,9 +1,9 @@
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<div class="container-fluid mb-4">
 
     <!-- Header della pagina -->
-    <div class="d-sm-flex align-items-center justify-content-left mb-4">
-        <h1 class="h3 mb-0 text-black"> Welcome {{nameUser}}!</h1>
+    <div class="d-sm-flex align-items-center justify-content-center mb-2">
+        <h1 class="h3 mb-0 text-primary text-capitalize "> <strong> Welcome {{nameUser}}!</strong></h1>
     </div>
 
     <!-- Filtro -->
@@ -13,8 +13,9 @@
         <mat-form-field class="w-100" MatFormFieldControl>
             <mat-label>Select Categories</mat-label>
             <mat-select formControlName="category">
-                <mat-option *ngFor="let cat of categories" [value]="cat" [routerLink]="['/home/cat',cat]">{{cat}}</mat-option>
-              </mat-select>
+                <mat-option *ngFor="let cat of categories" [value]="cat" [routerLink]="['/home/cat',cat]">{{cat}}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
     </form>
 
@@ -28,12 +29,12 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="h5 font-weight-bold text-primary text-uppercase mb-1">
+                                <div
+                                    class="h5 font-weight-bold text-primary text-center text-md-start text-uppercase mb-1">
                                     {{item?.title}}</div>
                                 <div class=" h6 mt-2 font-weight-bold text-gray-800">{{item?.description}}</div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </a>

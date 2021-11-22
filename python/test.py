@@ -12,7 +12,6 @@ import base64
 mega = Mega()
 with open("../python/credentials.json") as f:
     data = json.load(f)
-
 m = mega.login(data["username"], data["password"])
 
 
@@ -49,9 +48,7 @@ def upload_file():
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         url = fmega(file)
-        time.sleep(3)
         os.remove(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
     return url
 
 
@@ -91,5 +88,5 @@ def pdf_encode(pdf_filename):
 
 app.secret_key = 'super secret key'
 app.config['SESSION_TYPE'] = 'filesystem'
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1000 * 1000
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1000 * 10000
 app.run(debug=True)

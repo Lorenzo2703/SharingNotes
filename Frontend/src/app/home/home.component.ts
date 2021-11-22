@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit, DoCheck {
 
   openDialog() {
     //apro il componente new-note
-    if (sessionStorage.getItem('UserID') == "") {
+    if (sessionStorage.getItem('UserID') == ""||sessionStorage.getItem('UserID') == null) {
       Swal.fire({ title: "Try to Log in 😅", icon: 'info', position: "center" });
       this.router.navigateByUrl("/login");
     } else {

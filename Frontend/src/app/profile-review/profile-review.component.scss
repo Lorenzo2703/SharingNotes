@@ -32,8 +32,9 @@ body {
 }
 
 .card-hover {
-  height: min-content !important;
+  height: 143px !important;
   overflow-y: hidden;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   transition: all 300ms ease-in-out;
   -webkit-transition: all 300ms ease-in-out;
   -moz-transition: all 300ms ease-in-out;

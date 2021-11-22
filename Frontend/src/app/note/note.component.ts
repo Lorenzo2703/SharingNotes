@@ -39,7 +39,7 @@ export class NoteComponent implements OnInit, DoCheck {
 
   openDialog() {
     //apre new-review component
-    if (sessionStorage.getItem('UserID') == "") {
+    if (sessionStorage.getItem('UserID') == ""||sessionStorage.getItem('UserID') == null) {
       Swal.fire({ title: "Try to Log in 😅", icon: 'info', position: "center" });
       this.router.navigateByUrl("/login");
     } else {
@@ -49,7 +49,7 @@ export class NoteComponent implements OnInit, DoCheck {
 
   openScoreDialog() {
     //apre new-score component
-    if (sessionStorage.getItem('UserID') == "") {
+    if (sessionStorage.getItem('UserID') == ""||sessionStorage.getItem('UserID') == null) {
       Swal.fire({ title: "Try to Log in 😅", icon: 'info', position: "center" });
       this.router.navigateByUrl("/login");
     } else {

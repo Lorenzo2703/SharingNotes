@@ -1,24 +1,26 @@
-
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Header della pagina -->
-    <div class="d-sm-flex align-items-center justify-content-left mb-4">
-        <h1 class="h3 mb-0 text-black"> My Notes</h1>
+    <div class="d-sm-flex align-items-center justify-content-center mb-4">
+        <h1 class="h3 mb-0 p-2 text-primary text-capitalize"><strong> My {{convert(listNotes?.length)}} Notes</strong>
+        </h1>
+    </div>
+    <div class="row">
+        <div class="line my-2 mx-4"></div>
     </div>
     <!-- Content Row -->
     <div class="row">
         <!-- Lista dei documenti pubblicati dall'utente -->
-        <div class="col-xl-4 col-md-6 mb-4" *ngFor="let item of listNotes">
-            <a class="text-decoration-none" [routerLink]="['/home/note',item?._id]">
-                <div class="card card-hover shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="h5 font-weight-bold text-primary text-uppercase mb-1 ">
-                                    {{item?.title}}</div>
-                                <div class=" h6 mt-2 font-weight-bold text-gray-800 ">{{item?.description}}</div>
-                            </div>
+        <div class="col-xl-4 col-md-6 mb-4  " *ngFor="let item of listNotes">
+            <a class="text-decoration-none " [routerLink]="['/home/note',item?._id]">
+                <div class="card card-hover shadow h-100 ">
+                    <div class="card-body d-flex justify-content-center align-items-center">
+                        <div class="row  no-gutters">
+                            <h3 class="font-weight-bold m-0 text-primary text-center text-uppercase ">
+                                {{item?.title}}
+                            </h3>
                         </div>
+
                     </div>
                 </div>
             </a>

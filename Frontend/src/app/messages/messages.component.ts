@@ -46,7 +46,7 @@ export class MessagesComponent implements OnInit {
 
   getChat() {
     //prendo tutte le chat singole in cui c'è l'utente
-    if (sessionStorage.getItem('UserID') == "") {
+    if (sessionStorage.getItem('UserID') == ""||sessionStorage.getItem('UserID') == null) {
       Swal.fire({ title: "Try to Log in 😅", icon: 'info', position: "center" });
       this.router.navigateByUrl("/login");
     }

@@ -16,6 +16,8 @@ public class CloudApi {
     public static void uploadFile(File file,String title, String description, String id_User, String categoria){
         MongoDb mongoDb=new MongoDb();
         HttpResponse response=Unirest.post("http://127.0.0.1:5000/upload")
+                .socketTimeout(6000000)
+                .connectTimeout(6000000)
                 .field("file",file)
                 .asString();
         mongoDb.insertNotes(new Notes((UUID.randomUUID()),title, description,response.getBody().toString(),id_User, categoria));

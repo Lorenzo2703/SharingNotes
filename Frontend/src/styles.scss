@@ -81,6 +81,34 @@ html {
   }
 }
 
+.over-custom1 {
+  span {
+    position: relative;
+    width: 100px !important;
+    outline: none;
+    text-decoration: none;
+    font-family: roboto;
+    font-size: 12px !important;
+    font-weight: 300;
+    opacity: 0;
+    transition: all 200ms ease-in-out;
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    z-index: 500;
+  }
+}
+
+.over-custom1:hover {
+  span {
+    transition: all 200ms ease-in-out;
+    -webkit-transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    opacity: 1;
+  }
+}
+
 .over-custom-top {
   span {
     position: relative;
@@ -5099,6 +5127,12 @@ input[type="button"].btn-block {
     display: inline-block;
     width: 100%;
   }
+}
+
+.line {
+  background: rgba(0, 0, 0, 0.25);
+  width: 95.5%;
+  height: 1px;
 }
 
 .accordion {

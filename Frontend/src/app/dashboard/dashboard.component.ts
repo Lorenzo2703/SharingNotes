@@ -57,7 +57,6 @@ export class DashboardComponent implements OnInit, DoCheck {
   listNotes = [];
 
   ngOnInit(): void {
-    console.log(this.dataService.listNotes)
     this.initForm();
     this.getParam();
 

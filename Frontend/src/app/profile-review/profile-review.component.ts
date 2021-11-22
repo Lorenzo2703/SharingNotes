@@ -21,7 +21,7 @@ export class ProfileReviewComponent implements OnInit {
   noRev = false; //boolean per verificare che ci siano recnesioni pubblicate dall'utente
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('UserID') == "") {
+    if (sessionStorage.getItem('UserID') == ""||sessionStorage.getItem('UserID') == null) {
       Swal.fire({ title: "Try to Log in 😅", icon: 'info', position: "center" });
       this.router.navigateByUrl("/login");
     } else {

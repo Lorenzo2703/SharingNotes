@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { AjaxService } from '../ajax.service';
 import { DataService } from '../data.service';
 import { HomeComponent } from '../home/home.component';
@@ -16,20 +16,41 @@ export class NewNoteComponent implements OnInit {
   constructor(private ajax: AjaxService, private data: DataService, public dialogRef: MatDialogRef<HomeComponent>) { }
   form;
   file;
-  loading;
+
   listCategorie = this.data.listCategorie;
+  openSpinner = false;
+
+  requiredFileType(expectedFormats: string[]) {
+    return function (control: FormControl) {
+      const files = control.value;
+
+      if (files) {
+
+        const splitParts = files.split('.');
+
+        const extension = splitParts[splitParts.length - 1].toLowerCase();
+
+        if ('pdf' != extension.toLowerCase()) {
+          return { valid: false };
+        } else {
+          return null;
+        }
+      }
+    };
+  };
+
 
   initForm() {
     this.form = new FormGroup({
       title: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
       categoria: new FormControl('', [Validators.required]),
-      file: new FormControl('', Validators.required)
+      file: new FormControl('', [Validators.required, this.requiredFileType(["pdf"])])
     });
   }
 
   submit() {
-    this.loading = true;
+    this.openSpinner = true;
     //inizializzo il form
     const formData = new FormData();
     //aggiungo i parametri
@@ -39,7 +60,7 @@ export class NewNoteComponent implements OnInit {
     formData.append("userId", sessionStorage.getItem("UserID"));
     formData.append("categoria", this.form.get("categoria").value)
     this.ajax.submitFile(formData).subscribe((res) => {
-      this.loading = false;
+      this.openSpinner = false;
       this.dialogRef.close();
     });
   }

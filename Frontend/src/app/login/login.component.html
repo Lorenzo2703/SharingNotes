@@ -27,7 +27,9 @@
                 <!-- Per registrarsi -->
                 <h5 id="register" class="text-secondary mt-4" (click)="register()">New there? Please register!</h5>
                 <h5>Or</h5>
-                <h5 id="skip" class="text-secondary" (click)="skip()">Skip</h5>
+                <h5 id="skip" class="text-secondary over-custom1" (click)="skip()">Skip <br>
+                    <span class="text-secondary">You can only view and download notes</span>
+                </h5>
                 <!-- Spinner -->
                 <mat-progress-spinner *ngIf="openSpinner" [diameter]="40" class="text-center" mode="indeterminate">
                 </mat-progress-spinner>

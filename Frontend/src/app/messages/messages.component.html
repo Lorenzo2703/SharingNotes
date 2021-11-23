@@ -1,44 +1,32 @@
 <div class="container-fluid">
     <div class="row no-gutters">
-        <!-- Chat singole-->
-        <h1 class="text-primary mt-3">Single chat </h1>
-        <!-- Bottone per la creazione della chat singola-->
-        <button type="button" (click)="openDialog()" class="btn btn-primary "><i
-                class="fas fa-plus fa-sm text-white-50 mr-3 "></i>New Chat</button>
-        <!-- Elenco chat singole-->
-        <div class="col-12 mb-4 mt-3" *ngFor="let item of listMessage">
-            <a class="text-decoration-none" [routerLink]="['/home/chat',item?._id]">
-                <div class="card shadow h-100 py-2 ">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col-12 mr-2 ">
-                                <div class="h5 mr-4 font-weight-bold text-primary text-capitalize mb-1">
-                                    {{item?.name}}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
+        <!-- Header della pagina -->
+        <div class="d-sm-flex align-items-center justify-content-center mb-2">
+            <h1 class="h3 mb-0 text-primary text-capitalize "> <strong> Chat</strong></h1>
         </div>
-        <!-- Chat di gruppo -->
-        <h1 class="text-primary mt-3">Group chat </h1>
-        <!-- Bottone per la creazione della chat di gruppo-->
-        <button type="button" (click)="openGroupDialog()" class="btn btn-primary d-none d-md-block"><i
-                class="fas fa-plus fa-sm text-white-50 mr-3 "></i>New GroupChat</button>
-        <!-- Elenco chat di gruppo -->        
-        <div class="col-12 mb-4 mt-3" *ngFor="let item of listGroupMessage">
-            <a class="text-decoration-none" [routerLink]="['/home/chat-group',item?._id]">
-                <div class="card shadow h-100 py-2 ">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col-12 mr-2 ">
-                                <div class="h5 mr-4 font-weight-bold text-primary text-capitalize mb-1">
+        <div class="line my-2 mx-4"></div>
+        <div class="row p-4 m-1 align-items-center ">
+            <div class="col-6 col-md-3 mb-1" *ngFor="let item of listMessage">
+                <div class="card-custom1  m-1 p-3">
+                    <a class="text-decoration-none" [routerLink]="['/home/chat',item?._id]">
+                        <div class="h-100 py-2 ">
+                            <div class="row no-gutters d-flex align-items-center  justify-content-center">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <i class="fas fa-user text-center icon-custom fa-sm text-dark "></i>
+                                </div>
+                                <div
+                                    class="h5 d-flex col-12 mr-4 justify-content-center mt-4  text-primary text-capitalize mb-1">
                                     {{item?.name}}</div>
                             </div>
+
+
                         </div>
-                    </div>
+                    </a>
                 </div>
-            </a>
+            </div>
+
+
+
+
         </div>
     </div>
-</div>

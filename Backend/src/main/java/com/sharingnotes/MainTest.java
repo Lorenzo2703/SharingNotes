@@ -28,7 +28,6 @@ public class MainTest {
         SpringApplication.run(MainTest.class, args);
         JSONObject json = new JSONObject(CloudApi.getAll()); // Convert text to object
         System.out.println(json.toString(5));
-
     }
 
     @PreDestroy

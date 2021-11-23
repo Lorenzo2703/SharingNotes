@@ -7,3 +7,27 @@
   -webkit-box-orient: vertical;
   white-space: nowrap;
 }
+.card-custom1 {
+  background: rgba(255, 255, 255, 0.25);
+  height: 180px;
+
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.icon-custom {
+  font-size: 50px;
+  background: rgba(44, 58, 255, 0.5);
+  height: 75px;
+  width: 75px;
+  line-height: 70px;
+  vertical-align: middle;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}

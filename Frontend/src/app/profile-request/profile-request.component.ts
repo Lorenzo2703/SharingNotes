@@ -16,12 +16,15 @@ export class ProfileRequestComponent implements OnInit {
   listRequest = [];
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('UserID') == ""||sessionStorage.getItem('UserID') == null) {
+    if (sessionStorage.getItem('UserID') == "" || sessionStorage.getItem('UserID') == null) {
       Swal.fire({ title: "Try to Log in 😅", icon: 'info', position: "center" });
       this.router.navigateByUrl("/login");
     } else {
       this.getRequest();
     }
+
+    console.log(this.listRequest);
+
   }
 
   getRequest() {

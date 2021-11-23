@@ -1,0 +1,23 @@
+.btn-custom {
+  border-radius: 50%;
+  position: fixed;
+  height: 65px;
+  width: 65px;
+  font-size: 30px;
+  top: 85%;
+  left: 90%;
+}
+
+.active-none input[type="search"] {
+  border-bottom: 0px solid #ffffff !important;
+  box-shadow: 0 0px 0 0 #ffffff !important;
+}
+
+.active-none input[type="search"]:focus:not([readonly]) {
+  border-bottom: 0px solid #ffffff !important;
+  box-shadow: 0 0px 0 0 #ffffff !important;
+}
+
+.form-control:active{
+  border: #ffffff;
+}

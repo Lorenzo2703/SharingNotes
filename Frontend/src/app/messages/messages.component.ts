@@ -35,22 +35,31 @@ export class MessagesComponent implements OnInit {
 
   openDialog() {
     //apre il new-chat component
-    const dialogRef = this.dialog.open(NewChatComponent);
+    Swal.fire({
+      title: 'Do you want to create a chat?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonColor: "#4e73df",
+      denyButtonColor: "#0f9700",
+      confirmButtonText: 'Single chat',
+      denyButtonText: `Group chat`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const dialogRef = this.dialog.open(NewChatComponent);
+      } else if (result.isDenied) {
+        const dialogRef = this.dialog.open(NewGroupChatComponent);
+      }
+    })
   }
 
-  openGroupDialog() {
-    //apre il new-group-chat component
-    const dialogRef = this.dialog.open(NewGroupChatComponent);
-  }
 
 
   getChat() {
     //prendo tutte le chat singole in cui c'è l'utente
-    if (sessionStorage.getItem('UserID') == ""||sessionStorage.getItem('UserID') == null) {
+    if (sessionStorage.getItem('UserID') == "" || sessionStorage.getItem('UserID') == null) {
       Swal.fire({ title: "Try to Log in 😅", icon: 'info', position: "center" });
       this.router.navigateByUrl("/login");
     }
-
     this.ajax.getAllChat(sessionStorage.getItem("UserID")).subscribe(res => {
       for (let x in res) {
         this.message = res[x];
@@ -72,7 +81,6 @@ export class MessagesComponent implements OnInit {
   }
 
   getChatName() {
-
     this.listMessage.forEach(chat => {
       this.dataservice.listUsers.forEach(user => {
         //se l'user1 della chat sono il allora il name sarà dato dall'altro user

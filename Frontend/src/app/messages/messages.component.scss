@@ -19,8 +19,8 @@
 }
 
 .icon-custom {
-  font-size: 50px;
-  background: rgba(44, 58, 255, 0.5);
+  font-size: 40px;
+  background: #4e73dfdd;
   height: 75px;
   width: 75px;
   line-height: 70px;
@@ -29,5 +29,50 @@
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 50%;
+  transition: 300ms ease-in-out;
   border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.text-green {
+  color: rgba(15, 151, 0, 1);
+}
+
+.icon-custom1 {
+  font-size: 40px;
+  background: rgba(15, 151, 0, 0.65);
+  height: 75px;
+  width: 75px;
+  line-height: 70px;
+  vertical-align: middle;
+  box-shadow: 0 8px 32px 0 rgba(31, 135, 36, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 50%;
+  transition: 300ms ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.text-custom {
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: clip !important;
+  -o-text-overflow: clip !important;
+  -ms-text-overflow: clip !important;
+}
+
+.icon-custom:hover {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+.icon-custom1:hover {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.btn-custom {
+  border-radius: 50%;
+  position: fixed;
+  height: 65px;
+  width: 65px;
+  font-size: 30px;
+  top: 85%;
+  left: 90%;
 }

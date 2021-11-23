@@ -2,7 +2,7 @@
     <div class="row no-gutters">
         <!-- Header della pagina -->
         <div class="d-sm-flex align-items-center justify-content-center mb-2">
-            <h1 class="h3 mb-0 text-primary text-capitalize "> <strong> Chat</strong></h1>
+            <h1 class="h3 mb-0 p-2 text-primary text-capitalize "> <strong> Chat</strong></h1>
         </div>
         <div class="line my-2 mx-4"></div>
         <div class="row p-4 m-1 align-items-center ">
@@ -12,21 +12,35 @@
                         <div class="h-100 py-2 ">
                             <div class="row no-gutters d-flex align-items-center  justify-content-center">
                                 <div class="col-12 d-flex justify-content-center">
-                                    <i class="fas fa-user text-center icon-custom fa-sm text-dark "></i>
+                                    <i class="fas fa-user text-center icon-custom fa-sm text-black-50 "></i>
                                 </div>
                                 <div
-                                    class="h5 d-flex col-12 mr-4 justify-content-center mt-4  text-primary text-capitalize mb-1">
-                                    {{item?.name}}</div>
+                                    class="h6 d-flex col-12 text-custom justify-content-center mt-4  text-primary text-capitalize mb-1">
+                                    {{item?.name}} </div>
                             </div>
-
-
                         </div>
                     </a>
                 </div>
             </div>
-
-
-
-
+            <div class="col-6 col-md-3 mb-1" *ngFor="let item of listGroupMessage">
+                <div class="card-custom1  m-1 p-3">
+                    <a class="text-decoration-none" [routerLink]="['/home/chat-group',item?._id]">
+                        <div class=" h-100 py-2 ">
+                            <div class="row no-gutters d-flex align-items-center  justify-content-center">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <i class="fas fa-users text-center icon-custom1 fa-sm text-black-50 "></i>
+                                </div>
+                                <div
+                                    class="h6 d-flex col-12 text-custom justify-content-center mt-4  text-green text-capitalize mb-1">
+                                    {{item?.name}} </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
+    <button type="button" (click)="openDialog()" class="btn btn-primary btn-custom d-none d-md-block"><i
+            class="fas fa-plus fa-sm "></i></button>
+
+</div>

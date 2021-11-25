@@ -1,38 +1,68 @@
 @import "/node_modules/material-icons/iconfont/material-icons.scss";
 
-#container1 {
-    margin-bottom: 120px;
-    padding:20px;
-    background-color:#f5f5f5;
-}
+.lines {
+    text-overflow: ellipsis !important;
+    overflow-wrap: break-word;
+    overflow: hidden !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    white-space: nowrap;
+  }
+  .card-custom1 {
+    background: rgba(255, 255, 255, 0.25);
+    height: 115px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  
+  .text-green {
+    color: rgba(15, 151, 0, 1);
+  }
+  
+  .icon-custom1 {
+    font-size: 37px;
+    background: rgba(15, 151, 0, 0.65);
+    height: 60px;
+    width: 60px;
+    line-height: 54px;
+    vertical-align: middle;
+    box-shadow: 0 8px 32px 0 rgba(31, 135, 36, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 50%;
+    transition: 300ms ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
 
-.rating {
-    margin-left: 30px;
-}
-
-.user {
-    background: #5cb85c;
-    border-radius: 3px;
-    color: white;
-    font-weight: bold;
-    padding: 3px 4px;
-    border: none;
-}
-
-.note {
-    background: #be1010;
-    border-radius: 3px;
-    color: white;
-    font-weight: bold;
-    padding: 3px 4px;
-    border: none;
-}
-
-.skillLine {
-   display: inline-block;
-    width: 100%;
-    min-height: 90px;
-    padding: 3px 4px;
-}
-
+  .icon-custom2 {
+    font-size: 37px;
+    background: rgba(0, 119, 255, 0.65);
+    height: 60px;
+    width: 60px;
+    line-height: 54px;
+    vertical-align: middle;
+    box-shadow: 0 8px 32px 0 rgba(31, 135, 36, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 50%;
+    transition: 300ms ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  
+  .text-custom {
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    text-overflow: clip !important;
+    -o-text-overflow: clip !important;
+    -ms-text-overflow: clip !important;
+  }
+  
+  .icon-custom1:hover {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+  
 

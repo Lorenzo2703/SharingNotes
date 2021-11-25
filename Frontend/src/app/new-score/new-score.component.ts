@@ -41,7 +41,7 @@ export class NewScoreComponent implements OnInit {
   submit() {
 
     if(this.user.id_votati.includes(sessionStorage.getItem("IDNota")) ){
-      Swal.fire({ title: "Utente già votato!", icon: 'error', position: "center" });
+      Swal.fire({ title: "Nota già votata!", icon: 'error', position: "center" });
     }else{
       this.ajax.insertIdVotati(sessionStorage.getItem("UserID"),sessionStorage.getItem("IDNota")).subscribe((res) => {})
       this.ajax.updateScore(this.rating, sessionStorage.getItem("IDNota")).subscribe((res) => {

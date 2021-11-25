@@ -65,6 +65,8 @@ export class NewNoteComponent implements OnInit {
     });
   }
 
+  
+
   handleFileInput(files: FileList) {
     this.file = files[0];
   }

@@ -55,7 +55,7 @@
                 <a class="text-decoration-none" [routerLink]="['/home/review',item?._id]">
                     <div class="card m-3 shadow mb-4 card-hover">
                         <div class="card-header py-3">
-                            <h4 class="m-0 font-weight-bold text-primary">{{item?.title}} by {{nameUserReview[i]}}</h4>
+                            <h4 class="m-0 font-weight-bold text-primary">{{item?.title}} by {{item?.id_Recensore}}</h4>
                         </div>
                         <div class="card-body h5 mb-0 font-weight-bold text-gray-800">
                             <p>{{item?.testo}}</p>

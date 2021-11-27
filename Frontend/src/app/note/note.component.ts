@@ -18,7 +18,6 @@ export class NoteComponent implements OnInit, DoCheck {
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private data: DataService, public dialog: MatDialog, private ajaxService: AjaxService) { }
 
   listReviews = []; //lista recensioni relative alla nota
-  nameUserReview = []; //nome di chi ha fatto la recnesione
   note = {
     color: "",
     description: "",
@@ -80,13 +79,12 @@ export class NoteComponent implements OnInit, DoCheck {
     this.ajaxService.getReview().subscribe(res => {
       for (let x in res) {
         if (res[x]["id_Nota_Recensita"] == this.note._id) {
-          //salvo le recensioni nella lista
-          this.listReviews.push(res[x]);
-          /* salvo i nomi dei recensori
-          avrò in questo modo una correlazioni tra nome del recensore e recensione grazie alla posizione */
+          
+          /* salvo i nomi al posto dell'id del recendore */
           this.ajaxService.getUserByID(res[x]["id_Recensore"]).subscribe(user => {
-            this.nameUserReview.splice(Number(x), 0, user["name"])
+            res[x]["id_Recensore"] =  user["name"]
           })
+          this.listReviews.push(res[x]);
         }
       }
     })

@@ -12,8 +12,11 @@
     <div class="row">
         <!-- Lista delle recensioni pubblicate dall'utente -->
         <div class="col-12 col-md-6 mb-4" *ngFor="let item of listReviews">
+            <button class="btn btn-danger btn-rel" (click)="delete(item?._id)">
+                X
+            </button>
             <a class="text-decoration-none" [routerLink]="['/home/note',item?.id_Nota_Recensita]">
-                <div class="card card-hover shadow h-100 py-2 ">
+                <div class="card card-hover shadow h-100 ">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">

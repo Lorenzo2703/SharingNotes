@@ -67,6 +67,12 @@
   color: rgba(255, 255, 255, 0.9) !important;
 }
 
+.btn-rel {
+  position: relative;
+  top: 44px;
+  left: 6px;
+  z-index: 100;
+}
 .btn-custom {
   border-radius: 50%;
   position: fixed;

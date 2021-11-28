@@ -80,6 +80,13 @@ export class ProfileNoteComponent implements OnInit {
 
   }
 
+  delete(id) {
+    this.ajaxService.delete(id, "notes").subscribe(res => {
+    });
+    this.listNotes = [];
+    setTimeout(() => { this.getUserNotes(); }, 2000);
+
+  }
 
   getUserNotes() {
     //salvo tutte le note pubblicate dall'utente

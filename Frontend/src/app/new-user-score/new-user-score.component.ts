@@ -43,7 +43,6 @@ export class NewUserScoreComponent implements OnInit {
     }else{
       this.ajax.insertIdVotati(sessionStorage.getItem("UserID"),sessionStorage.getItem("idUserScore")).subscribe((res) => {})
       this.ajax.updateUserScore(this.rating, sessionStorage.getItem("idUserScore")).subscribe((res) => {
-        console.log(res);
         this.dialogRef.close();
         window.location.reload();
       })
@@ -83,7 +82,6 @@ export class NewUserScoreComponent implements OnInit {
         //posso usare sia l'id che il name dell'utente
         if (element._id == sessionStorage.getItem("UserID") || element.name == id) {
           this.user = element;
-          console.log(this.user)
         }
       });
     });

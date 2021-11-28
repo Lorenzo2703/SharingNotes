@@ -34,7 +34,6 @@ export class RichiestaComponent implements OnInit {
     this.initForm();
     this.getComments()
     this.getParam();
-    console.log(this.listReviews)
   }
 
   ngDoCheck(): void {
@@ -82,9 +81,9 @@ export class RichiestaComponent implements OnInit {
           this.listReviews.push(res[x]);
         }
       }
-    /* salvo i nomi dei recensori
-    avrò in questo modo una correlazioni tra nome del recensore e recensione grazie alla posizione */
-      for(let x in this.listReviews){
+      /* salvo i nomi dei recensori
+      avrò in questo modo una correlazioni tra nome del recensore e recensione grazie alla posizione */
+      for (let x in this.listReviews) {
         this.ajaxService.getUserByID(this.listReviews[x]["id_Recensore"]).subscribe(user => {
           this.nameUserReview.splice(Number(x), 0, user["name"])
         })
@@ -93,10 +92,9 @@ export class RichiestaComponent implements OnInit {
   }
 
   //completamento della richiesta
-  completeRequest(){
+  completeRequest() {
     //richiesta completed passa da true a false
-    this.ajaxService.completeRequest(this.id).subscribe( res =>{
-      console.log(res)
+    this.ajaxService.completeRequest(this.id).subscribe(res => {
     });
     window.location.reload()
   }

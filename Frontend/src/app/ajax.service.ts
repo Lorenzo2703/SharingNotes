@@ -27,8 +27,9 @@ export class AjaxService {
   updateScoreUrl = this.baseUrl + "updateScore"
   downloadUrl = this.baseUrl + "download";
   insertRichiestaUrl = this.baseUrl + "insertRichiesta";
-  insertIdVotatiUrl = this.baseUrl + "insertIdVotati"
-  completeRequestUrl = this.baseUrl + 'completeRequest'
+  insertIdVotatiUrl = this.baseUrl + "insertIdVotati";
+  completeRequestUrl = this.baseUrl + 'completeRequest';
+  deleteUrl = this.baseUrl + 'delete';
 
   completeRequest(id) {
     let params = new HttpParams().set('bool', "true").set('id', id).set("collection", "richieste");
@@ -107,15 +108,15 @@ export class AjaxService {
     return this.httpClient.post(this.updateScoreUrl, {}, { params: params })
   }
 
-  download(fileUrl): any {
-    return this.httpClient.get("http://127.0.0.1:5000/download", { params: { fileUrl: fileUrl } });
-  }
-
   insertRequest(formData) {
     return this.httpClient.post(this.insertRichiestaUrl, formData)
   }
 
-  insertIdVotati(id, id_votato){
+  delete(id, collection) {
+    return this.httpClient.get(this.deleteUrl, { params: { _id: id, collection: collection } });
+  }
+
+  insertIdVotati(id, id_votato) {
     let params = new HttpParams().set("id_votato", id_votato).set('id', id);
     return this.httpClient.post(this.insertIdVotatiUrl, {}, { params: params })
   }

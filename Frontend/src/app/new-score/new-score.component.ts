@@ -45,7 +45,6 @@ export class NewScoreComponent implements OnInit {
     }else{
       this.ajax.insertIdVotati(sessionStorage.getItem("UserID"),sessionStorage.getItem("IDNota")).subscribe((res) => {})
       this.ajax.updateScore(this.rating, sessionStorage.getItem("IDNota")).subscribe((res) => {
-      console.log(res);
       this.dialogRef.close();
       window.location.reload();
     });

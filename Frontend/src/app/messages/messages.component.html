@@ -5,8 +5,11 @@
             <h1 class="h3 mb-0 p-2 text-primary text-capitalize "> <strong> Chat</strong></h1>
         </div>
         <div class="line my-2 mx-4"></div>
-        <div class="row p-4 m-1 align-items-center ">
+        <div class="row px-3  py-1 m-1 align-items-end ">
             <div class="col-6 col-md-3 mb-1" *ngFor="let item of listMessage">
+                <button class="btn btn-danger btn-rel " (click)="delete(item?._id)">
+                    X
+                </button>
                 <div class="card-custom1  m-1 p-3">
                     <a class="text-decoration-none" [routerLink]="['/home/chat',item?._id]">
                         <div class="h-100 py-2 ">

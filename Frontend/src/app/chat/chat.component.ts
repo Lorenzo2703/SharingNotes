@@ -79,8 +79,6 @@ export class ChatComponent implements OnInit {
         }
       })
     });
-    console.log(this.chat);
-
   }
 
   initForm() {

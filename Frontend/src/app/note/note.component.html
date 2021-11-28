@@ -1,6 +1,6 @@
-<div class="container-fluid m-0 p-0">
-    <div class="row m-0 p-0">
-        <div class="col-12 m-0 p-0">
+<div class="container-fluid m-0 mb-4 p-0">
+    <div class="row m-0 p-0 mb-4">
+        <div class="col-12 m-0 p-0 mb-4">
             <div class="p-4 mx-2">
                 <!-- Titolo documento-->
                 <h1 class="text-primary text-center text-capitalize"><strong> {{note?.title}}</strong></h1>
@@ -21,51 +21,52 @@
                     <span class="ml-1 mr-2">{{note?.rating}} /5</span>
                     <span class="stars m-0 mr-1" *ngFor="let in of counter(note?.rating)"> <i
                             class="fa fa-star"></i></span>
-                    
+
                 </div>
-            
-            <!-- Bottoni-->
-            <div class="w-100 d-inline">
-                <!-- Bottone per scaricare il file -->
-                <a href="{{note.fileUrl}}" download="document.pdf" target="_blank">
-                    <button type="button" (click)="download()" class="btn btn-success p-2 mr-2">
-                        <i class="fas fa-download fa-sm d-inline-block text-white-50 mr-2"></i>
-                        Download File</button>
-                </a>
 
-                <!-- Bottone per aggiungere una recensione -->
-                <button type="button" (click)="openDialog()" class="btn btn-primary p-2 mr-2 ml-3"><i
-                        class="fas d-inline-block fa-pencil-alt fa-sm text-white-50 mr-2"></i>Add Review </button><span
-                    class="ms-1 " *ngIf="this.idUser==''"><i class="fas fa-exclamation-triangle over-custom-top">
-                        <span>Log
-                            in</span></i></span>
+                <!-- Bottoni-->
+                <div class="w-100 d-inline">
+                    <!-- Bottone per scaricare il file -->
+                    <a href="{{note.fileUrl}}" download="document.pdf" target="_blank">
+                        <button type="button" (click)="download()" class="btn btn-success p-2 mr-2">
+                            <i class="fas fa-download fa-sm d-inline-block text-white-50 mr-2"></i>
+                            Download File</button>
+                    </a>
 
-                <!-- Bottone per aggiungere un voto -->
-                <button type="button" (click)="openScoreDialog()" class="btn btn-warning p-2 mr-2 ml-3"
-                    *ngIf="this.note.id_User !== idUser">
-                    <i class="fas d-inline-block fa-medal fa-sm text-white-50 mr-2"></i>Add Score</button><span
-                    class="ms-1 " *ngIf="this.idUser==''"><i class="fas fa-exclamation-triangle over-custom-top">
-                        <span>Log
-                            in</span></i></span>
+                    <!-- Bottone per aggiungere una recensione -->
+                    <button type="button" (click)="openDialog()" class="btn btn-primary p-2 mr-2 ml-3"><i
+                            class="fas d-inline-block fa-pencil-alt fa-sm text-white-50 mr-2"></i>Add Review
+                    </button><span class="ms-1 " *ngIf="this.idUser==''"><i
+                            class="fas fa-exclamation-triangle over-custom-top">
+                            <span>Log
+                                in</span></i></span>
+
+                    <!-- Bottone per aggiungere un voto -->
+                    <button type="button" (click)="openScoreDialog()" class="btn btn-warning p-2 mr-2 ml-3"
+                        *ngIf="this.note.id_User !== idUser">
+                        <i class="fas d-inline-block fa-medal fa-sm text-white-50 mr-2"></i>Add Score</button><span
+                        class="ms-1 " *ngIf="this.idUser==''"><i class="fas fa-exclamation-triangle over-custom-top">
+                            <span>Log
+                                in</span></i></span>
+                </div>
             </div>
-        
-        </div>
-        <!-- Recensioni -->
-        <div class="row m-1 no-gutters">
-            <div class="col-6 p-0" *ngFor="let item of listReviews; let i = index">
-                <a class="text-decoration-none" [routerLink]="['/home/review',item?._id]">
-                    <div class="card m-1 shadow card-hover">
-                        <div class="card-header py-3">
-                            <h3 class="m-0 font-weight-bold text-capitalize text-primary">{{item?.id_Recensore}}</h3>
+            <!-- Recensioni -->
+            <div class="row m-1 no-gutters mb-4">
+                <div class="col-6 p-0" *ngFor="let item of listReviews; let i = index">
+                    <a class="text-decoration-none" [routerLink]="['/home/review',item?._id]">
+                        <div class="card m-1 shadow card-hover">
+                            <div class="card-header py-3">
+                                <h3 class="m-0 font-weight-bold text-capitalize text-primary">{{item?.id_Recensore}}
+                                </h3>
+                            </div>
+                            <div class="card-body h6 mb-0 text-gray-800">
+                                <p class="text-dark text-capitalize"> <strong> {{item?.title}} </strong></p>
+                                <p>{{item?.testo}}</p>
+                            </div>
                         </div>
-                        <div class="card-body h6 mb-0 text-gray-800">
-                            <p class="text-dark text-capitalize"> <strong> {{item?.title}} </strong></p>
-                            <p>{{item?.testo}}</p>
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </div>

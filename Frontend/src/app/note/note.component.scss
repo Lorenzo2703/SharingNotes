@@ -1,12 +1,13 @@
 .card-hover:hover {
   cursor: pointer;
   height: 100% !important;
+  max-height: 210px !important;
   transition: all 300ms ease-in-out;
   -webkit-transition: all 300ms ease-in-out;
   -moz-transition: all 300ms ease-in-out;
   -o-transition: all 300ms ease-in-out;
   overflow-y: hidden;
-  transform: scale(1);
+  transform: scale(0.95);
   box-shadow: -1px 12px 22px 2px rgba(0, 0, 0, 0.2) !important;
 }
 
@@ -17,8 +18,9 @@
   -webkit-transition: all 300ms ease-in-out;
   -moz-transition: all 300ms ease-in-out;
   -o-transition: all 300ms ease-in-out;
-  transform: scale(0.95);
+  transform: scale(0.9);
 }
+
 .stars i {
   font-size: 13px;
   color: #ffd900;

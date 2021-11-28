@@ -54,6 +54,15 @@ export class MessagesComponent implements OnInit {
 
 
 
+  delete(id) {
+    this.ajax.delete(id, "chat").subscribe(res => {
+    });
+    this.listMessage = [];
+    setTimeout(() => { this.getChat(); }, 2000);
+
+  }
+
+
   getChat() {
     //prendo tutte le chat singole in cui c'è l'utente
     if (sessionStorage.getItem('UserID') == "" || sessionStorage.getItem('UserID') == null) {

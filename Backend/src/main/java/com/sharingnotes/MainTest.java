@@ -26,8 +26,6 @@ public class MainTest {
 
     public static void main(String[] args) {
         SpringApplication.run(MainTest.class, args);
-        JSONObject json = new JSONObject(CloudApi.getAll()); // Convert text to object
-        System.out.println(json.toString(5));
     }
 
     @PreDestroy
@@ -77,6 +75,12 @@ public class MainTest {
     @RequestMapping(value = "/getFiles",method = RequestMethod.GET)
     public ResponseEntity getFiles(@RequestParam("collection")String collection){
         return new ResponseEntity((mongo.getAllFilesInCollection(collection)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/delete",method = RequestMethod.GET)
+    public ResponseEntity delete(@RequestParam("_id") String id, @RequestParam("collection")String collection){
+        mongo.deleteDocument(mongo.getDocumentByID(id, collection),collection);
+        return new ResponseEntity<>(gson.toJson("Success"), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/getUserByID",method = RequestMethod.GET)

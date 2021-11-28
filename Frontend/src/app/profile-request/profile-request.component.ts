@@ -23,8 +23,6 @@ export class ProfileRequestComponent implements OnInit {
       this.getRequest();
     }
 
-    console.log(this.listRequest);
-
   }
 
   getRequest() {

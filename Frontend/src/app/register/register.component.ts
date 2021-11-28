@@ -35,7 +35,6 @@ export class RegisterComponent implements OnInit {
     this.openSpinner = true;
     //registrazione
     this.ajax.register(this.form.get("name").value, this.form.get("email").value, this.form.get("password").value).subscribe((res) => {
-      console.log(res);
       this.router.navigateByUrl("/login");
     }, (error) => {
       this.openSpinner = false;                   //Error callback

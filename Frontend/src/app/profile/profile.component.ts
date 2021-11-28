@@ -40,7 +40,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     if (sessionStorage.getItem('UserID') == ""||sessionStorage.getItem('UserID') == null) {
       Swal.fire({ title: "Try to Log in 😅", icon: 'info', position: "center" });
-      this.router.navigateByUrl("/login");
+      this.router.navigateByUrl("/in");
     } else {
       this.getParam();
       this.getUserNotes();
@@ -87,7 +87,6 @@ export class ProfileComponent implements OnInit {
 
         }
       }
-      console.log(this.listReviews);
       if (this.listReviews.length == 0) {
         this.noRev = true;
       }

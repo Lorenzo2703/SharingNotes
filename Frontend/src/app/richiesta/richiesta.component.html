@@ -3,17 +3,8 @@
         <div class="col-12 m-0 p-0">
             <div class="m-4 p-4">
                 <!-- Titolo documento-->
-                <h1 class="d-inline-block"><strong> {{richiesta?.title}}</strong></h1>
-                <!-- Se sei il creatore della richiesta puoi chiuderla -->
-                <button type="button" (click)="completeRequest()" class="btn btn-success ml-5 mb-1"
-                    *ngIf="idUser == idAutore && richiesta?.completed == false"><i
-                        class="fas d-inline-block fa-check fa-sm text-white-50 mr-2"></i>Close Request</button>
-                <!-- Se sei il creatore della richiesta puoi chiuderla -->
-                <button type="button" class="btn btn-danger ml-5 mb-1"
-                    *ngIf="idUser == idAutore && richiesta?.completed == true"><i
-                        class="fas d-inline-block fa-check fa-sm text-white-50 mr-2"></i>Request completed</button>
-                <!-- Descizione -->
-                <h2> {{richiesta?.testo}}</h2>
+                <h1 class="text-center text-primary"><strong> {{richiesta?.title}}</strong></h1>
+                <div class="line my-2"></div>
                 <!-- Autore -->
                 <div>
                     <h3 class="mb-1 text-capitalize"> Requested by:
@@ -23,34 +14,44 @@
                         </strong>
                     </h3>
                 </div>
+                <!-- Descizione -->
+                <h2 class="text-dark"> {{richiesta?.testo}}</h2>
+                <!-- Se sei il creatore della richiesta puoi chiuderla -->
+                <button type="button" (click)="completeRequest()" class="btn btn-success"
+                    *ngIf="idUser == idAutore && richiesta?.completed == false"><i
+                        class="fas d-inline-block fa-check fa-sm text-white-50 mr-2"></i>Close Request</button>
+                <!-- Se sei il creatore della richiesta puoi chiuderla -->
+                <button type="button" class="btn btn-danger"
+                    *ngIf="idUser == idAutore && richiesta?.completed == true"><i
+                        class="fas d-inline-block fa-check fa-sm text-white-50 mr-2"></i>Request completed</button>
             </div>
         </div>
         <!-- Risposte -->
-        <div class="row m-3 no-gutters justify-content-center">
+        <div class="row no-gutters justify-content-center">
             <div class="col-10 justify-content-center p-0" *ngFor="let item of listReviews; let i = index">
                 <a class="text-decoration-none">
                     <div class="card m-3 shadow mb-4 card-hover ">
                         <div class="card-header py-3">
-                            <h4 class="font-weight-bold text-primary d-inline mr-5 mt-1">
+                            <h4 class="font-weight-bold text-primary text-capitalize d-inline">
                                 <a class="text-decoration-none"
                                     [routerLink]="['/home/profile',item?.id_Recensore]">{{nameUserReview[i]}}</a>
                             </h4>
                             <!-- Bottone per aggiungere un voto -->
-                            <button type="button" (click)="getUserID(i)" class="btn btn-warning"
+                            <button type="button" (click)="getUserID(i)" class="btn btn-score ml-2 mb-1"
                                 *ngIf="item?.id_Recensore !== this.idUser"><i
-                                    class="fas d-inline-block fa-medal fa-sm text-white-50 mr-2"></i>Add User
-                                Score</button>
+                                    class="fas d-inline-block fa-medal fa-sm text-warning"></i></button>
                         </div>
-                        <div class="card-body h5 mb-0 font-weight-bold text-gray-800">
+                        <div class="card-body h6 mb-0 font-weight-bold text-gray-800">
                             <p>{{item?.testo}}</p>
                         </div>
                     </div>
                 </a>
             </div>
         </div>
+        <div class="view"></div>
         <!-- Form per l'invio di messaggi -->
-        <form [formGroup]="form" (ngSubmit)="submit()" enctype="multipart/form-data">
-            <div class="container-fluid m-0 p-0 mb-3 justify-content-between">
+        <form [formGroup]="form" (ngSubmit)="submit()" enctype="multipart/form-data" class="form-response">
+            <div class="container-fluid m-0 p-0 mb-2 justify-content-between mt-2">
                 <div class="row m-0 p-0 align-items-center justify-content-between">
                     <!-- Spazio del testo-->
                     <div class="send-wrap col-9">

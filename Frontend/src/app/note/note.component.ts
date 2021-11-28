@@ -30,6 +30,10 @@ export class NoteComponent implements OnInit, DoCheck {
   name;
   idUser = sessionStorage.getItem("UserID");
 
+  counter(i: number) {
+    return new Array(i);
+  }
+
   ngDoCheck(): void {
     if (this.note._id === "") {
       this.getParam();

@@ -1,13 +1,14 @@
 <div class="container-fluid m-0 p-0">
     <div class="row m-0 p-0">
         <div class="col-12 m-0 p-0">
-            <div class="m-4 p-4">
+            <div class="p-4 mx-2">
                 <!-- Titolo documento-->
-                <h1><strong> {{note?.title}}</strong></h1>
+                <h1 class="text-primary text-center text-capitalize"><strong> {{note?.title}}</strong></h1>
+                <div class="line my-2"></div>
                 <!-- Descizione -->
-                <h2> {{note?.description}}</h2>
+                <h2 class="text-dark"> {{note?.description}}</h2>
                 <!-- Punteggio -->
-                <div>
+                <div class="mb-3">
                     <h3 class="mb-1 text-capitalize"> Author:
                         <strong class="ml-1">
                             <a class="text-decoration-none" [routerLink]="['/home/profile',note?.id_User]">
@@ -16,19 +17,18 @@
                         </strong>
                     </h3>
                     <h3 class="d-inline"> Rating: </h3>
-                    <span class="ratings ml-1"> <span class="product-rating"> {{note?.rating}}
-                        </span><span>/5</span>
-                        <span class="stars ml-2"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                class="fa fa-star"></i> <i class="fa fa-star"></i> </span>
-                    </span>
+                    <!-- Rating del profilo -->
+                    <span class="ml-1 mr-2">{{note?.rating}} /5</span>
+                    <span class="stars m-0 mr-1" *ngFor="let in of counter(note?.rating)"> <i
+                            class="fa fa-star"></i></span>
+                    
                 </div>
-            </div>
+            
             <!-- Bottoni-->
             <div class="w-100 d-inline">
                 <!-- Bottone per scaricare il file -->
-
                 <a href="{{note.fileUrl}}" download="document.pdf" target="_blank">
-                    <button type="button" (click)="download()" class="btn btn-success p-2 mr-2 ml-5">
+                    <button type="button" (click)="download()" class="btn btn-success p-2 mr-2">
                         <i class="fas fa-download fa-sm d-inline-block text-white-50 mr-2"></i>
                         Download File</button>
                 </a>
@@ -48,21 +48,24 @@
                         <span>Log
                             in</span></i></span>
             </div>
+        
         </div>
         <!-- Recensioni -->
-        <div class="row m-3 no-gutters">
-            <div class="col-4  p-0" *ngFor="let item of listReviews; let i = index">
+        <div class="row m-1 no-gutters">
+            <div class="col-6 p-0" *ngFor="let item of listReviews; let i = index">
                 <a class="text-decoration-none" [routerLink]="['/home/review',item?._id]">
-                    <div class="card m-3 shadow mb-4 card-hover">
+                    <div class="card m-1 shadow card-hover">
                         <div class="card-header py-3">
-                            <h4 class="m-0 font-weight-bold text-primary">{{item?.title}} by {{item?.id_Recensore}}</h4>
+                            <h3 class="m-0 font-weight-bold text-capitalize text-primary">{{item?.id_Recensore}}</h3>
                         </div>
-                        <div class="card-body h5 mb-0 font-weight-bold text-gray-800">
+                        <div class="card-body h6 mb-0 text-gray-800">
+                            <p class="text-dark text-capitalize"> <strong> {{item?.title}} </strong></p>
                             <p>{{item?.testo}}</p>
                         </div>
                     </div>
                 </a>
             </div>
         </div>
+    </div>
     </div>
 </div>

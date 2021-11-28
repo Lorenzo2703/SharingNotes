@@ -1,13 +1,11 @@
 <div class="container-fluid bootstrap snippets bootdey">
+    <!-- Testata della chat -->
     <div class="d-sm-flex align-items-center justify-content-center mb-4">
         <h1 class="h3 mb-0 p-2 text-primary"><strong> Chat</strong></h1>
     </div>
     <div class="row">
         <div class="message-wrap">
             <div class="msg-wrap">
-                <!-- Testata della chat -->
-
-
                 <!-- Spazio dei messaggi-->
                 <div class="container-fluid dim-custom m-0 p-0">
                     <div class="msg container-fluid " *ngFor="let item of chat?.messaggio | keyvalue">
@@ -32,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Form per l'invio di messaggi -->
+            <!-- Form per l'invio dei messaggi -->
             <form [formGroup]="form" (ngSubmit)="sendMessage($event)" enctype="multipart/form-data">
                 <div class="container-fluid m-0 p-0 justify-content-between">
                     <div class="row m-0 p-0 align-items-center justify-content-between">

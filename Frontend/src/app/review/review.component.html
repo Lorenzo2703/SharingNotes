@@ -1,12 +1,18 @@
 <div class="container-fluid m-0 p-0">
     <div class="row m-0 p-0">
         <div class="col-12 m-0 p-0">
-            <div class="m-4 p-4">
+            <div class="m-4 text-center">
                 <!-- Titolo -->
-                <h1><strong> {{review?.title}} by {{userReview?.name}} </strong></h1>
-                <!-- Testo -->
-                <h2> {{review?.testo}}</h2>
+                <h1 class="text-primary"><strong> {{review?.title}}</strong></h1>
+                <div class="line "></div>
             </div>
+            <h3 class="ml-4 text-capitalize"><strong>Author:  
+                <a class="text-decoration-none" [routerLink]="['/home/profile',review?.id_Recensore]">
+                    {{userReview?.name}}
+                </a>
+            </strong></h3>
+            <!-- Testo -->
+            <h2 class="ml-4 mt-2 text-dark"> {{review?.testo}}</h2>
         </div>
     </div>
 </div>

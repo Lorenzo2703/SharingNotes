@@ -1,23 +1,26 @@
 <div class="container-fluid bootstrap snippets bootdey">
+    <!-- Testata della chat -->
+    <div class="d-sm-flex align-items-center justify-content-center mb-4">
+        <h1 class="h3 mb-0 p-2 text-primary"><strong> {{chat.name}}</strong></h1>
+    </div>
     <div class="row">
         <div class="message-wrap">
             <div class="msg-wrap">
-                <!-- Testata della chat -->
-                <div class="alert alert-info msg-date">
-                    <strong>{{chat.name}}</strong>
-                </div>
                 <!-- Spazio dei messaggi -->
-                <div class="container-fluid m-0 p-0">
+                <div class="container-fluid dim-custom m-0 p-0">
                     <div class="msg container-fluid " *ngFor="let item of chat?.messaggi | keyvalue">
                         <div class=" msg container-fluid d-flex w-100" *ngFor="let res of item.value | keyvalue">
                             <!-- Messaggi inviati -->
-                            <div class="dim media-body1 justify-content-end container-fluid m-0 pt-1 ml-auto" *ngIf="res.key == this.user1.name">
-                                        <h4 class="p-0 m-0 media-heading text-capitalize">{{res.key}}: </h4>
-                                        <p class="p-1 m-1 col-12 text-black">{{res.value}}</p>
+                            <div class="dim media-body1 justify-content-end container-fluid m-0 pt-1 ml-auto"
+                                *ngIf="res.key == this.user1.name">
+                                <h4 class="p-0 m-0 media-heading text-capitalize">{{res.key}}: </h4>
+                                <p class="p-1 m-1 col-12 text-black">{{res.value}}</p>
                             </div>
                             <!-- Messaggi ricevuti -->
-                            <div class="dim media-body2  justify-content-start container-fluid m-0 pt-1" *ngIf="res.key != this.user1.name">
-                                <h4 class="text-capitalize p-0 m-0 media-heading" [routerLink]="['/home/profile',res?.key]">
+                            <div class="dim media-body2  justify-content-start container-fluid m-0 pt-1"
+                                *ngIf="res.key != this.user1.name">
+                                <h4 class="text-capitalize p-0 m-0 media-heading"
+                                    [routerLink]="['/home/profile',res?.key]">
                                     {{res.key}}: </h4>
                                 <p class="p-1 m-1 col-12 text-black media-heading2">
                                     {{res.value}}

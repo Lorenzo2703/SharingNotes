@@ -28,18 +28,21 @@
                                         #{{i+1}} {{user?.name}}
                                     </h3>
                                 </div>
-                                <div class="col-5 d-flexalign-items-center ">
+                                <div class="col-4 d-flex align-items-center ">
                                     <!-- Numero voti -->
-                                    <div class="ml-5 d-flex justify-content-center row"><strong>Votes:
-                                            {{user?.nvoti}}</strong></div>
-                                    <div class="row">
-                                        <!-- Rating -->
-                                        <button mat-icon-button [color]="color"
-                                            *ngFor="let ratingId of ratingArr;index as i">
-                                            <mat-icon>
-                                                {{showIcon(i, user?.rating)}}
-                                            </mat-icon>
-                                        </button>
+                                    <div class="row justify-content-center">
+                                        <div class=" d-flex col-12"><strong>Votes:
+                                                {{user?.nvoti}}</strong></div>
+                                        <div class="col-12 p-1  d-flex text-start">
+                                            <!-- Rating -->
+                                            <button mat-icon-button [color]="color" class="text-center"
+                                                style="width: auto; height: auto;"
+                                                *ngFor="let ratingId of ratingArr;index as i">
+                                                <mat-icon>
+                                                    {{showIcon(i, user?.rating)}}
+                                                </mat-icon>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -65,18 +68,21 @@
                                         #{{i+1}} {{note?.title}}
                                     </h3>
                                 </div>
-                                <div class="col-5 d-flexalign-items-center ">
+                                <div class="col-4 d-flexalign-items-center ">
                                     <!-- Numero voti -->
-                                    <div class="ml-5 d-flex justify-content-center row"><strong>
-                                        Votes: {{note?.nvoti}}</strong></div>
-                                    <div class="row">
-                                        <!-- Rating -->
-                                        <button mat-icon-button [color]="color"
-                                            *ngFor="let ratingId of ratingArr;index as i">
-                                            <mat-icon>
-                                                {{showIcon(i, note?.rating)}}
-                                            </mat-icon>
-                                        </button>
+                                    <div class="row justify-content-center">
+                                        <div class=" d-flex col-12"><strong>Votes:
+                                                {{note?.nvoti}}</strong></div>
+                                        <div class="col-12 p-1  d-flex text-start">
+                                            <!-- Rating -->
+                                            <button mat-icon-button [color]="color" class="text-center"
+                                                style="width: auto; height: auto;"
+                                                *ngFor="let ratingId of ratingArr;index as i">
+                                                <mat-icon>
+                                                    {{showIcon(i, note?.rating)}}
+                                                </mat-icon>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

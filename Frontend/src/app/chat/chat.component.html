@@ -1,29 +1,31 @@
 <div class="container-fluid bootstrap snippets bootdey">
+    <div class="d-sm-flex align-items-center justify-content-center mb-4">
+        <h1 class="h3 mb-0 p-2 text-primary"><strong> Chat</strong></h1>
+    </div>
     <div class="row">
         <div class="message-wrap">
             <div class="msg-wrap">
                 <!-- Testata della chat -->
-                <div class="alert alert-info msg-date">
-                    <strong>Chat</strong>
-                </div>
+
 
                 <!-- Spazio dei messaggi-->
-                <div class="container-fluid m-0 p-0">
+                <div class="container-fluid dim-custom m-0 p-0">
                     <div class="msg container-fluid " *ngFor="let item of chat?.messaggio | keyvalue">
                         <div class=" msg container-fluid d-flex w-100" *ngFor="let res of item.value | keyvalue">
                             <!-- Messaggi inviati -->
                             <div class="dim media-body1 justify-content-end container-fluid m-0 pt-1 ml-auto"
                                 *ngIf="res.key == this.user1ID">
-                                <h4 class="p-0 m-0 media-heading text-capitalize">{{user1.name}}: </h4>
-                                <p class="p-1 m-1 col-12 text-black">{{res.value}}</p>
+                                <h4 class="p-0 m-0 media-heading text-capitalize">{{user1?.name}}: </h4>
+                                <p class="p-1 m-1 col-12 text-black">{{res?.value}}</p>
                             </div>
                             <!-- Messaggi ricevuti -->
                             <div class="dim media-body2  justify-content-start container-fluid m-0 pt-1"
                                 *ngIf="res.key != this.user1ID">
-                                <h4 class="text-capitalize p-0 m-0 media-heading" [routerLink]="['/home/profile',user2?._id]">
-                                    {{user2.name}}: </h4>
+                                <h4 class="text-capitalize p-0 m-0 media-heading"
+                                    [routerLink]="['/home/profile',user2?._id]">
+                                    {{user2?.name}}: </h4>
                                 <p class="p-1 m-1 col-12 text-black media-heading2">
-                                    {{res.value}}
+                                    {{res?.value}}
                                 </p>
                             </div>
                         </div>
@@ -35,7 +37,7 @@
                 <div class="container-fluid m-0 p-0 justify-content-between">
                     <div class="row m-0 p-0 align-items-center justify-content-between">
                         <!-- Spazio del testo-->
-                        <div class="send-wrap col-9">
+                        <div class="send-wrap col-9 ">
                             <textarea type="text" formControlName="messaggio" placeholder="messaggio"
                                 class="form-control send-message" rows="3" placeholder="Write a reply..."></textarea>
                         </div>

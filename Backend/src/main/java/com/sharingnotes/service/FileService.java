@@ -15,17 +15,9 @@ public class FileService {
     public MongoDb mongo= MongoDb.getConnection();
     private static final Gson gson = new Gson();
 
-    public ResponseEntity<String> getAll() {
-        return new ResponseEntity<String>(gson.toJson(CloudApi.getAll().toString()), HttpStatus.OK);
-    }
-
     public ResponseEntity<String> uploadFile(MultipartFile multipartFile,String title,String description, String id, String categoria) {
         CloudApi.uploadFile(convertFile(multipartFile),title,description,id, categoria);
         return new ResponseEntity<>(gson.toJson("Success"), HttpStatus.OK);
-    }
-
-    public ResponseEntity<String> download(String fileUrl) {
-        return new ResponseEntity<>(gson.toJson(CloudApi.download(fileUrl)), HttpStatus.OK);
     }
 
     public ResponseEntity<String> getUrlfiles(){

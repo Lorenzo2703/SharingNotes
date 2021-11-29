@@ -26,6 +26,9 @@ public class MongoDb {
     MongoDatabase database;
     static MongoDb mongo=null;
 
+    /***
+     * Costruttore della connessione al cluster di Mongo
+     */
     public MongoDb() {
         connectionString = new ConnectionString("mongodb+srv://admin:admin@cluster0.xxygs.mongodb.net/test?retryWrites=true&w=majority");
         settings = MongoClientSettings.builder().uuidRepresentation(UuidRepresentation.JAVA_LEGACY).applyConnectionString(connectionString).build();
@@ -33,6 +36,10 @@ public class MongoDb {
         database = mongoClient.getDatabase("test");
     }
 
+    /***
+     * Richiamo la connessione al cluster di Mongo
+     * @return
+     */
     public static MongoDb getConnection() {
         if (mongo == null) {
              mongo= new MongoDb();
@@ -40,18 +47,40 @@ public class MongoDb {
         return mongo;
     }
 
+    /***
+     * Funzione di eliminazione di un documento
+     * @param document
+     * @param collection
+     */
     public void deleteDocument(Document document,String collection){
         database.getCollection(collection).deleteOne(document);
     }
 
+    /***
+     * Funzione di eliminazione di tutte le recensioni interne a una nota eliminata
+     * @param idNota
+     */
     public void deleteReviews(String idNota){
         database.getCollection("recensioni").deleteMany(Filters.eq("id_Nota_Recensita",idNota));
     }
 
+    /***
+     * Funzione che spunta il completamento di una richiesta
+     * @param document
+     * @param collection
+     * @param bool
+     */
     public void completeRequest(Document document,String collection,boolean bool){
         database.getCollection(collection).updateOne(Filters.eq("_id",document.get("_id")), Updates.set("completed",bool));
     }
 
+    /***
+     * Funzione che effettua la media tra il voto inserito e i voti già
+     * presenti e aggiorna il database di Mongo
+     * @param document
+     * @param collection
+     * @param score
+     */
     public void updateScore(Document document,String collection,int score){
         int newNVoti=(document.getInteger("nvoti")+1);
         int newSomma=(document.getInteger("sommaVoti")+score);
@@ -62,6 +91,10 @@ public class MongoDb {
 
     }
 
+    /***
+     * Funzione che inserisce un utente nel database di Mongo
+     * @param user
+     */
     public void insertUser(User user){
         Document insertUser = new Document();
         insertUser.append("_id",user.getId())
@@ -75,12 +108,23 @@ public class MongoDb {
         database.getCollection("utenti").insertOne(insertUser);
     }
 
+    /***
+     * Funzione che passati email e password ritorna il documento dell'utente
+     * @param email
+     * @param password
+     * @return
+     */
     public Document getUser(String email, String password){
         MongoCollection<Document> collection = database.getCollection("utenti");
         Document user = collection.find(and(eq("email", email.toLowerCase()),eq("password", password))).first();
         return user;
     }
 
+    /***
+     * Funzione che verifica se un nome è già stato utilizzato
+     * @param name
+     * @return
+     */
     public boolean usedName(String name){
         FindIterable<Document> documents=database.getCollection("utenti").find();
         boolean used = false;
@@ -92,6 +136,11 @@ public class MongoDb {
         return used;
     }
 
+    /***
+     * Funzione che verifica se un email è già stata utilizzata
+     * @param email
+     * @return
+     */
     public boolean usedEmail(String email){
         FindIterable<Document> documents=database.getCollection("utenti").find();
         boolean used = false;

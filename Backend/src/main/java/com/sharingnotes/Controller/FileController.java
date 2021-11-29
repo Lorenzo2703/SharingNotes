@@ -14,23 +14,9 @@ public class FileController {
     @Autowired
     private FileService fileService;
 
-    /***
-     *
-     * @return
-     */
-    @GetMapping("/getAllFile")
-    public ResponseEntity<String> getAll(){
-        return fileService.getAll();
-    }
-
     @PostMapping("/fileUpload")
     public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile multipartFile, @RequestParam("title") String title, @RequestParam("description") String description, @RequestParam("userId") String id, @RequestParam("categoria") String categoria) {
         return fileService.uploadFile(multipartFile, title, description, id, categoria);
-    }
-
-    @GetMapping("/download")
-    public ResponseEntity<String> download(@RequestParam("fileUrl")String fileUrl) {
-        return fileService.download(fileUrl);
     }
 
     @GetMapping("/getUrlFiles")

@@ -25,7 +25,6 @@ export class AjaxService {
   getGroupChatUrl = this.baseUrl + "chat/getGroupChat";
   sendGroupMessageUrl = this.baseUrl + "chat/sendGroupMessage";
   updateScoreUrl = this.baseUrl + "score/updateScore"
-  downloadUrl = this.baseUrl + "file/download";
   insertRichiestaUrl = this.baseUrl + "request/insertRichiesta";
   insertIdVotatiUrl = this.baseUrl + "score/insertIdVotati";
   completeRequestUrl = this.baseUrl + 'request/completeRequest';

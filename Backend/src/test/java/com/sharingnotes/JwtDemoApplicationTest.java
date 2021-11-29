@@ -1,4 +1,4 @@
-package com.flaminiovilla.geopic;
+package com.sharingnotes;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

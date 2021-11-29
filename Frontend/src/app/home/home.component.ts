@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit, DoCheck {
 
   ngDoCheck(): void {
     this.dataservice.searchText = this.searchText;
+
+  
   }
 
   listNotes = []; //lista delle note 
@@ -40,6 +42,8 @@ export class HomeComponent implements OnInit, DoCheck {
   }
 
 
+
+
   openDialog() {
     //apro il componente new-note
     if (sessionStorage.getItem('UserID') == "" || sessionStorage.getItem('UserID') == null) {
@@ -47,10 +51,6 @@ export class HomeComponent implements OnInit, DoCheck {
       this.router.navigateByUrl("/login");
     } else {
       const dialogRef = this.dialog.open(NewNoteComponent);
-     
-      /* TODO! da testare
-      this.listNotes = [];
-      setTimeout(() => { this.getNotes(); }, 2000);*/
     }
   }
 

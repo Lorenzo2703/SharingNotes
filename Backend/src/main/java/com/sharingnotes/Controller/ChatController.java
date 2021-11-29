@@ -1,83 +1,46 @@
 package com.sharingnotes.Controller;
 
-import com.google.gson.Gson;
-import com.sharingnotes.Model.Chat;
-import com.sharingnotes.Model.GroupChat;
-import com.sharingnotes.MongoDb.MongoDb;
-import org.bson.Document;
-import org.springframework.http.HttpStatus;
+import com.sharingnotes.service.ChatService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.UUID;
-
 @CrossOrigin()
 @RestController
+@RequestMapping("/chat")
 public class ChatController {
 
-    public MongoDb mongo=new MongoDb();
-    private static final Gson gson = new Gson();
+    @Autowired
+    private ChatService chatService;
 
-    @RequestMapping(value = "/createChat",method = RequestMethod.POST)
-    public ResponseEntity<String> createChat(@RequestParam("id_user1")String user1,@RequestParam("id_user2") String user2){
-        mongo.createChat(new Chat(UUID.randomUUID(),user1,user2));
-        return ResponseEntity.ok("success");
+    @PostMapping( "/createChat")
+    public ResponseEntity<String> createChat(@RequestParam("id_user1")String user1,@RequestParam("id_user2") String user2) {
+        return chatService.createChat(user1, user2);
     }
 
-    @RequestMapping(value = "/getAllChat",method = RequestMethod.GET)
+    @GetMapping("/getAllChat")
     public ResponseEntity getChat(@RequestParam("id_user1")String user1){
-        return ResponseEntity.ok(mongo.getChatWithUser(user1));
+    return chatService.getChat(user1);
     }
 
-    @RequestMapping(value = "/sendMessage",method = RequestMethod.POST)
+    @PostMapping("/sendMessage")
     public ResponseEntity<String> sendMessage(@RequestParam("id_user1")String user1,@RequestParam("id_user2")String user2,@RequestParam("sender")boolean sender,@RequestParam("messaggio") String messaggio){
-        HashMap<String,String> map=new HashMap<>();
-
-        //se user1 è il sender allora invia il suo id come chiave del messaggio altrimenti lo farà user2
-        if(sender) {
-            map.put(user1, messaggio);
-        }else{
-            map.put(user2,messaggio);
-        }
-
-        Chat chat=mongo.getChat(user1, user2);
-        mongo.sendMessage(chat,map);
-        return ResponseEntity.ok("success");
+        return chatService.sendMessage(user1,user2,sender,messaggio);
     }
 
-    @RequestMapping(value = "/sendGroupMessage",method = RequestMethod.POST)
+    @RequestMapping("/sendGroupMessage")
     public ResponseEntity<String> sendGroupMessage(@RequestParam("id")String id, @RequestParam("id_user")String user,@RequestParam("messaggio") String messaggio){
-        HashMap<String,String> map=new HashMap<>();
-        map.put(user, messaggio);
-        GroupChat chat = mongo.getGroupChatByID(id);
-        mongo.sendGroupMessage(chat,map);
-        return ResponseEntity.ok("success");
+        return chatService.sendGroupMessage(id,user,messaggio);
     }
 
     @RequestMapping(value = "createGroupChat", method = RequestMethod.POST)
     public ResponseEntity<String> createGroupChat(@RequestParam("name") String name, @RequestParam("id") String ...id){
-        String[] array = new String[id.length];
-        int index=0;
-        for (String i:id) {
-            array[index++]=i;
-        }
-        mongo.createGroupChat(name, array);
-        return ResponseEntity.ok("success");
+       return chatService.createGroupChat(name,id);
     }
 
     @RequestMapping(value = "getGroupChat",method = RequestMethod.GET)
     public ResponseEntity getGroupChat(@RequestParam("id")String id){
-        ArrayList arrayList=new ArrayList();
-        arrayList = mongo.getGroupChat(id);
-
-        if (arrayList.isEmpty()){
-            return new ResponseEntity<>(gson.toJson("id errato"),HttpStatus.BAD_REQUEST);
-        }else{
-            return ResponseEntity.ok(gson.toJson(arrayList));
-        }
+        return chatService.getGroupChat(id);
     }
 
 }

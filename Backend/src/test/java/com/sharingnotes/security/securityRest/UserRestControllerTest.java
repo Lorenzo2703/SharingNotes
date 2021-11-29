@@ -1,6 +1,6 @@
-package com.flaminiovilla.geopic.security.securityRest;
+package com.sharingnotes.security.securityRest;
 
-import com.flaminiovilla.geopic.util.AbstractRestControllerTest;
+import com.sharingnotes.util.AbstractRestControllerTest;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.MediaType;

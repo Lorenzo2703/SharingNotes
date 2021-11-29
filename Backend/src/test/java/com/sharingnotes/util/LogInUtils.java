@@ -1,8 +1,8 @@
-package com.flaminiovilla.geopic.util;
+package com.sharingnotes.util;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.flaminiovilla.geopic.security.model.User;
+import com.sharingnotes.Model.User;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 

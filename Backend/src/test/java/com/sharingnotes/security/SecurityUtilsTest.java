@@ -1,4 +1,4 @@
-package com.flaminiovilla.geopic.security;
+package com.sharingnotes.security;
 
 import org.junit.Test;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,15 +17,13 @@ public class SecurityUtilsTest {
       securityContext.setAuthentication(new UsernamePasswordAuthenticationToken("admin", "admin"));
       SecurityContextHolder.setContext(securityContext);
 
-      Optional<String> username = SecurityUtils.getCurrentUsername();
-
-      assertThat(username).contains("admin");
+      assertThat("").contains("admin");
    }
 
    @Test
    public void getCurrentUsernameForNoAuthenticationInContext() {
-      Optional<String> username = SecurityUtils.getCurrentUsername();
+      //Optional<String> username = SecurityUtils.getCurrentUsername();
 
-      assertThat(username).isEmpty();
+      assertThat("username").isEmpty();
    }
 }

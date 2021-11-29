@@ -32,14 +32,6 @@ public class MongoDb {
         database = mongoClient.getDatabase("test");
     }
 
-    public void destroy(){
-        mongoClient.close();
-    }
-
-    public void createCollection(String name) {
-        database.createCollection(name);
-    }
-
     public void deleteDocument(Document document,String collection){
         database.getCollection(collection).deleteOne(document);
     }
@@ -57,18 +49,6 @@ public class MongoDb {
         database.getCollection(collection).updateOne(Filters.eq("_id",document.get("_id")), Updates.set("rating",media));
 
     }
-
-    /*public float avgScore(Document document){
-        int somma=document.getInteger("sommaVoti");
-        int nvoti=document.getInteger("nvoti");
-        float media=0.0f;
-        try {
-            media = Math.round(somma/ nvoti);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return media;
-    }*/
 
     public void insertUser(User user){
         Document insertUser = new Document();
@@ -252,6 +232,7 @@ public class MongoDb {
                 .append("nvoti",notes.getnVoti())
                 .append("fileUrl",notes.getFileUrl())
                 .append("id_User", notes.getId_User())
+                .append("categoria", notes.getCategoria())
                 .append("sommaVoti", notes.getSommaVoti());
 
         database.getCollection("notes").insertOne(insertNotes);

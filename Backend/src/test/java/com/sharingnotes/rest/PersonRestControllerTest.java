@@ -1,6 +1,6 @@
-package com.flaminiovilla.geopic.rest;
+package com.sharingnotes.rest;
 
-import com.flaminiovilla.geopic.util.AbstractRestControllerTest;
+import com.sharingnotes.util.AbstractRestControllerTest;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 
@@ -25,8 +25,8 @@ public class PersonRestControllerTest extends AbstractRestControllerTest {
          .andExpect(status().isOk())
          .andExpect(content().json(
             "{\n" +
-               "  \"name\" : \"flaminio\",\n" +
-               "  \"email\" : \"vifla01@gmail.com\"\n" +
+               "  \"name\" : \"Lorenzo\",\n" +
+               "  \"email\" : \"lorenzo@gmail.com\"\n" +
                "}"
          ));
    }

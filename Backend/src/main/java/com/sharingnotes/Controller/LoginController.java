@@ -1,33 +1,21 @@
 package com.sharingnotes.Controller;
 
-import com.google.gson.Gson;
-import com.sharingnotes.MongoDb.MongoDb;
-import com.sharingnotes.Security_old.Login;
-import org.springframework.http.HttpStatus;
+import com.sharingnotes.service.LoginService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin()
 @RestController
+@RequestMapping("/login")
 public class LoginController {
 
-    public MongoDb mongo=new MongoDb();
-    private static final Gson gson = new Gson();
+    @Autowired
+    private LoginService loginService;
 
-    @PostMapping(value = "/login",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity authentication(@RequestParam("email")String email, @RequestParam("password")String password){
-        try{
-        Login login =new Login();
-        if (login.authentication(email.toLowerCase(), password)){
-            return ResponseEntity.ok(mongo.getUser(email.toLowerCase(),password));
-        }else{
-            return new ResponseEntity<>(gson.toJson("New there? Please Register"), HttpStatus.FORBIDDEN);
-        }}catch (Exception e){
-            return new ResponseEntity<>(gson.toJson("New there? Please Register"), HttpStatus.FORBIDDEN);
-        }
+    @PostMapping(value = "/authenticate",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity authentication(@RequestParam("email")String email, @RequestParam("password")String password) {
+        return loginService.authentication(email, password);
     }
 }

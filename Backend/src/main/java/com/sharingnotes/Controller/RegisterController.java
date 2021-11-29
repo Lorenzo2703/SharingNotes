@@ -1,40 +1,20 @@
 package com.sharingnotes.Controller;
 
-import com.google.gson.Gson;
-import com.sharingnotes.Model.User;
-import com.sharingnotes.MongoDb.MongoDb;
-import com.sharingnotes.Security_old.Login;
-import org.springframework.http.HttpStatus;
+import com.sharingnotes.service.RegisterService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
-import java.util.UUID;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin()
 @RestController
+@RequestMapping("/register")
 public class RegisterController {
-    private static final Gson gson = new Gson();
-    public MongoDb mongo=new MongoDb();
+
+    @Autowired
+    private RegisterService registerService;
 
     @PostMapping("/register")
     public ResponseEntity register(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("password") String password){
-        try{
-            User user=new User((UUID.randomUUID()),name,email.toLowerCase(),password, new ArrayList<>());
-            if(mongo.usedName(name) == false && mongo.usedEmail(email) == false) {
-                mongo.insertUser(user);
-            }
-            Login login =new Login();
-            if (login.authentication(email.toLowerCase(), password)){
-                return ResponseEntity.ok(mongo.getUser(email.toLowerCase(),password));
-            }else{
-                return new ResponseEntity<>(gson.toJson("Registration error, Please retry :("), HttpStatus.BAD_REQUEST);
-            }
-        }catch (Exception e){
-            return new ResponseEntity<>(gson.toJson("Registration error, Please retry :("), HttpStatus.BAD_REQUEST);
-        }
+        return registerService.register(name, email, password);
     }
 }

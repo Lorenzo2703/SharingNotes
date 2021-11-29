@@ -3,7 +3,7 @@ package com.sharingnotes.Controller;
 import com.google.gson.Gson;
 import com.sharingnotes.Model.User;
 import com.sharingnotes.MongoDb.MongoDb;
-import com.sharingnotes.Security.Login;
+import com.sharingnotes.Security_old.Login;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;

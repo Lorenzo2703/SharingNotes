@@ -2,7 +2,7 @@ package com.sharingnotes.Controller;
 
 import com.google.gson.Gson;
 import com.sharingnotes.MongoDb.MongoDb;
-import com.sharingnotes.Security.Login;
+import com.sharingnotes.Security_old.Login;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

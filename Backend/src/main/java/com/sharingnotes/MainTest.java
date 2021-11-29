@@ -33,21 +33,6 @@ public class MainTest {
         mongo.destroy();
     }
 
-    @GetMapping("/getAllFile")
-    public String getAll(){
-        return (CloudApi.getAll().toString());
-    }
-
-    @RequestMapping(value = "/fileUpload", method = RequestMethod.POST)
-    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile multipartFile,@RequestParam("title") String title,@RequestParam("description") String description,@RequestParam("userId") String id,@RequestParam("categoria") String categoria) {
-        CloudApi.uploadFile(convertFile(multipartFile),title,description,id, categoria);
-        return new ResponseEntity<>(gson.toJson("Success"), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/download", method = RequestMethod.GET)
-    public ResponseEntity<String> download(@RequestParam("fileUrl")String fileUrl) {
-        return new ResponseEntity<>(gson.toJson(CloudApi.download(fileUrl)), HttpStatus.OK);
-    }
 
     @RequestMapping(value = "/insertRecensione",method = RequestMethod.POST)
     public ResponseEntity<String> insertRecensione(@RequestParam("idRecensore") String idRecensore,@RequestParam("idUserRecensito") String idUserRecensito,@RequestParam("idNotaRecensita") String idNotaRecensita,@RequestParam("title") String title,@RequestParam("testo") String testo){
@@ -67,21 +52,7 @@ public class MainTest {
         return ResponseEntity.ok("success");
     }
 
-    @RequestMapping(value = "/getUrlFiles",method = RequestMethod.GET)
-    public ResponseEntity<String> getUrlfiles(){
-        return new ResponseEntity((mongo.getUrlFiles()), HttpStatus.OK);
-    }
 
-    @RequestMapping(value = "/getFiles",method = RequestMethod.GET)
-    public ResponseEntity getFiles(@RequestParam("collection")String collection){
-        return new ResponseEntity((mongo.getAllFilesInCollection(collection)), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/delete",method = RequestMethod.GET)
-    public ResponseEntity delete(@RequestParam("_id") String id, @RequestParam("collection")String collection){
-        mongo.deleteDocument(mongo.getDocumentByID(id, collection),collection);
-        return new ResponseEntity<>(gson.toJson("Success"), HttpStatus.OK);
-    }
 
     @RequestMapping(value = "/getUserByID",method = RequestMethod.GET)
     public ResponseEntity getUserByID(@RequestParam("_id") String id){
@@ -98,20 +69,7 @@ public class MainTest {
         }
     }
 
-    public File convertFile(MultipartFile multipartFile){
-        String fileName = multipartFile.getOriginalFilename();
-        String prefix = fileName != null ? fileName.substring(fileName.lastIndexOf(".")) : null;
-        File file;
-        try {
-            file = File.createTempFile(fileName.substring(0,fileName.lastIndexOf("."))
-                    .replaceAll("[^a-zA-Z0-9-_\\.]", "_"), prefix);
-            multipartFile.transferTo(file);
-            return file;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+
 
 }
 

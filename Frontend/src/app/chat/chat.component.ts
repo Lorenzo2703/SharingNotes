@@ -44,6 +44,10 @@ export class ChatComponent implements OnInit {
     "name": ""
   };
 
+  unsorted(){
+    
+  }
+
   getParam() {
 
     this.activatedRoute.params.subscribe(params => {

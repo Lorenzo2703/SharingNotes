@@ -13,7 +13,7 @@
         <!-- Lista dei documenti pubblicati dall'utente -->
         <div class="col-xl-4 col-md-6 mb-4  " *ngFor="let item of listNotes">
             <button class="btn btn-danger btn-rel " (click)="delete(item?._id)">
-                X
+                <i class="fas fa-trash"></i>
             </button>
             <a class="text-decoration-none " [routerLink]="['/home/note',item?._id]">
                 <div class="card card-hover shadow h-100 ">

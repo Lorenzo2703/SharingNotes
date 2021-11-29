@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginService {
 
-    public MongoDb mongo= new MongoDb();
+    public MongoDb mongo= MongoDb.getConnection();
     private static final Gson gson = new Gson();
 
     public ResponseEntity authentication(String email,String password){

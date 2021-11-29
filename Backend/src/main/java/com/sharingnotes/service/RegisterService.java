@@ -13,7 +13,7 @@ import java.util.UUID;
 @Service
 public class RegisterService {
 
-    public MongoDb mongo= new MongoDb();
+    public MongoDb mongo= MongoDb.getConnection();
     private static final Gson gson = new Gson();
 
     public ResponseEntity register(String name, String email, String password){

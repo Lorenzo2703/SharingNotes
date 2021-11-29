@@ -8,7 +8,7 @@
             <div class="msg-wrap">
                 <!-- Spazio dei messaggi-->
                 <div class="container-fluid dim-custom m-0 p-0">
-                    <div class="msg container-fluid " *ngFor="let item of chat?.messaggio | keyvalue">
+                    <div class="msg container-fluid " *ngFor="let item of chat?.messaggio | keyvalue:unsorted">
                         <div class=" msg container-fluid d-flex w-100" *ngFor="let res of item.value | keyvalue">
                             <!-- Messaggi inviati -->
                             <div class="dim media-body1 justify-content-end container-fluid m-0 pt-1 ml-auto"

@@ -8,7 +8,7 @@
         <div class="row px-3  py-1 m-1 align-items-end ">
             <div class="col-6 col-md-3 mb-1" *ngFor="let item of listMessage">
                 <button class="btn btn-danger btn-rel " (click)="delete(item?._id)">
-                    X
+                    <i class="fas fa-trash"></i>
                 </button>
                 <div class="card-custom1  m-1 p-3">
                     <a class="text-decoration-none" [routerLink]="['/home/chat',item?._id]">

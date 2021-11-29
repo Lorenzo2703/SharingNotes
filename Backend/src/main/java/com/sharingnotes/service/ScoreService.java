@@ -15,7 +15,7 @@ import java.util.UUID;
 @Service
 public class ScoreService {
 
-    public MongoDb mongo= new MongoDb();
+    public MongoDb mongo= MongoDb.getConnection();
     private static final Gson gson = new Gson();
 
     public ResponseEntity<String> updateScore( String score,String id, String collection){

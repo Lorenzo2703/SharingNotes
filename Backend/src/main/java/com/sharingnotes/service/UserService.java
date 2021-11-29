@@ -1,6 +1,5 @@
 package com.sharingnotes.service;
 
-import com.google.gson.Gson;
 import com.sharingnotes.Model.User;
 import com.sharingnotes.MongoDb.MongoDb;
 import org.springframework.http.HttpStatus;
@@ -12,8 +11,7 @@ import java.util.UUID;
 @Service
 public class UserService {
 
-    public MongoDb mongo= new MongoDb();
-    private static final Gson gson = new Gson();
+    public MongoDb mongo= MongoDb.getConnection();
 
     public ResponseEntity<String> insertUser(){
         mongo.insertUser(new User(UUID.randomUUID(),"name","email","password", new ArrayList<String>()));

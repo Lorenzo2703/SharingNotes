@@ -12,7 +12,7 @@ import java.io.File;
 @Service
 public class FileService {
 
-    public MongoDb mongo= new MongoDb();
+    public MongoDb mongo= MongoDb.getConnection();
     private static final Gson gson = new Gson();
 
     public ResponseEntity<String> getAll() {
@@ -37,6 +37,9 @@ public class FileService {
     }
 
     public ResponseEntity delete( String id,String collection){
+        if (collection.contains("notes")){
+            mongo.deleteReviews(id);
+        }
         mongo.deleteDocument(mongo.getDocumentByID(id, collection),collection);
         return new ResponseEntity<>(gson.toJson("Success"), HttpStatus.OK);
     }

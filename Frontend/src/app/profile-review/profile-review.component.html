@@ -13,7 +13,7 @@
         <!-- Lista delle recensioni pubblicate dall'utente -->
         <div class="col-12 col-md-6 mb-4" *ngFor="let item of listReviews">
             <button class="btn btn-danger btn-rel" (click)="delete(item?._id)">
-                X
+                <i class="fas fa-trash"></i>
             </button>
             <a class="text-decoration-none" [routerLink]="['/home/note',item?.id_Nota_Recensita]">
                 <div class="card card-hover shadow h-100 ">

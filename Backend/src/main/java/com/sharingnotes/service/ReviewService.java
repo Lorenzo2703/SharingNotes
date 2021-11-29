@@ -12,7 +12,7 @@ import java.util.UUID;
 @Service
 public class ReviewService {
 
-    public MongoDb mongo=new MongoDb();
+    public MongoDb mongo= MongoDb.getConnection();
     private static final Gson gson = new Gson();
 
     public ResponseEntity<String> insert(String idRecensore, String idUserRecensito, String idNotaRecensita, String title, String testo) {

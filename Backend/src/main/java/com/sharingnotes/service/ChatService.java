@@ -14,7 +14,8 @@ import java.util.UUID;
 
 @Service
 public class ChatService {
-    public MongoDb mongo=new MongoDb();
+
+    public MongoDb mongo= MongoDb.getConnection();
     private static final Gson gson = new Gson();
 
     public ResponseEntity<String> createChat(String user1, String user2) {
@@ -69,7 +70,7 @@ public class ChatService {
         Chat chat=mongo.getChat(user1, user2);
         mongo.sendMessage(chat,map);
 
-        return ResponseEntity.ok("success");
+        return new ResponseEntity<>(gson.toJson("Success"), HttpStatus.OK);
 
     }
 }

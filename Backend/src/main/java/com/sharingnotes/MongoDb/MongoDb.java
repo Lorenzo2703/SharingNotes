@@ -24,6 +24,7 @@ public class MongoDb {
     MongoClientSettings settings;
     MongoClient mongoClient;
     MongoDatabase database;
+    static MongoDb mongo=null;
 
     public MongoDb() {
         connectionString = new ConnectionString("mongodb+srv://admin:admin@cluster0.xxygs.mongodb.net/test?retryWrites=true&w=majority");
@@ -32,8 +33,19 @@ public class MongoDb {
         database = mongoClient.getDatabase("test");
     }
 
+    public static MongoDb getConnection() {
+        if (mongo == null) {
+             mongo= new MongoDb();
+        }
+        return mongo;
+    }
+
     public void deleteDocument(Document document,String collection){
         database.getCollection(collection).deleteOne(document);
+    }
+
+    public void deleteReviews(String idNota){
+        database.getCollection("recensioni").deleteMany(Filters.eq("id_Nota_Recensita",idNota));
     }
 
     public void completeRequest(Document document,String collection,boolean bool){

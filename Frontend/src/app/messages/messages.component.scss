@@ -69,10 +69,19 @@
 
 .btn-rel {
   position: relative;
+  background-color: transparent;
+  color: rgba(255, 0, 0, 0.6);
+  border: 0px;
+
   top: 44px;
   left: 6px;
   z-index: 100;
 }
+.btn-rel:hover {
+  color: rgba(255, 0, 0, 0.8);
+  box-shadow: -1px 4px 6px 1px rgba(0, 0, 0, 0.2) !important;
+}
+
 .btn-custom {
   border-radius: 50%;
   position: fixed;

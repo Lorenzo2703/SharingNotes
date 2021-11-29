@@ -11,7 +11,7 @@ import java.util.UUID;
 @Service
 public class RequestService {
 
-    public MongoDb mongo= new MongoDb();
+    public MongoDb mongo= MongoDb.getConnection();
     private static final Gson gson = new Gson();
 
     public ResponseEntity<String> insertRichiesta(String idRichiedente, String title, String testo){

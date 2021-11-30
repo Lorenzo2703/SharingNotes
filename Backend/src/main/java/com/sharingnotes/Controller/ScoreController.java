@@ -1,49 +1,43 @@
 package com.sharingnotes.Controller;
 
-import com.google.gson.Gson;
-import com.sharingnotes.Model.GroupChat;
-import com.sharingnotes.Model.Notes;
-import com.sharingnotes.Model.User;
-import com.sharingnotes.MongoDb.MongoDb;
-import org.bson.Document;
-import org.springframework.http.HttpStatus;
+import com.sharingnotes.service.ScoreService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.UUID;
-
-@RestController
 @CrossOrigin()
+@RestController
+@RequestMapping("/score")
 public class ScoreController {
 
-    public MongoDb mongo=new MongoDb();
-    private static final Gson gson = new Gson();
+    /***
+     * Definisco la dipendenza
+     */
+    @Autowired
+    ScoreService scoreService;
 
+    /**
+     * Modifico lo score complessivo della nota o dell'utente
+     * @param score
+     * @param id
+     * @param collection
+     * @return
+     */
     @PostMapping(value = "/updateScore")
     public ResponseEntity<String> updateScore(@RequestParam("score") String score, @RequestParam("id")String id,@RequestParam("collection") String collection){
-        try {
-            mongo.updateScore(mongo.getDocumentByID(id,collection),collection,Integer.parseInt(score));
-            return new ResponseEntity<>(gson.toJson("Score aggiornato! con media: "+mongo.getDocumentByID(id,collection).getDouble("rating")), HttpStatus.OK);
-        }catch (Exception e){
-            return new ResponseEntity<>(gson.toJson("Score non aggiornato"), HttpStatus.BAD_REQUEST);
-        }
+        return scoreService.updateScore(score, id, collection);
     }
 
+    /**
+     * Inserisco l'id della nota o dell'user che ho votato alla lista
+     * degli id di chi ho votato nel mio document
+     * @param id_votato
+     * @param id
+     * @return
+     */
     @PostMapping(value = "/insertIdVotati")
     public ResponseEntity<String> insertIdVotati(@RequestParam("id_votato") String id_votato, @RequestParam("id")String id){
-        try {
-            Document documento = mongo.getUserByID(id);
-            User user = new User(UUID.fromString(documento.get("_id").toString()), (String) documento.get("name"), (String) documento.get("email"), (String) documento.get("password"), (ArrayList<String>) documento.get("id_votati"));
-            mongo.insertIdVotati(user,id_votato);
-            return new ResponseEntity<>(gson.toJson("Id_votato aggiornato"), HttpStatus.OK);
-        }catch (Exception e){
-            return new ResponseEntity<>(gson.toJson("Id_votato NON aggiornato"), HttpStatus.BAD_REQUEST);
-        }
+       return scoreService.insertIdVotati(id_votato, id);
     }
 
 }

@@ -18,10 +18,6 @@ Creare una piattaforma online di condivisione appunti universitari in formato PD
   ```
   install (https://nodejs.org/it/download/)
   ```
-* Npm
-  ```
-  npm install npm@latest -g 
-   ```
 * Angular
   ```
   npm install -g @angular/cli
@@ -38,7 +34,14 @@ Creare una piattaforma online di condivisione appunti universitari in formato PD
   ```
   pip install Flask
    ``` 
-
+* Flask cors
+  ```
+  pip install Flask-cors
+   ``` 
+* Mega.py
+  ```
+  pip install Mega.py
+   ``` 
 
  ### Installazione
 

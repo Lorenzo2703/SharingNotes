@@ -14,6 +14,14 @@ public class User {
     private int sommaVoti;
     private ArrayList<String> id_votati;
 
+    /***
+     * Costruttore del User Model
+     * @param _id
+     * @param name
+     * @param email
+     * @param password
+     * @param id_votati
+     */
     public User(UUID _id, String name, String email, String password, ArrayList<String> id_votati) {
         this._id = _id;
         this.name = name;

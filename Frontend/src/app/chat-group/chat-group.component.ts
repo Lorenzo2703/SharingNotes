@@ -15,7 +15,7 @@ export class ChatGroupComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private data: DataService, private ajaxService: AjaxService) { }
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('UserID') == ""||sessionStorage.getItem('UserID') == null) {
+    if (sessionStorage.getItem('UserID') == "" || sessionStorage.getItem('UserID') == null) {
       Swal.fire({ title: "Try to Log in 😅", icon: 'info', position: "center" });
       this.router.navigateByUrl("/login");
     }
@@ -40,6 +40,8 @@ export class ChatGroupComponent implements OnInit {
     "messaggi": [],
     "name": ""
   };
+
+  unsorted() { }
 
   getParam() {
     this.activatedRoute.params.subscribe(params => {

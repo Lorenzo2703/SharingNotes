@@ -9,27 +9,26 @@ export class AjaxService {
   constructor(private httpClient: HttpClient) { }
 
   baseUrl = "http://localhost:8080/";
-  loginUrl = this.baseUrl + "login";
-  registerUrl = this.baseUrl + "register";
-  getNotesUrl = this.baseUrl + "getFiles";
-  getReviewsUrl = this.baseUrl + "getFiles";
-  getUserUrl = this.baseUrl + "getFiles";
-  getRequestUrl = this.baseUrl + "getFiles";
-  getUserbyIDUrl = this.baseUrl + "getUserByID";
-  uploadUrl = this.baseUrl + "fileUpload";
-  uploadReview = this.baseUrl + "insertRecensione";
-  getChat = this.baseUrl + "getAllChat";
-  sendMessageUrl = this.baseUrl + "sendMessage";
-  createChatUrl = this.baseUrl + "createChat";
-  createGroupChatUrl = this.baseUrl + "createGroupChat";
-  getGroupChatUrl = this.baseUrl + "getGroupChat";
-  sendGroupMessageUrl = this.baseUrl + "sendGroupMessage";
-  updateScoreUrl = this.baseUrl + "updateScore"
-  downloadUrl = this.baseUrl + "download";
-  insertRichiestaUrl = this.baseUrl + "insertRichiesta";
-  insertIdVotatiUrl = this.baseUrl + "insertIdVotati";
-  completeRequestUrl = this.baseUrl + 'completeRequest';
-  deleteUrl = this.baseUrl + 'delete';
+  loginUrl = this.baseUrl + "login/authenticate";
+  registerUrl = this.baseUrl + "register/register";
+  getNotesUrl = this.baseUrl + "file/getFiles";
+  getReviewsUrl = this.baseUrl + "file/getFiles";
+  getUserUrl = this.baseUrl + "file/getFiles";
+  getRequestUrl = this.baseUrl + "file/getFiles";
+  getUserbyIDUrl = this.baseUrl + "user/getUserByID";
+  uploadUrl = this.baseUrl + "file/fileUpload";
+  uploadReview = this.baseUrl + "recensione/insertRecensione";
+  getChat = this.baseUrl + "chat/getAllChat";
+  sendMessageUrl = this.baseUrl + "chat/sendMessage";
+  createChatUrl = this.baseUrl + "chat/createChat";
+  createGroupChatUrl = this.baseUrl + "chat/createGroupChat";
+  getGroupChatUrl = this.baseUrl + "chat/getGroupChat";
+  sendGroupMessageUrl = this.baseUrl + "chat/sendGroupMessage";
+  updateScoreUrl = this.baseUrl + "score/updateScore"
+  insertRichiestaUrl = this.baseUrl + "request/insertRichiesta";
+  insertIdVotatiUrl = this.baseUrl + "score/insertIdVotati";
+  completeRequestUrl = this.baseUrl + 'request/completeRequest';
+  deleteUrl = this.baseUrl + 'file/delete';
 
   completeRequest(id) {
     let params = new HttpParams().set('bool', "true").set('id', id).set("collection", "richieste");

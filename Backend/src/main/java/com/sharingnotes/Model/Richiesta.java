@@ -9,6 +9,13 @@ public class Richiesta {
     private String testo;
     private boolean completed=false;
 
+    /***
+     * Costruttore del Richiesta Model
+     * @param _id
+     * @param idRichiedente
+     * @param title
+     * @param testo
+     */
     public Richiesta(UUID _id, String idRichiedente, String title, String testo) {
         this._id = _id;
         this.idRichiedente = idRichiedente;

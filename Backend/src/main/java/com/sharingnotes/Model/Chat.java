@@ -11,6 +11,12 @@ public class Chat {
     private String id_user2;
     private ArrayList<HashMap<String, String>> messaggi;
 
+    /***
+     * Costruttore del chat model
+     * @param _id
+     * @param id_user1
+     * @param id_user2
+     */
     public Chat(UUID _id, String id_user1, String id_user2) {
         this._id = _id;
         this.id_user1 = id_user1;
@@ -18,6 +24,12 @@ public class Chat {
         this.messaggi = new ArrayList<HashMap<String,String>>();
     }
 
+    /***
+     * Overload del costruttore del chat model
+     * @param _id
+     * @param id_user1
+     * @param id_user2
+     */
     public Chat(UUID _id, String id_user1, String id_user2,ArrayList<HashMap<String,String>> messaggi) {
         this._id = _id;
         this.id_user1 = id_user1;

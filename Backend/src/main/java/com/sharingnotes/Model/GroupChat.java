@@ -10,6 +10,11 @@ public class GroupChat {
     private ArrayList<String> id_user;
     private ArrayList<HashMap<String, String>> messaggi;
 
+    /***
+     * Costruttore del Group Chat Model
+     * @param _id
+     * @param messaggi
+     */
     public GroupChat(UUID _id, ArrayList<HashMap<String, String>> messaggi) {
         this._id = _id;
         this.messaggi = messaggi;

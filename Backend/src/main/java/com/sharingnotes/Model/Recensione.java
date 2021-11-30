@@ -12,6 +12,15 @@ public class Recensione {
     private String title;
     private String testo;
 
+    /***
+     * Costruttore del Recensione Model
+     * @param _id
+     * @param idRecensore
+     * @param idUserRecensito
+     * @param idNotaRecensita
+     * @param title
+     * @param testo
+     */
     public Recensione(UUID _id, String idRecensore, String idUserRecensito, String idNotaRecensita, String title, String testo) {
         this._id = _id;
         this.score=0;

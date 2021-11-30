@@ -28,16 +28,16 @@
                     <input (change)="handleFileInput($event.target.files)" accept=".pdf" class="form-control"
                         formControlName="file" type="file" name="file">
                     <br>
-                     <!-- Spinner -->
-                     <mat-progress-spinner *ngIf="openSpinner" [diameter]="40" class="text-center" mode="indeterminate">
+                    <!-- Spinner -->
+                    <mat-progress-spinner *ngIf="openSpinner" [diameter]="40" class="text-center" mode="indeterminate">
                     </mat-progress-spinner>
                     <br>
                     <!-- Tasto del submit -->
-                    <button type="button" mat-button mat-raised-button [disabled]="!form.valid"
+                    <button type="submit" mat-button mat-raised-button [disabled]="!form.valid"
                         class=" mt-4 btn btn btn-primary">
                         Submit
                     </button>
-                   
+
                 </div>
             </form>
         </div>

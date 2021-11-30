@@ -61,11 +61,12 @@ export class NewNoteComponent implements OnInit {
     formData.append("categoria", this.form.get("categoria").value)
     this.ajax.submitFile(formData).subscribe((res) => {
       this.openSpinner = false;
+      this.data.load = true;
       this.dialogRef.close();
     });
   }
 
-  
+
 
   handleFileInput(files: FileList) {
     this.file = files[0];

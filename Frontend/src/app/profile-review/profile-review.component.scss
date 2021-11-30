@@ -42,9 +42,17 @@ body {
   transform: scale(0.95);
 }
 
-.btn-rel{
-  position:relative;
-  top:43px;
-  left:17px;
-  z-index:100;
+.btn-rel {
+  position: relative;
+  background-color: transparent;
+  color: red;
+  border: 0px;
+  opacity: 0.6;
+  top: 43px;
+  left: 17px;
+  z-index: 100;
+}
+.btn-rel:hover {
+  opacity: 0.8;
+  box-shadow: -1px 4px 6px 1px rgba(0, 0, 0, 0.2) !important;
 }

@@ -13,6 +13,15 @@ public class Notes {
     private int sommaVoti;
     private String categoria;
 
+    /***
+     * Costruttore del Notes Model
+     * @param _id
+     * @param title
+     * @param description
+     * @param fileUrl
+     * @param id_User
+     * @param categoria
+     */
     public Notes(UUID _id, String title, String description, String fileUrl, String id_User, String categoria) {
         this._id = _id;
         this.title = title;

@@ -94,15 +94,6 @@ export class NoteComponent implements OnInit, DoCheck {
     })
   }
 
-  download() {
-    //funzione di download dei file con api di mega
-    /* this.ajaxService.download(this?.note?.fileUrl).subscribe(res => {
- 
-       this.downloadURI(res, "document.pdf");
-     });
-     */
-
-  }
 
   downloadURI(uri, name) {
     var link = document.createElement("a");

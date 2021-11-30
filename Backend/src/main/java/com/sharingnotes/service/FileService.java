@@ -36,15 +36,31 @@ public class FileService {
         return new ResponseEntity<>(gson.toJson("Success"), HttpStatus.OK);
     }
 
+    /**
+     * get dell'url di mega del file
+     * @return
+     */
     public ResponseEntity<String> getUrlfiles(){
         return new ResponseEntity((mongo.getUrlFiles()), HttpStatus.OK);
     }
 
+    /**
+     * get di tutti i documente presenti nella collection di mongo
+     * @param collection
+     * @return
+     */
     public ResponseEntity getFiles(String collection){
         return new ResponseEntity((mongo.getAllFilesInCollection(collection)), HttpStatus.OK);
     }
 
+    /**
+     * elimana il document dalla collection mongo
+     * @param id
+     * @param collection
+     * @return
+     */
     public ResponseEntity delete( String id,String collection){
+        //se si elimina una nota vengono eliminate anche le recensioni relative a quella nota
         if (collection.contains("notes")){
             mongo.deleteReviews(id);
         }
@@ -52,6 +68,11 @@ public class FileService {
         return new ResponseEntity<>(gson.toJson("Success"), HttpStatus.OK);
     }
 
+    /***
+     *
+     * @param multipartFile
+     * @return
+     */
     public File convertFile(MultipartFile multipartFile){
         String fileName = multipartFile.getOriginalFilename();
         String prefix = fileName != null ? fileName.substring(fileName.lastIndexOf(".")) : null;

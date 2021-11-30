@@ -10,9 +10,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginService {
 
+    /***
+     * Richiamo la connessione a Mongo
+     */
     public MongoDb mongo= MongoDb.getConnection();
+    /***
+     * creazione di un Gson
+     */
     private static final Gson gson = new Gson();
 
+    /**
+     * Autenticazione della login cercando la corrispondenza tra email e password
+     * @param email
+     * @param password
+     * @return
+     */
     public ResponseEntity authentication(String email,String password){
         try{
             Login login =new Login();

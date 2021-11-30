@@ -10,14 +10,26 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/user")
 public class UserController {
 
+    /***
+     * Definisco la dipendenza
+     */
     @Autowired
     private UserService userService;
 
+    /**
+     * Creo un nuovo user
+     * @return
+     */
     @PostMapping("/insertUser")
     public ResponseEntity<String> insertUser(){
         return userService.insertUser();
     }
 
+    /**
+     * Ritorna il document dell'user cercato in base all'id
+     * @param id
+     * @return
+     */
     @GetMapping("/getUserByID")
     public ResponseEntity getUserByID(@RequestParam("_id") String id){
         return userService.getUserByID(id);

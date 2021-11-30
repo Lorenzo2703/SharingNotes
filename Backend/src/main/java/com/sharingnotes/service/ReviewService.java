@@ -12,9 +12,24 @@ import java.util.UUID;
 @Service
 public class ReviewService {
 
+    /***
+     * Richiamo la connessione a Mongo
+     */
     public MongoDb mongo= MongoDb.getConnection();
+    /***
+     * creazione di un Gson
+     */
     private static final Gson gson = new Gson();
 
+    /**
+     * Inserisco una nuova reconsione della nota
+     * @param idRecensore
+     * @param idUserRecensito
+     * @param idNotaRecensita
+     * @param title
+     * @param testo
+     * @return
+     */
     public ResponseEntity<String> insert(String idRecensore, String idUserRecensito, String idNotaRecensita, String title, String testo) {
         mongo.insertRecensione(new Recensione(UUID.randomUUID(), idRecensore, idUserRecensito, idNotaRecensita, title, testo));
         return new ResponseEntity<>(gson.toJson("Success"), HttpStatus.OK);

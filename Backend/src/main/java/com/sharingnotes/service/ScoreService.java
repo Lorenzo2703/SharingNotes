@@ -15,9 +15,22 @@ import java.util.UUID;
 @Service
 public class ScoreService {
 
+    /***
+     * Richiamo la connessione a Mongo
+     */
     public MongoDb mongo= MongoDb.getConnection();
+    /***
+     * creazione di un Gson
+     */
     private static final Gson gson = new Gson();
 
+    /**
+     * Modifico lo score complessivo della nota o dell'utente
+     * @param score
+     * @param id
+     * @param collection
+     * @return
+     */
     public ResponseEntity<String> updateScore( String score,String id, String collection){
         try {
             mongo.updateScore(mongo.getDocumentByID(id,collection),collection,Integer.parseInt(score));
@@ -27,9 +40,18 @@ public class ScoreService {
         }
     }
 
+    /**
+     * Inserisco l'id della nota o dell'user che ho votato alla lista
+     * degli id di chi ho votato nel mio document
+     * @param id_votato
+     * @param id
+     * @return
+     */
     public ResponseEntity<String> insertIdVotati(String id_votato,String id){
         try {
+            //get del mio documento
             Document documento = mongo.getUserByID(id);
+            //aggiorno l'array degli id che ho votato creando un nuovo user
             User user = new User(UUID.fromString(documento.get("_id").toString()), (String) documento.get("name"), (String) documento.get("email"), (String) documento.get("password"), (ArrayList<String>) documento.get("id_votati"));
             mongo.insertIdVotati(user,id_votato);
             return new ResponseEntity<>(gson.toJson("Id_votato aggiornato"), HttpStatus.OK);

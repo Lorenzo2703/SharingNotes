@@ -10,9 +10,21 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/recensione")
 public class ReviewController {
 
+    /***
+     * Definisco la dipendenza
+     */
     @Autowired
     private ReviewService reviewService;
 
+    /**
+     * Inserirsco una nuova recensione della nota
+     * @param idRecensore
+     * @param idUserRecensito
+     * @param idNotaRecensita
+     * @param title
+     * @param testo
+     * @return
+     */
     @PostMapping( "/insertRecensione")
     public ResponseEntity<String> insertRecensione(@RequestParam("idRecensore") String idRecensore, @RequestParam("idUserRecensito") String idUserRecensito, @RequestParam("idNotaRecensita") String idNotaRecensita, @RequestParam("title") String title, @RequestParam("testo") String testo){
         return reviewService.insert(idRecensore, idUserRecensito, idNotaRecensita, title, testo);

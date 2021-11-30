@@ -32,16 +32,31 @@ public class FileController {
         return fileService.uploadFile(multipartFile, title, description, id, categoria);
     }
 
+    /**
+     * get dell'url di mega del file
+     * @return
+     */
     @GetMapping("/getUrlFiles")
     public ResponseEntity<String> getUrlfiles(){
         return fileService.getUrlfiles();
     }
 
+    /**
+     * get di tutti i document presenti nella collection di mongo
+     * @param collection
+     * @return
+     */
     @GetMapping("/getFiles")
     public ResponseEntity getFiles(@RequestParam("collection")String collection){
         return fileService.getFiles(collection);
     }
 
+    /**
+     * elimina il document dalla collection
+     * @param id
+     * @param collection
+     * @return
+     */
     @GetMapping("/delete")
     public ResponseEntity delete(@RequestParam("_id") String id, @RequestParam("collection")String collection){
         return fileService.delete(id,collection);

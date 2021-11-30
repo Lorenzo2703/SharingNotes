@@ -11,9 +11,22 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/file")
 public class FileController {
 
+    /***
+     * Definisco la dipendenza
+     */
     @Autowired
     private FileService fileService;
 
+    /**
+     * Upload del pdf su Mega e inserimento della nota nel
+     * component Mongo
+     * @param multipartFile
+     * @param title
+     * @param description
+     * @param id
+     * @param categoria
+     * @return
+     */
     @PostMapping("/fileUpload")
     public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile multipartFile, @RequestParam("title") String title, @RequestParam("description") String description, @RequestParam("userId") String id, @RequestParam("categoria") String categoria) {
         return fileService.uploadFile(multipartFile, title, description, id, categoria);

@@ -12,9 +12,25 @@ import java.io.File;
 @Service
 public class FileService {
 
+    /***
+     * Richiamo la connessione a Mongo
+     */
     public MongoDb mongo= MongoDb.getConnection();
+    /***
+     * creazione di un Gson
+     */
     private static final Gson gson = new Gson();
 
+    /**
+     * Upload del pdf su mega e inserimento della nota nel
+     * component Mongo
+     * @param multipartFile
+     * @param title
+     * @param description
+     * @param id
+     * @param categoria
+     * @return
+     */
     public ResponseEntity<String> uploadFile(MultipartFile multipartFile,String title,String description, String id, String categoria) {
         CloudApi.uploadFile(convertFile(multipartFile),title,description,id, categoria);
         return new ResponseEntity<>(gson.toJson("Success"), HttpStatus.OK);

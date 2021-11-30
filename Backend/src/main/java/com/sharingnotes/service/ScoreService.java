@@ -50,7 +50,7 @@ public class ScoreService {
     public ResponseEntity<String> insertIdVotati(String id_votato,String id){
         try {
             //get del mio documento
-            Document documento = mongo.getUserByID(id);
+            Document documento = mongo.getDocumentByID(id,"utenti");
             //aggiorno l'array degli id che ho votato creando un nuovo user
             User user = new User(UUID.fromString(documento.get("_id").toString()), (String) documento.get("name"), (String) documento.get("email"), (String) documento.get("password"), (ArrayList<String>) documento.get("id_votati"));
             mongo.insertIdVotati(user,id_votato);

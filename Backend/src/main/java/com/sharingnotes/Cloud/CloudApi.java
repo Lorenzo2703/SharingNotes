@@ -25,6 +25,7 @@ public class CloudApi {
                 .connectTimeout(6000000)
                 .field("file",file)
                 .asString();
+
         mongoDb.insertNotes(new Notes((UUID.randomUUID()),title, description,response.getBody().toString(),id_User, categoria));
     }
 }

@@ -85,6 +85,7 @@ public class MongoDb {
         int newNVoti=(document.getInteger("nvoti")+1);
         int newSomma=(document.getInteger("sommaVoti")+score);
         float media = Math.round(newSomma/ newNVoti);
+
         database.getCollection(collection).updateOne(Filters.eq("_id",document.get("_id")), Updates.set("nvoti",newNVoti));
         database.getCollection(collection).updateOne(Filters.eq("_id",document.get("_id")), Updates.set("sommaVoti",newSomma));
         database.getCollection(collection).updateOne(Filters.eq("_id",document.get("_id")), Updates.set("rating",media));
@@ -105,6 +106,7 @@ public class MongoDb {
                 .append("nvoti",user.getNvoti())
                 .append("sommaVoti",user.getSommaVoti())
                 .append("id_votati", user.getId_votati());
+
         database.getCollection("utenti").insertOne(insertUser);
     }
 
@@ -152,17 +154,12 @@ public class MongoDb {
         return used;
     }
 
-    public Document getUserByID(String userID){
-        FindIterable<Document> documents=database.getCollection("utenti").find();
-        Document documento=null;
-        for (Document document : documents) {
-            if ((document.get("_id").toString()).equals(userID.trim())){
-                documento=document;
-            }
-        }
-        return documento;
-    }
-
+    /***
+     * Funzione che ritorna il documento mongo, passando l'id e la collection
+     * @param notesID
+     * @param collection
+     * @return
+     */
     public Document getDocumentByID(String notesID, String collection){
         FindIterable<Document> documents=database.getCollection(collection).find();
         Document documento=null;
@@ -174,11 +171,20 @@ public class MongoDb {
         return documento;
     }
 
+    /***
+     * Funzione che inserisce l'id degli utenti votati
+     * @param user
+     * @param id_votato
+     */
     public void insertIdVotati(User user,String id_votato){
         user.insertId_votati(id_votato);
         database.getCollection("utenti").updateOne((Filters.eq("_id",user.getId())), Updates.set("id_votati",user.getId_votati()));
     }
 
+    /***
+     * Funzione che inserisce una recensione nel database di Mongo
+     * @param recensione
+     */
     public void insertRecensione(Recensione recensione){
         Document insertRecensione = new Document();
         insertRecensione.append("_id",recensione.getId())
@@ -192,6 +198,10 @@ public class MongoDb {
         database.getCollection("recensioni").insertOne(insertRecensione);
     }
 
+    /***
+     * Funzione che inserisce una chat nel database di Mongo
+     * @param chat
+     */
     public void createChat(Chat chat){
         Document createChat = new Document();
         createChat.append("_id",chat.get_id())
@@ -202,17 +212,31 @@ public class MongoDb {
         database.getCollection("chat").insertOne(createChat);
     }
 
+    /***
+     * Funzione che inserisce un messaggio nella chat e effettua l'update nel database di Mongo
+     * @param chat
+     * @param messaggio
+     */
     public void sendMessage(Chat chat,HashMap<String,String> messaggio){
         chat.insertMessage(messaggio);
         database.getCollection("chat").updateOne((Filters.and(eq("id_User1",chat.getId_user1()),eq("id_User2",chat.getId_user2()))), Updates.set("messaggio",chat.getMessaggi()));
     }
 
+    /***
+     * Funzione che inserisce un messaggio nella chat di gruppo e effettua l'update nel database di Mongo
+     * @param chat
+     * @param messaggio
+     */
     public void sendGroupMessage(GroupChat chat,HashMap<String,String> messaggio){
         chat.insertMessage(messaggio);
         database.getCollection("group-chat").updateOne((Filters.and(eq("_id",chat.get_id()))), Updates.set("messaggi",chat.getMessaggi()));
     }
 
-    //get della chat di gruppo in base all'ID della chat di gruppo
+    /***
+     * Funzione che restituisce la chat di gruppo in base all'id
+     * @param id
+     * @return
+     */
     public GroupChat getGroupChatByID(String id){
         FindIterable<Document> documents=database.getCollection("group-chat").find();
         Document documento=null;
@@ -225,12 +249,23 @@ public class MongoDb {
         return chat;
     }
 
+    /***
+     * Funzione che restituisce la chat di gruppo in base all'id dei due utenti
+     * @param idUser1
+     * @param idUser2
+     * @return
+     */
     public Chat getChat(String idUser1, String idUser2){
         Document document=database.getCollection("chat").find((and(eq("id_User1",idUser1),eq("id_User2",idUser2)))).first();
         Chat chat= new Chat(UUID.fromString(document.get("_id").toString()),document.get("id_User1").toString(),document.get("id_User2").toString(),(ArrayList)(document.get("messaggio")));
         return chat;
     }
 
+    /***
+     * Funzione che restituisce tutte le chat dove l'id dell'user è presente
+     * @param idUser1
+     * @return
+     */
     public ArrayList getChatWithUser(String idUser1){
         ArrayList arrayList=new ArrayList();
         FindIterable<Document> documents=database.getCollection("chat").find();
@@ -242,6 +277,11 @@ public class MongoDb {
         return arrayList;
     }
 
+    /***
+     * Funzione che crea la chat di gruppo
+     * @param name
+     * @param id
+     */
     public void createGroupChat(String name, String ...id){
         Document createGroupChat = new Document();
         int index=1;
@@ -254,7 +294,11 @@ public class MongoDb {
         database.getCollection("group-chat").insertOne(createGroupChat);
     }
 
-    //get delle chat di gruppo dove l'id dell'user è presente
+    /***
+     * Funzione che restituisce la chat di gruppo dove ò'id dell'utente è presente
+     * @param id
+     * @return
+     */
     public ArrayList getGroupChat(String id){
         ArrayList arrayList=new ArrayList();
         MongoCursor<Document> cursor = database.getCollection("group-chat").find().iterator();
@@ -272,6 +316,10 @@ public class MongoDb {
         return arrayList;
     }
 
+    /***
+     * Funzione che inserisce una richiesta nel database di Mongo
+     * @param richiesta
+     */
     public void insertRichiesta(Richiesta richiesta){
         Document insertRichiesta = new Document();
         insertRichiesta.append("_id",richiesta.get_id())
@@ -281,9 +329,12 @@ public class MongoDb {
                 .append("completed",richiesta.isCompleted());
 
         database.getCollection("richieste").insertOne(insertRichiesta);
-
     }
 
+    /***
+     * Funzione che inserisce una nota nel database di Mongo
+     * @param notes
+     */
     public void insertNotes(Notes notes){
         Document insertNotes = new Document();
         insertNotes.append("_id",notes.getId())
@@ -299,6 +350,10 @@ public class MongoDb {
         database.getCollection("notes").insertOne(insertNotes);
     }
 
+    /***
+     * Funzione che restituisce la lista di tutti gli Url delle note inserite
+     * @return
+     */
     public ArrayList<String> getUrlFiles(){
         ArrayList<String> list = new ArrayList();
         MongoCursor<Document> cursor = database.getCollection("notes").find().iterator();
@@ -308,6 +363,11 @@ public class MongoDb {
         return list;
     }
 
+    /***
+     * Funzione che restituisce tutti i Documenti in una collection
+     * @param collection
+     * @return
+     */
     public ArrayList getAllFilesInCollection(String collection){
         FindIterable<Document> documents=database.getCollection(collection).find();
         ArrayList arrayList=new ArrayList();

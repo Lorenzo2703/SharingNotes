@@ -31,6 +31,6 @@ public class UserService {
      * @return
      */
     public ResponseEntity getUserByID(String id){
-        return new ResponseEntity((mongo.getUserByID(id)), HttpStatus.OK);
+        return new ResponseEntity((mongo.getDocumentByID(id,"utenti")), HttpStatus.OK);
     }
 }

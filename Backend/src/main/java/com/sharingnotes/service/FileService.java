@@ -69,17 +69,20 @@ public class FileService {
     }
 
     /***
-     *
+     * Parsing del file e del proprio nome
      * @param multipartFile
      * @return
      */
     public File convertFile(MultipartFile multipartFile){
+        //elimina dal nome del file gli spazi e i caratteri speciali
         String fileName = multipartFile.getOriginalFilename();
         String prefix = fileName != null ? fileName.substring(fileName.lastIndexOf(".")) : null;
         File file;
         try {
+            //salva il file in un file temporaneo
             file = File.createTempFile(fileName.substring(0,fileName.lastIndexOf("."))
                     .replaceAll("[^a-zA-Z0-9-_\\.]", "_"), prefix);
+            //upload del file e poi eliminazione
             multipartFile.transferTo(file);
             return file;
         } catch (Exception e) {

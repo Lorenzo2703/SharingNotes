@@ -84,7 +84,6 @@ export class ProfileComponent implements OnInit {
       for (let x in res) {
         if (res[x]["id_Recensore"] == this.user._id && res[x]["title"] != "R1chiesta") {
           this.listReviews.push(res[x]);
-
         }
       }
       if (this.listReviews.length == 0) {

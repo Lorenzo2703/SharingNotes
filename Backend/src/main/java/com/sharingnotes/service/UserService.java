@@ -17,20 +17,15 @@ public class UserService {
     public MongoDb mongo= MongoDb.getConnection();
 
     /**
-     * Creazione nella collection mongo di un nuovo user
-     * @return
-     */
-    public ResponseEntity<String> insertUser(){
-        mongo.insertUser(new User(UUID.randomUUID(),"name","email","password", new ArrayList<String>()));
-        return ResponseEntity.ok("success");
-    }
-
-    /**
      * Ritorna il document dell'user cercato in base all'id
      * @param id
      * @return
      */
     public ResponseEntity getUserByID(String id){
-        return new ResponseEntity((mongo.getDocumentByID(id,"utenti")), HttpStatus.OK);
+        try {
+            return new ResponseEntity((mongo.getDocumentByID(id, "utenti")), HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity((mongo.getDocumentByID(id, "utenti")), HttpStatus.BAD_REQUEST);
+        }
     }
 }

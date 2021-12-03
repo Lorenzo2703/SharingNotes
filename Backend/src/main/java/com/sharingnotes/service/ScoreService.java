@@ -59,4 +59,5 @@ public class ScoreService {
             return new ResponseEntity<>(gson.toJson("Id_votato NON aggiornato"), HttpStatus.BAD_REQUEST);
         }
     }
+
 }

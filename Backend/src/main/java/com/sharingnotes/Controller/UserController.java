@@ -17,15 +17,6 @@ public class UserController {
     private UserService userService;
 
     /**
-     * Creo un nuovo user
-     * @return
-     */
-    @PostMapping("/insertUser")
-    public ResponseEntity<String> insertUser(){
-        return userService.insertUser();
-    }
-
-    /**
      * Ritorna il document dell'user cercato in base all'id
      * @param id
      * @return

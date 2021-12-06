@@ -51,7 +51,7 @@ public class ChatRestControllerTest extends AbstractRestControllerTest {
 
 
     @Test
-    public  void sendNewMessageWithOutReciver() throws Exception{
+    public  void sendNewMessageWithOutReceiver() throws Exception{
         getMockMvc().perform(post("/chat/sendMessage")
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .param("id_user1","test@gmail.com")

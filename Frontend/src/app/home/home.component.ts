@@ -17,8 +17,6 @@ export class HomeComponent implements OnInit, DoCheck {
 
   ngDoCheck(): void {
     this.dataservice.searchText = this.searchText;
-
-  
   }
 
   listNotes = []; //lista delle note 
@@ -40,9 +38,6 @@ export class HomeComponent implements OnInit, DoCheck {
     this.getGroupChat();
 
   }
-
-
-
 
   openDialog() {
     //apro il componente new-note

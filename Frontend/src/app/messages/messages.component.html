@@ -6,6 +6,7 @@
         </div>
         <div class="line my-2 mx-4"></div>
         <div class="row px-3  py-1 m-1 align-items-end ">
+            <!--Chat Singole-->
             <div class="col-6 col-md-3 mb-1" *ngFor="let item of listMessage">
                 <button class="btn btn-danger btn-rel " (click)="delete(item?._id)">
                     <i class="fas fa-trash"></i>
@@ -25,6 +26,7 @@
                     </a>
                 </div>
             </div>
+            <!-- Chat di gruppo-->
             <div class="col-6 col-md-3 mb-1" *ngFor="let item of listGroupMessage">
                 <div class="card-custom1  m-1 p-3">
                     <a class="text-decoration-none" [routerLink]="['/home/chat-group',item?._id]">
@@ -43,6 +45,7 @@
             </div>
         </div>
     </div>
+    <!-- Bottone per aggiungere una nuova chat-->
     <button type="button" (click)="openDialog()" class="btn btn-primary btn-custom d-none d-md-block"><i
             class="fas fa-plus fa-sm "></i></button>
 

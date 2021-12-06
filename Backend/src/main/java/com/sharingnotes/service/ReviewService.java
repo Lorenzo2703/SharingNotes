@@ -32,6 +32,10 @@ public class ReviewService {
      */
     public ResponseEntity<String> insert(String idRecensore, String idUserRecensito, String idNotaRecensita, String title, String testo) {
         mongo.insertRecensione(new Recensione(UUID.randomUUID(), idRecensore, idUserRecensito, idNotaRecensita, title, testo));
-        return new ResponseEntity<>(gson.toJson("Success"), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(gson.toJson("Success"), HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(gson.toJson("Unuccess"), HttpStatus.BAD_REQUEST);
+        }
     }
 }

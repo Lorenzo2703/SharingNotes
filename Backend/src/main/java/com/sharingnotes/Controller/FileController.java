@@ -57,7 +57,7 @@ public class FileController {
      * @param collection
      * @return
      */
-    @GetMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity delete(@RequestParam("_id") String id, @RequestParam("collection")String collection){
         return fileService.delete(id,collection);
     }

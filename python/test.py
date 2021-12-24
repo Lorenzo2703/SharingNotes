@@ -17,7 +17,6 @@ m = mega.login(data["username"], data["password"])
 
 def fmega(file):
     folder = m.find('uploads')
-    m.upload(file.filename, folder[0])
     return m.get_upload_link(m.upload(file.filename, folder[0]))
 
 
@@ -50,23 +49,6 @@ def upload_file():
         url = fmega(file)
         os.remove(os.path.join(app.config['UPLOAD_FOLDER'], filename))
     return url
-
-
-@app.route('/download', methods=['GET'])
-@cross_origin()
-def download():
-    # stringUrl = re.sub('[$]', '#', request.args["fileurl"])
-    stringUrl = request.args["fileUrl"]
-    m.download_url(stringUrl, "./download")
-    time.sleep(3)
-    file = os.listdir("./download")[0]
-
-    filez = base64.b64encode(open("ciao.pdf", "rb").read())
-    # os.remove("./download"[0])
-    jsonstring = jsonify(filez)
-    print(jsonstring)
-
-    return jsonstring
 
 
 @ app.route('/getAll', methods=['GET'])

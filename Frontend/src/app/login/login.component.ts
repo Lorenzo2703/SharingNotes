@@ -39,7 +39,9 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl("/home");
     }, (error) => {
       //Error callback
-      Swal.fire({ title: "Email o password errate, riprova", icon: 'error', position: "center" });
+      Swal.fire({
+        title: "Wrong email or password, please try again", icon: 'error', position: "center"
+      });
       this.openSpinner = false;
     }
     )

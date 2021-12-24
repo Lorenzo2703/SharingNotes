@@ -38,10 +38,10 @@ export class NewUserScoreComponent implements OnInit {
   }
 
   submit() {
-    if(this.user.id_votati.includes(sessionStorage.getItem("idUserScore")) ){
-      Swal.fire({ title: "Utente già votato!", icon: 'error', position: "center" });
-    }else{
-      this.ajax.insertIdVotati(sessionStorage.getItem("UserID"),sessionStorage.getItem("idUserScore")).subscribe((res) => {})
+    if (this.user.id_votati.includes(sessionStorage.getItem("idUserScore"))) {
+      Swal.fire({ title: "User already voted!", icon: 'error', position: "center" });
+    } else {
+      this.ajax.insertIdVotati(sessionStorage.getItem("UserID"), sessionStorage.getItem("idUserScore")).subscribe((res) => { })
       this.ajax.updateUserScore(this.rating, sessionStorage.getItem("idUserScore")).subscribe((res) => {
         this.dialogRef.close();
         window.location.reload();

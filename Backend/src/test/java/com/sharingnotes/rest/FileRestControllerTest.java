@@ -67,16 +67,4 @@ public class FileRestControllerTest extends AbstractRestControllerTest{
                 .andExpect(status().isBadRequest());
     }
 
-    //Test per i file se aggiungete i controlli
-   /*@Test
-   public  void filUploadWithFileNotPDF() throws Exception{
-      MultipartFile file = new MockMultipartFile("file", "pippo.jpg", "", "file contents".getBytes());
-      getMockMvc().perform(MockMvcRequestBuilders.multipart("/file/fileUpload")
-                      .file((MockMultipartFile) file)
-                      .param("title", "PippoPlutoPaperino")
-                      .param("description", "Sono il file che si caricata dal test del codice")
-                      .param("userId", "1234")
-                      .param("categoria","Matematica"))
-              .andExpect(status().isForbidden());
-   }*/
 }

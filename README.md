@@ -83,6 +83,37 @@ git clone https://github.com/Lorenzo2703/SharingNotes.git
 9. Categorizzare i file per materia
 10. Classificare in base alle votazioni
 
+## Fase di Progettazione
+
+#### Oggetti di Dominio e Classi:
+
+* User
+* Recensione
+* Richiesta
+* Nota
+* Chat
+* Chat di gruppo
+
+#### Casi d'uso:
+
+* Registrazione
+* Login
+* Visualizzare le note
+  * Scaricare il documento
+  * Recensire il documento
+  * Aggiungere una valutazione della nota
+* Inserire un nuovo documento
+* Categorizzare le note
+* Creare una richiesta
+* Eliminare una nota caricata
+* Eliminare una recensione
+* Segnare una richiesta come completata
+* Creare una chat singola
+* Eliminare una chat singola
+* Creare una chat di gruppo
+* Votare un utente
+* Visualizzare una classifica dei migliori utenti e delle migliori note
+
 ## Licenze
 
 [Apache License](https://www.apache.org/licenses/LICENSE-2.0), [MIT license](https://it.wikipedia.org/wiki/Licenza\_MIT), [BSD 2 clausole](https://it.wikipedia.org/wiki/Licenze\_BSD#Licenza\_BSD\_Semplificata/\_Licenza\_FreeBSD\_\(2\_clausole\))

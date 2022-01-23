@@ -17,6 +17,7 @@ coverY: 0
 ## Scopo del progetto
 
 Creare una piattaforma online di condivisione appunti universitari in formato PDF, dando la possibilità di registrarsi/autenticarsi al servizio in modo da poter creare una community in grado di richiedere e scaricare file, votare documenti e altri utenti e scambiare messaggi per rendere la comunicazione rapida ed efficace.
+Prova
 
 ### Prerequisiti
 

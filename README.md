@@ -6,7 +6,7 @@ coverY: 0
 
 # Sharing Notes
 
-### Tecnologie usate:
+#### Tecnologie usate:
 
 * [Angular](https://angular.io)
 * [Spring Boot](https://spring.io)
@@ -14,16 +14,16 @@ coverY: 0
 * [MongoDB](https://www.mongodb.com)
 * [MEGA](https://mega.nz)
 
-## Scopo del progetto
+### Scopo del progetto
 
 Creare una piattaforma online di condivisione appunti universitari in formato PDF, dando la possibilità di registrarsi/autenticarsi al servizio in modo da poter creare una community in grado di richiedere e scaricare file, votare documenti e altri utenti e scambiare messaggi per rendere la comunicazione rapida ed efficace.
 
-### Prerequisiti
+#### Prerequisiti
 
 *   Node
 
     ```
-    install (https://nodejs.org/it/download/)
+    install (<https://nodejs.org/it/download/>)
     ```
 *   Angular
 
@@ -33,12 +33,12 @@ Creare una piattaforma online di condivisione appunti universitari in formato PD
 *   Java
 
     ```
-    https://javadl.oracle.com/webapps/download/AutoDL?BundleId=245448_4d5417147a92418ea8b615e228bb6935
+    <https://javadl.oracle.com/webapps/download/AutoDL?BundleId=245448_4d5417147a92418ea8b615e228bb6935>
     ```
 *   Python
 
     ```
-    https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe
+    <https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe>
     ```
 *   Flask
 
@@ -50,27 +50,27 @@ Creare una piattaforma online di condivisione appunti universitari in formato PD
     ```
     pip install Flask-cors
     ```
-*   Mega.py
+*   [Mega.py](http://mega.py)
 
     ```
     pip install Mega.py
     ```
 
-### Installazione
+#### Installazione
 
 1. Clona la repository
 
 ```
-git clone https://github.com/Lorenzo2703/SharingNotes.git
+git clone <https://github.com/Lorenzo2703/SharingNotes.git>
 ```
 
-## Configurazione
+### Configurazione
 
 1. Dalla cartella "python" esegui il server flask
 2. Dalla cartella "backend" esegui la springboot application
 3. Dalla cartella "frontend" esegui l'applicazione Angular
 
-## Funzionalità
+### Funzionalità
 
 1. Registrare/autenticare al servizio
 2. Selezionare la nota d'interesse per leggerne la descrizione
@@ -83,7 +83,7 @@ git clone https://github.com/Lorenzo2703/SharingNotes.git
 9. Categorizzare i file per materia
 10. Classificare in base alle votazioni
 
-## Fase di Progettazione
+### Fase di Progettazione
 
 #### Oggetti di Dominio e Classi:
 
@@ -114,15 +114,7 @@ git clone https://github.com/Lorenzo2703/SharingNotes.git
 * Votare un utente
 * Visualizzare una classifica dei migliori utenti e delle migliori note
 
-## Licenze
-
-[Apache License](https://www.apache.org/licenses/LICENSE-2.0), [MIT license](https://it.wikipedia.org/wiki/Licenza\_MIT), [BSD 2 clausole](https://it.wikipedia.org/wiki/Licenze\_BSD#Licenza\_BSD\_Semplificata/\_Licenza\_FreeBSD\_\(2\_clausole\))
-
-## Contatti
-
-Lorenzo Giarè - lorenzo.giare@mail.polimi.it - 10728640 Marco Sciacovelli - marco.sciacovelli@mail.polimi.it - 10743517 Project Link: [Lorenzo2703/SharingNotes](https://github.com/Lorenzo2703/SharingNotes)
-
-## Librerie
+### Librerie
 
 * [Bootstrap](https://getbootstrap.com)
 * [Angular Material](https://material.angular.io)

@@ -112,7 +112,7 @@ export class AjaxService {
   }
 
   delete(id, collection) {
-    return this.httpClient.get(this.deleteUrl, { params: { _id: id, collection: collection } });
+    return this.httpClient.delete(this.deleteUrl, { params: { _id: id, collection: collection } });
   }
 
   insertIdVotati(id, id_votato) {

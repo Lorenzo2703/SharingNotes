@@ -1,12 +1,11 @@
 package com.sharingnotes.service;
 
-import com.sharingnotes.Model.User;
 import com.sharingnotes.MongoDb.MongoDb;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
-import java.util.UUID;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 
 @Service
 public class UserService {

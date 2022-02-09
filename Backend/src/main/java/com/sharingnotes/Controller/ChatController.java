@@ -28,7 +28,7 @@ public class ChatController {
     }
 
     /***
-     * Restituisce di tutte le chat nella collection mongo in cui è presente l'user
+     * Restituisce tutte le chat nella collection mongo in cui è presente l'user
      * @param user1
      * @return
      */

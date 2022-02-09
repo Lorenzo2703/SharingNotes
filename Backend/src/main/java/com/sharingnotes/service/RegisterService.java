@@ -3,10 +3,12 @@ package com.sharingnotes.service;
 import com.google.gson.Gson;
 import com.sharingnotes.Model.User;
 import com.sharingnotes.MongoDb.MongoDb;
-import com.sharingnotes.Security_old.Login;
+import com.sharingnotes.Security.Login;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import java.util.ArrayList;
 import java.util.UUID;
 

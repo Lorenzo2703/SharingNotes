@@ -6,8 +6,10 @@ import com.sharingnotes.MongoDb.MongoDb;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.UUID;
+
 
 @Service
 public class ReviewService {

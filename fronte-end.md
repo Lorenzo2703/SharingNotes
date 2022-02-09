@@ -8,7 +8,7 @@ Le applicazioni sviluppate in Angular vengono eseguite interamente dal web brows
 
 ### Struttura del progetto
 
-In Angular il progetto è diviso in component, ognuno ha all’interno il proprio codice e tra di loro sono collegati attraverso il routin. In una stessa pagina possono coesistere più component.
+In Angular il progetto è diviso in component, ognuno ha all’interno il proprio codice e tra di loro sono collegati attraverso il routing. In una stessa pagina possono coesistere più component.
 
 La struttura implementata nel progetto è la seguente:
 
